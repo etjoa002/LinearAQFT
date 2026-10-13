@@ -1,0 +1,142 @@
+\section*{Roadmap}
+\addcontentsline{toc}{section}{Roadmap}
+
+\noindent\motiv{\vet{These notes are also the blueprint of a Lean library, and their chapters are
+ordered by logical dependence. \extraonly{\revd{The lattice appears in Chapter~\ref{sec:nets} as an example;
+its propagators (Chapter~\ref{sec:lattice}) come before the general net
+(Chapter~\ref{sec:phasespace}), and the lattice net is completed in
+\reve{Chapter~\ref{sec:latticenet}}\revg{, apart from primitivity (Chapter~\ref{sec:simple})}.}}\dimockonly{\revm{This
+edition contains only what the verification of the axioms of~\cite{dimock} for the free scalar field
+needs; the full notes add the lattice field, the net defined through Cauchy data, Huygens' principle
+and some illustrations.}}
+\revm{Chapter~\ref{sec:nets} states the axioms for any set of regions carrying inclusion,
+orthogonality and dependence, and reduces them to properties of generators
+(Proposition~\ref{prop:generated}); Chapter~\ref{sec:weyl} constructs the Weyl operators and the CCR
+algebra.} Figure~\ref{fig:roadmap} shows which chapters use which.}}
+
+\ifdimockedition
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  done/.style={draw, rounded corners=2pt, fill=Blue!6, text width=3.5cm, align=center,
+    minimum height=1.05cm, inner sep=3pt},
+  dep/.style={-{Stealth[length=2mm]}, thick},
+  node distance=0.9cm and 0.7cm]
+  \node[done] (c1) {\ref*{sec:nets}\quad Causal indices and nets of local algebras};
+  \node[done, right=of c1] (c2) {\ref*{sec:weyl}\quad The Weyl algebra};
+  \node[done, below=of c1] (c4) {\ref*{sec:phasespace}\quad The net of a classical phase space};
+  \node[done, below=of c2] (c6) {\ref*{sec:simple}\quad Simplicity and primitivity of the Weyl algebra};
+  \node[done, below=of c4] (c7) {\ref*{sec:green}\quad The net of a Green-hyperbolic operator};
+  \node[done, below=of c6] (c8) {\ref*{sec:minkowski}\quad The free massless\\ field on Minkowski space};
+  \node[done, below=of c8] (c9) {\ref*{sec:mass}\quad The Klein--Gordon\\ field on Minkowski space};
+  \draw[dep] (c1) -- (c2);
+  \draw[dep] (c2) -- (c4);
+  \draw[dep] (c2) -- (c6);
+  \draw[dep] (c4) -- (c7);
+  \draw[dep] (c6) -- (c7);
+  \draw[dep] (c7) -- (c8);
+  \draw[dep] (c8) -- (c9);
+\end{tikzpicture}
+\caption{\revm{Dependence of the chapters. An arrow means that the later chapter uses the earlier
+one; a chapter also uses every chapter from which a chain of arrows leads to it, and arrows
+implied by such chains are omitted.}}
+\label{fig:roadmap}
+\end{figure}
+\else
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  done/.style={draw, rounded corners=2pt, fill=Blue!6, text width=3.5cm, align=center,
+    minimum height=1.05cm, inner sep=3pt},
+  plan/.style={done, dashed, fill=none},
+  dep/.style={-{Stealth[length=2mm]}, thick},
+  node distance=0.9cm and 0.7cm]
+  \node[done] (c1) {\ref*{sec:nets}\quad Causal indices and nets of local algebras};
+  \node[done, right=of c1] (c2) {\ref*{sec:weyl}\quad The Weyl algebra};
+  \node[done, right=of c2] (c3) {\ref*{sec:lattice}\quad Propagators on the lattice};
+  \node[done, below=of c1] (c4) {\revb{\ref*{sec:phasespace}\quad The net of a classical phase space}};
+  \node[done, below=of c2] (c6) {\revf{\ref*{sec:simple}\quad Simplicity and primitivity of the Weyl algebra}};
+  \node[done, below=of c3] (c5) {\reve{\ref*{sec:latticenet}\quad The net of the lattice field}};
+  \node[done, below=of c4] (c7) {\revh{\ref*{sec:green}\quad The net of a Green-hyperbolic operator}};
+  \node[done, below=of c6] (c8) {\revjt{\ref*{sec:minkowski}\quad The free massless\\ field on Minkowski space}};
+  \node[done, below=of c5] (c9) {\revlt{\ref*{sec:mass}\quad The Klein--Gordon\\ field on Minkowski space}};
+  \draw[dep] (c1) -- (c2);
+  \draw[dep] (c1.north) to[bend left=18] (c3.north);
+  \draw[dep] (c2) -- (c4);
+  \draw[dep, dashed] (c5) -- (c6);
+  \draw[dep] (c2) -- (c6);
+  \draw[dep] ([xshift=-6mm]c4.south) -- ([xshift=-6mm]c7.north);
+  \draw[dep] (c3) -- (c5);
+  \draw[dep] ([xshift=6mm]c4.south) -- ++(0,-0.62) -| (c5.south);
+  \draw[dep] (c6) -- (c7);
+  \draw[dep] (c7) -- (c8);
+  \draw[dep] (c8) -- (c9);
+\end{tikzpicture}
+\caption{Dependence of the chapters. An arrow means that the later chapter uses the earlier
+one\revi{; a chapter also uses every chapter from which a chain of arrows leads to it, and arrows
+implied by such chains are omitted. Chapter~\ref{sec:simple}, for instance, rests mainly on
+Chapter~\ref{sec:weyl}}. \revh{Chapter~\ref{sec:green} constructs the classical phase space from Green data, which gives
+the theorem for every instance of Green data, over the derived causal index.} \revc{Chapter~\ref{sec:phasespace} uses Chapter~\ref{sec:lattice} only in its
+running example, Example~\ref{ex:lattice-phase}\revo{, and in Remark~\ref{rem:massless-reversal}}.} \revf{Chapter~\ref{sec:simple} uses
+Chapters~\ref{sec:phasespace} and~\ref{sec:latticenet} only in} \revg{Remark~\ref{rem:irrep} and} \revf{its last section.} \revh{Chapter~\ref{sec:green} uses \revo{Chapters~\ref{sec:lattice} and~\ref{sec:latticenet} only in remarks, motivating paragraphs and its last section}.}\revjt{ Chapter~\ref{sec:minkowski} uses Chapter~\ref{sec:green}
+and, through it, Chapters~\ref{sec:phasespace} and~\ref{sec:simple}; it does not use the lattice chapters.} \revlt{Chapter~\ref{sec:mass} uses
+Chapters~\ref{sec:green} and~\ref{sec:minkowski} and, through them, Chapters~\ref{sec:phasespace}
+and~\ref{sec:simple}. Uses only in \revo{examples, }remarks\revo{, motivating paragraphs} or in a last section are listed
+above; the one from Chapter~\ref{sec:latticenet} to Chapter~\ref{sec:simple} is drawn dashed, and
+chains of arrows are followed along solid arrows only.}}
+\label{fig:roadmap}
+\end{figure}
+\fi
+
+\noindent\motiv{\rev{\revm{The main result is an abstract form of Theorem~4 of~\cite{dimock}, which is proved there for
+globally hyperbolic spacetimes: whenever Green data exist (retarded and advanced Green operators
+with cutoffs, Definition~\ref{def:green-data}), the net generated by the Weyl operators of localized
+test functions is generating and causal, has the time-slice property for the dependence derived from
+the cutoffs, and every symmetry of the Green data gives a covariance pair (Axioms 1, 3, 4 and 5;
+Theorem~\ref{thm:green-axioms} and Proposition~\ref{prop:green-symmetry}). The globally hyperbolic
+setting of~\cite{dimock} and its form of the time-slice axiom are reached from it on paper only
+(Remarks~\ref{rem:green-continuum} and~\ref{rem:green-dep-spacetime}).} \extraonly{Chapter~\ref{sec:lattice} constructs the
+propagators on the lattice\revc{, and }}\dimockonly{\revm{Chapter~\ref{sec:phasespace} proves isotony, generation,
+causality and time slice for any phase-space data, and covariance for their CCR net.}}\extraonly{\revc{Chapter~\ref{sec:phasespace} proves isotony, generation,
+causality and time slice for any phase-space data, and covariance for their CCR net; with
+Example~\ref{ex:lattice-phase} these hold on the lattice without assumptions. \reve{Chapter~\ref{sec:latticenet}
+states the lattice data as numbered results, adds covariance under the group of lattice translations
+(Theorem~\ref{thm:lattice-net}), and shows that the net defined through Cauchy data is the net of a
+pulled-back Weyl system, isomorphic for the CCR algebra to the lattice CCR net
+(Theorem~\ref{thm:cauchy-net})}}.}}
+
+\motiv{\rev{Primitivity, \revb{Axiom~2 of~\cite{dimock}}, is a property of the Weyl algebra alone:
+\revf{for nondegenerate $\sigma$, as for the phase space of a field, Chapter~\ref{sec:simple}
+proves that the algebra is simple \revg{(Theorem~\ref{thm:simple})} and deduces primitivity from the existence of an irreducible
+representation (\revg{Theorems~\ref{thm:primitive} and}~\ref{thm:dimock}).}} \revh{Chapter~\ref{sec:green}
+derives the phase-space data from Green operators and cutoffs (Proposition~\ref{prop:green-phase}),
+which gives the axioms (Theorem~\ref{thm:green-axioms})\extraonly{, with the lattice as an instance
+(Theorem~\ref{thm:lattice-green-compare})}; a continuum instance
+needs such Green data, sketched \revjt{in general} (Remark~\ref{rem:green-continuum}), and\revjt{, with all
+Cauchy temporal functions as cutoffs,} has the time-slice axiom in the form of~\cite{dimock}
+(Remark~\ref{rem:green-dep-spacetime}).}}}
+
+\motiv{\revjt{Chapter~\ref{sec:minkowski} constructs Green data for the free massless field on $3+1$
+Minkowski space, with slabs between parallel hyperplanes as cutoffs, which gives the axioms for that
+field (primitivity given an irreducible representation) with the time-slice property for those slabs (Theorem~\ref{thm:mink-green},
+Remark~\ref{rem:mink-slabs}) and its covariance under the orthochronous Poincar\'e group
+(Theorem~\ref{thm:mink-covariance}).}}
+
+\motiv{\revlt{\revm{Chapter~\ref{sec:minkowski} ends by stating its construction for every local
+operator with Green operators (Theorem~\ref{thm:kg-greenops}; in the formalization the results of
+Chapter~\ref{sec:minkowski} on cutoffs, uniqueness and covariance are derived from it).} Chapter~\ref{sec:mass} \revm{constructs} the Green operators of the
+Klein--Gordon operator $P+m^2$
+for every real $m^2$ as a series in the Green operators of the wave operator, which gives the same results for that
+field (Theorem~\ref{thm:kg-field}), with the massless field as the case $m^2=0$
+(Corollary~\ref{cor:kg-zero})\extraonly{; Huygens' principle holds exactly when $m^2=0$
+(Theorem~\ref{thm:kg-iff})}.}}
+\revn{The results that correspond to~\cite{dimock} depend on few chapters: the axioms for
+phase-space data (Theorem~\ref{thm:dimock}) and their covariance (Theorem~\ref{thm:ccr-cov}) use
+Chapters~\ref{sec:nets}, \ref{sec:weyl}, \ref{sec:phasespace} and~\ref{sec:simple} only; \extraonly{the
+lattice instance (Corollary~\ref{cor:lattice-dimock}) adds Chapters~\ref{sec:lattice}
+and~\ref{sec:latticenet}; }the massless field (Theorems~\ref{thm:mink-green}
+and~\ref{thm:mink-covariance}) adds Chapters~\ref{sec:green} and~\ref{sec:minkowski}, and in the
+formalization the construction of Theorem~\ref{thm:kg-greenops}, but \extraonly{neither the lattice chapters
+nor }\dimockonly{not }the series of Chapter~\ref{sec:mass}.}

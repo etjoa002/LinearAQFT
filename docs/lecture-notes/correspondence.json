@@ -1,0 +1,480 @@
+{
+  "schema": 1,
+  "claims": [
+    {
+      "tex_label": "lem:pairs",
+      "declaration": "LinearAQFT.Net.isCovariancePair_refl, LinearAQFT.Net.IsCovariancePair.trans, LinearAQFT.Net.IsCovariancePair.symm",
+      "source": "LinearAQFT/Net/Basic.lean"
+    },
+    {
+      "tex_label": "lem:commute",
+      "declaration": "BosonicLean.commute_of_mem_topologicalClosure_adjoin",
+      "source": "BosonicLean/CStar/Commute.lean"
+    },
+    {
+      "tex_label": "prop:generated",
+      "declaration": "LinearAQFT.Net.generated_isCausal, LinearAQFT.Net.generated_hasTimeSlice, LinearAQFT.Net.generated_isGenerating, LinearAQFT.Net.generated_isCovariancePair",
+      "source": "LinearAQFT/Net/Generated.lean"
+    },
+    {
+      "tex_label": "ex:two-qubits",
+      "declaration": "BosonicLean.CStarExample.pauliX, BosonicLean.CStarExample.pauliZ, BosonicLean.CStarExample.adjoin_pauli_eq_top, BosonicLean.CStarExample.coe_topologicalClosure_adjoin_kronLeft_pauli, BosonicLean.CStarExample.coe_topologicalClosure_adjoin_kronRight_pauli, BosonicLean.CStarExample.commute_of_mem_topologicalClosure_adjoin_kronecker",
+      "source": "BosonicLean/CStar/Examples.lean"
+    },
+    {
+      "tex_label": "ex:nilpotent",
+      "declaration": "BosonicLean.CStarExample.nilpotent, BosonicLean.CStarExample.not_commute_nilpotent_star, BosonicLean.CStarExample.adjoin_nilpotent_eq_top, BosonicLean.CStarExample.not_forall_commute_of_commute",
+      "source": "BosonicLean/CStar/Examples.lean"
+    },
+    {
+      "tex_label": "lem:weyl-isometry",
+      "declaration": "BosonicLean.Weyl.norm_weyl_apply, BosonicLean.Weyl.weyl_zero",
+      "source": "BosonicLean/Weyl/Basic.lean"
+    },
+    {
+      "tex_label": "prop:weyl-relation",
+      "declaration": "BosonicLean.Weyl.weyl_mul",
+      "source": "BosonicLean/Weyl/Basic.lean"
+    },
+    {
+      "tex_label": "prop:weyl-unitary",
+      "declaration": "BosonicLean.Weyl.weyl_mul_weyl_neg, BosonicLean.Weyl.star_weyl, BosonicLean.Weyl.weyl_mem_unitary",
+      "source": "BosonicLean/Weyl/Basic.lean"
+    },
+    {
+      "tex_label": "lem:weyl-system",
+      "declaration": "BosonicLean.Weyl.WeylSystem.map_zero, BosonicLean.Weyl.WeylSystem.star_eq, BosonicLean.Weyl.WeylSystem.mul_comm_phase, BosonicLean.Weyl.WeylSystem.commute_of_eq_zero",
+      "source": "BosonicLean/Weyl/System.lean"
+    },
+    {
+      "tex_label": "prop:ccr-system",
+      "declaration": "BosonicLean.Weyl.CCR.topologicalClosure_adjoin_weyl, BosonicLean.Weyl.CCR.weylSystem",
+      "source": "BosonicLean/Weyl/System.lean"
+    },
+    {
+      "tex_label": "prop:relabel",
+      "declaration": "BosonicLean.Weyl.relabel_symm, BosonicLean.Weyl.relabel_refl, BosonicLean.Weyl.relabel_trans, BosonicLean.Weyl.conj_relabel_weyl, BosonicLean.Weyl.conj_relabel_mem_CCR, BosonicLean.Weyl.CCR.relabel, BosonicLean.Weyl.CCR.relabel_weyl, BosonicLean.Weyl.CCR.relabel_refl, BosonicLean.Weyl.CCR.relabel_trans, BosonicLean.Weyl.adjoint_relabel",
+      "source": "BosonicLean/Weyl/Relabel.lean"
+    },
+    {
+      "tex_label": "prop:right-weyl",
+      "declaration": "BosonicLean.Weyl.star_rightWeyl, BosonicLean.Weyl.rightWeyl_mem_unitary, BosonicLean.Weyl.rightWeyl_mul, BosonicLean.Weyl.commute_weyl_rightWeyl, BosonicLean.Weyl.commute_rightWeyl_of_mem_CCR, BosonicLean.Weyl.weyl_delta_zero, BosonicLean.Weyl.rightWeyl_delta_zero",
+      "source": "BosonicLean/Weyl/Right.lean"
+    },
+    {
+      "tex_label": "prop:vector-state",
+      "declaration": "BosonicLean.Weyl.vectorState_one, BosonicLean.Weyl.vectorState_star_mul_self, BosonicLean.Weyl.norm_vectorState_apply_le, BosonicLean.Weyl.vectorState_weyl",
+      "source": "BosonicLean/Weyl/Right.lean"
+    },
+    {
+      "tex_label": "ex:lattice-index",
+      "declaration": "LinearAQFT.Lattice.causalIndex, LinearAQFT.Lattice.causalLE, LinearAQFT.Lattice.causalShadow, LinearAQFT.Lattice.slices",
+      "source": "LinearAQFT/Lattice/Causal.lean"
+    },
+    {
+      "tex_label": "lem:kg-symmetric",
+      "declaration": "LinearAQFT.Lattice.pairing_kgOpFin, LinearAQFT.Lattice.kgOpFin_apply",
+      "source": "LinearAQFT/Lattice/Propagator.lean"
+    },
+    {
+      "tex_label": "lem:kernel",
+      "declaration": "LinearAQFT.Lattice.kgOp_kernel, LinearAQFT.Lattice.kernel_support, LinearAQFT.Lattice.kernel_neg, LinearAQFT.Lattice.kernel_parity",
+      "source": "LinearAQFT/Lattice/Kernel.lean"
+    },
+    {
+      "tex_label": "lem:unique",
+      "declaration": "LinearAQFT.Lattice.eq_zero_of_kgOp_eq_zero_of_past, LinearAQFT.Lattice.eq_zero_of_kgOp_eq_zero_of_future",
+      "source": "LinearAQFT/Lattice/Kernel.lean"
+    },
+    {
+      "tex_label": "prop:green",
+      "declaration": "LinearAQFT.Lattice.kgOp_retarded, LinearAQFT.Lattice.kgOp_advanced, LinearAQFT.Lattice.retarded_support, LinearAQFT.Lattice.advanced_support, LinearAQFT.Lattice.retarded_kgOpFin, LinearAQFT.Lattice.advanced_kgOpFin",
+      "source": "LinearAQFT/Lattice/Propagator.lean"
+    },
+    {
+      "tex_label": "prop:commutator",
+      "declaration": "LinearAQFT.Lattice.kgOp_causalProp, LinearAQFT.Lattice.causalProp_kgOpFin, LinearAQFT.Lattice.commutatorKernel_neg, LinearAQFT.Lattice.pairing_causalProp_antisymm, LinearAQFT.Lattice.pairing_causalProp_eq_zero_of_orthogonal, LinearAQFT.Lattice.commutatorKernel_eq_zero_of_even, LinearAQFT.Lattice.commutatorKernel_canonical, LinearAQFT.Lattice.commutatorKernel_equal_time",
+      "source": "LinearAQFT/Lattice/Propagator.lean"
+    },
+    {
+      "tex_label": "thm:lattice-timeslice",
+      "declaration": "LinearAQFT.Lattice.timeSlice, LinearAQFT.Lattice.timeSlice_support, LinearAQFT.Lattice.causalProp_timeSlice",
+      "source": "LinearAQFT/Lattice/TimeSlice.lean"
+    },
+    {
+      "tex_label": "cor:lattice-dep",
+      "declaration": "LinearAQFT.Lattice.exists_causalProp_eq_of_dependent",
+      "source": "LinearAQFT/Lattice/TimeSlice.lean"
+    },
+    {
+      "tex_label": "lem:phase-iso",
+      "declaration": "LinearAQFT.Symplectic.PhaseSpace.Iso.refl, LinearAQFT.Symplectic.PhaseSpace.Iso.trans",
+      "source": "LinearAQFT/Symplectic/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "thm:weyl-net",
+      "declaration": "LinearAQFT.Symplectic.weylNet_isGenerating, LinearAQFT.Symplectic.weylNet_isCausal, LinearAQFT.Symplectic.weylNet_hasTimeSlice",
+      "source": "LinearAQFT/Symplectic/Net.lean"
+    },
+    {
+      "tex_label": "thm:weyl-cov",
+      "declaration": "LinearAQFT.Symplectic.weylNet_isCovariancePair",
+      "source": "LinearAQFT/Symplectic/Net.lean"
+    },
+    {
+      "tex_label": "cor:weyl-iso",
+      "declaration": "LinearAQFT.Symplectic.weylNet_isomorphic",
+      "source": "LinearAQFT/Symplectic/Net.lean"
+    },
+    {
+      "tex_label": "thm:ccr-cov",
+      "declaration": "LinearAQFT.Symplectic.ccrNet_isCovariancePair, LinearAQFT.Symplectic.ccrAlpha_refl, LinearAQFT.Symplectic.ccrAlpha_trans",
+      "source": "LinearAQFT/Symplectic/Net.lean"
+    },
+    {
+      "tex_label": "ex:lattice-phase",
+      "declaration": "LinearAQFT.Lattice.phaseSpace, LinearAQFT.Lattice.phaseSpace_sigma_nondegenerate",
+      "source": "LinearAQFT/Lattice/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:lattice-data",
+      "declaration": "LinearAQFT.Lattice.causalProp_add, LinearAQFT.Lattice.causalProp_smul, LinearAQFT.Lattice.pairing_add_right, LinearAQFT.Lattice.pairing_smul_right, LinearAQFT.Lattice.sigmaForm_mk, LinearAQFT.Lattice.phaseSpace, LinearAQFT.Lattice.phaseSpace_sigma_cls",
+      "source": "LinearAQFT/Lattice/Linear.lean, LinearAQFT/Lattice/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:lattice-nondeg",
+      "declaration": "LinearAQFT.Lattice.phaseSpace_sigma_single, LinearAQFT.Lattice.cls_eq_zero_iff, LinearAQFT.Lattice.phaseSpace_sigma_nondegenerate",
+      "source": "LinearAQFT/Lattice/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "ex:lattice-nonvacuous",
+      "declaration": "LinearAQFT.Lattice.phaseSpace_sigma_witness, LinearAQFT.Lattice.exists_orthogonal_cls_ne_zero, LinearAQFT.Lattice.exists_dependent_not_subset, LinearAQFT.Lattice.phaseSpace_sigma_witness_mass",
+      "source": "LinearAQFT/Lattice/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "lem:lattice-cov-E",
+      "declaration": "LinearAQFT.Lattice.causalProp_translateFun, LinearAQFT.Lattice.causalProp_reflectFun, LinearAQFT.Lattice.causalProp_domLCongr",
+      "source": "LinearAQFT/Lattice/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:lattice-iso",
+      "declaration": "LinearAQFT.Lattice.isoOfPointEquiv, LinearAQFT.Lattice.translateIso, LinearAQFT.Lattice.translateIso_T_add, LinearAQFT.Lattice.translateIso_T_zero, LinearAQFT.Lattice.reflectAut, LinearAQFT.Lattice.reflectIso, LinearAQFT.Lattice.reflectIso_T_mk",
+      "source": "LinearAQFT/Lattice/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "thm:lattice-net",
+      "declaration": "LinearAQFT.Symplectic.ccrAlpha_congr, LinearAQFT.Lattice.ccrTranslate, LinearAQFT.Lattice.ccrNet_phaseSpace",
+      "source": "LinearAQFT/Symplectic/Net.lean, LinearAQFT/Lattice/Net.lean"
+    },
+    {
+      "tex_label": "prop:pullback",
+      "declaration": "BosonicLean.Weyl.relPhase_comp, BosonicLean.Weyl.WeylSystem.pullback, LinearAQFT.Symplectic.generators_pullback, BosonicLean.Weyl.WeylSystem.pullback_mul_eq",
+      "source": "BosonicLean/Weyl/Pullback.lean, LinearAQFT/Symplectic/Pullback.lean"
+    },
+    {
+      "tex_label": "lem:two-slices",
+      "declaration": "LinearAQFT.Lattice.eq_zero_of_kgOp_eq_zero_of_slices",
+      "source": "LinearAQFT/Lattice/Cauchy.lean"
+    },
+    {
+      "tex_label": "thm:cauchy-map",
+      "declaration": "LinearAQFT.Lattice.cauchyInv, LinearAQFT.Lattice.cauchyMap_cauchyInv, LinearAQFT.Lattice.cauchyMap_injective, LinearAQFT.Lattice.cauchyMap_surjective, LinearAQFT.Lattice.wronskian_cauchyMap, LinearAQFT.Lattice.cauchyEquiv",
+      "source": "LinearAQFT/Lattice/Cauchy.lean"
+    },
+    {
+      "tex_label": "thm:cauchy-net",
+      "declaration": "LinearAQFT.Lattice.cauchyNet_eq, LinearAQFT.Lattice.cauchyNet_axioms, LinearAQFT.Lattice.cauchyNet_ccr_isCovariancePair, LinearAQFT.Lattice.cauchyNet_ccr_isomorphic, LinearAQFT.Lattice.cauchyNet_ccr_isCovariantUnder",
+      "source": "LinearAQFT/Lattice/Cauchy.lean"
+    },
+    {
+      "tex_label": "prop:leapfrog",
+      "declaration": "LinearAQFT.Lattice.leapfrog_apply, LinearAQFT.Lattice.cauchyMap_succ, LinearAQFT.Lattice.wronskian_leapfrog",
+      "source": "LinearAQFT/Lattice/Cauchy.lean"
+    },
+    {
+      "tex_label": "lem:conj",
+      "declaration": "BosonicLean.Weyl.WeylSystem.conj_W, BosonicLean.Weyl.expNegI",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "lem:average",
+      "declaration": "BosonicLean.Weyl.WeylSystem.norm_average_le, BosonicLean.Weyl.WeylSystem.average_one, BosonicLean.Weyl.WeylSystem.average_mem, BosonicLean.Weyl.WeylSystem.average_W, BosonicLean.Weyl.geomMean",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "lem:phases",
+      "declaration": "BosonicLean.Weyl.norm_geomMean_le, BosonicLean.Weyl.tendsto_geomMean, BosonicLean.Weyl.norm_expNegI, BosonicLean.Weyl.expNegI_ne_one_iff",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "lem:generic",
+      "declaration": "BosonicLean.Weyl.exists_generic, BosonicLean.Weyl.expNegI_ne_one_iff",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "prop:approx",
+      "declaration": "BosonicLean.Weyl.WeylSystem.adjoin_le_span, BosonicLean.Weyl.WeylSystem.exists_average_near",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "lem:faithful",
+      "declaration": "BosonicLean.Weyl.CCR.eq_zero_of_apply_delta_zero, BosonicLean.Weyl.CCR.vectorState_star_mul_self_pos, BosonicLean.Weyl.CCR.nontrivial",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "thm:simple",
+      "declaration": "BosonicLean.Weyl.CCR.vectorState_W, BosonicLean.Weyl.CCR.isSimpleRing",
+      "source": "BosonicLean/Weyl/Simple.lean"
+    },
+    {
+      "tex_label": "prop:simple-rep",
+      "declaration": "BosonicLean.injective_of_isSimpleRing",
+      "source": "BosonicLean/Weyl/Primitive.lean, BosonicLean/CStar/Primitive.lean"
+    },
+    {
+      "tex_label": "thm:primitive",
+      "declaration": "BosonicLean.isPrimitive_of_isSimpleRing, BosonicLean.Weyl.CCR.isPrimitive",
+      "source": "BosonicLean/Weyl/Primitive.lean, BosonicLean/CStar/Primitive.lean"
+    },
+    {
+      "tex_label": "thm:dimock",
+      "declaration": "LinearAQFT.Symplectic.ccrNet_axioms_primitive, LinearAQFT.Symplectic.ccrNet_axioms",
+      "source": "LinearAQFT/Symplectic/Axioms.lean"
+    },
+    {
+      "tex_label": "cor:lattice-dimock",
+      "declaration": "LinearAQFT.Lattice.ccr_isSimpleRing, LinearAQFT.Lattice.ccrNet_axioms_primitive, LinearAQFT.Lattice.ccrNet_phaseSpace",
+      "source": "LinearAQFT/Lattice/Axioms.lean, LinearAQFT/Lattice/Net.lean"
+    },
+    {
+      "tex_label": "lem:green-index",
+      "declaration": "LinearAQFT.Green.GreenData.causalIndex, LinearAQFT.Green.GreenData.comparable_comm, LinearAQFT.Green.GreenData.shadow_mono",
+      "source": "LinearAQFT/Green/Basic.lean"
+    },
+    {
+      "tex_label": "lem:green-E",
+      "declaration": "LinearAQFT.Green.GreenData.supp_sub, LinearAQFT.Green.GreenData.supp_E, LinearAQFT.Green.GreenData.E_Ptest, LinearAQFT.Green.GreenData.P_E, LinearAQFT.Green.GreenData.pairing_E_antisymm",
+      "source": "LinearAQFT/Green/Basic.lean, LinearAQFT/Green/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:green-phase",
+      "declaration": "LinearAQFT.Green.GreenData.exists_timeSlice, LinearAQFT.Green.GreenData.phaseSpace, LinearAQFT.Green.GreenData.phaseSpace_sigma, LinearAQFT.Green.GreenData.sigma_mk",
+      "source": "LinearAQFT/Green/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:green-nondeg",
+      "declaration": "LinearAQFT.Green.GreenData.sigma_separatingLeft",
+      "source": "LinearAQFT/Green/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "thm:green-axioms",
+      "declaration": "LinearAQFT.Green.GreenData.ccrNet_axioms_primitive, LinearAQFT.Green.GreenData.ccrNet_axioms",
+      "source": "LinearAQFT/Green/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:green-symmetry",
+      "declaration": "LinearAQFT.Green.GreenData.Symmetry.iso, LinearAQFT.Green.GreenData.Symmetry.kappa_apply, LinearAQFT.Green.GreenData.Symmetry.iso_T_mk, LinearAQFT.Green.GreenData.Symmetry.refl, LinearAQFT.Green.GreenData.Symmetry.trans, LinearAQFT.Green.GreenData.Symmetry.refl_iso_T, LinearAQFT.Green.GreenData.Symmetry.trans_iso_T",
+      "source": "LinearAQFT/Green/Symmetry.lean"
+    },
+    {
+      "tex_label": "prop:lattice-green",
+      "declaration": "LinearAQFT.Lattice.greenData, LinearAQFT.Lattice.pairing_retarded, LinearAQFT.Lattice.cutoffTest, LinearAQFT.Lattice.support_chi_causalProp",
+      "source": "LinearAQFT/Lattice/GreenData.lean"
+    },
+    {
+      "tex_label": "thm:lattice-green-compare",
+      "declaration": "LinearAQFT.Lattice.greenData_causalIndex, LinearAQFT.Lattice.greenData_E, LinearAQFT.Lattice.greenData_iso, LinearAQFT.Lattice.greenData_iso_kappa, LinearAQFT.Lattice.greenData_iso_push, LinearAQFT.Lattice.greenData_iso_T_mk",
+      "source": "LinearAQFT/Lattice/Green.lean, LinearAQFT/Lattice/GreenData.lean"
+    },
+    {
+      "tex_label": "prop:lattice-green-translate",
+      "declaration": "LinearAQFT.Lattice.greenTranslate, LinearAQFT.Lattice.greenTranslate_T",
+      "source": "LinearAQFT/Lattice/Green.lean"
+    },
+    {
+      "tex_label": "prop:mink-basic",
+      "declaration": "LinearAQFT.Minkowski.causalLE_refl, LinearAQFT.Minkowski.causalLE_trans, LinearAQFT.Minkowski.causalLE_antisymm, LinearAQFT.Minkowski.supp_zero, LinearAQFT.Minkowski.supp_add, LinearAQFT.Minkowski.supp_smul, LinearAQFT.Minkowski.isClosed_supp, LinearAQFT.Minkowski.contDiff_wave, LinearAQFT.Minkowski.incl_waveD, LinearAQFT.Minkowski.pairing_eq_zero, LinearAQFT.Minkowski.pairing_nondegenerate, LinearAQFT.Minkowski.pairing_waveD, LinearAQFT.Minkowski.integral_wave_mul_eq",
+      "source": "LinearAQFT/Minkowski/Basic.lean, LinearAQFT/Minkowski/Cutoff.lean"
+    },
+    {
+      "tex_label": "prop:kirchhoff",
+      "declaration": "LinearAQFT.Minkowski.kirchhoff_coneMeasure_apply, LinearAQFT.Minkowski.kirchhoff_coneMeasurePast_apply, LinearAQFT.Minkowski.contDiff_kirchhoff, LinearAQFT.Minkowski.dirDeriv_kirchhoff, LinearAQFT.Minkowski.wave_kirchhoff, LinearAQFT.Minkowski.gret, LinearAQFT.Minkowski.gadv, LinearAQFT.Minkowski.supp_gret, LinearAQFT.Minkowski.supp_gadv, LinearAQFT.Minkowski.pairing_gret, LinearAQFT.Minkowski.support_gret, LinearAQFT.Minkowski.support_gadv",
+      "source": "LinearAQFT/Minkowski/Kirchhoff.lean"
+    },
+    {
+      "tex_label": "thm:mink-core",
+      "declaration": "LinearAQFT.Minkowski.rotAvg, LinearAQFT.Minkowski.integral_rotAvg, LinearAQFT.Minkowski.wave_rotAvg, LinearAQFT.Minkowski.rotAvg_eq_radialProfile, LinearAQFT.Minkowski.wave_radial, LinearAQFT.Minkowski.integral_radial, LinearAQFT.Minkowski.integral_radial_boundary, LinearAQFT.Minkowski.integral_wave_cone",
+      "source": "LinearAQFT/Minkowski/Rotation.lean, LinearAQFT/Minkowski/Radial.lean, LinearAQFT/Minkowski/Core.lean"
+    },
+    {
+      "tex_label": "cor:mink-green",
+      "declaration": "LinearAQFT.Minkowski.wave_comp_reflect, LinearAQFT.Minkowski.gret_waveD, LinearAQFT.Minkowski.gadv_waveD, LinearAQFT.Minkowski.waveF_gret_eq, LinearAQFT.Minkowski.waveF_gadv_eq",
+      "source": "LinearAQFT/Minkowski/Core.lean"
+    },
+    {
+      "tex_label": "lem:mink-compact",
+      "declaration": "LinearAQFT.Minkowski.IsFutureUnit.norm_lt, LinearAQFT.Minkowski.timeFun_ge, LinearAQFT.Minkowski.timeFun_nonneg, LinearAQFT.Minkowski.isClosed_Jplus, LinearAQFT.Minkowski.isClosed_Jminus, LinearAQFT.Minkowski.isCompact_Jplus_inter, LinearAQFT.Minkowski.isCompact_Jminus_inter",
+      "source": "LinearAQFT/Minkowski/Causal.lean, LinearAQFT/Minkowski/Cutoff.lean"
+    },
+    {
+      "tex_label": "prop:mink-cutoff",
+      "declaration": "LinearAQFT.Minkowski.supp_waveF_chi_E, LinearAQFT.Minkowski.exists_test, LinearAQFT.Minkowski.GreenOps.support_P_chi_E, LinearAQFT.Minkowski.isClosed_slab",
+      "source": "LinearAQFT/Minkowski/GreenData.lean, LinearAQFT/Minkowski/GreenOps.lean, LinearAQFT/Minkowski/Cutoff.lean"
+    },
+    {
+      "tex_label": "thm:mink-green",
+      "declaration": "LinearAQFT.Minkowski.greenData, LinearAQFT.Minkowski.ccrNet_axioms_primitive",
+      "source": "LinearAQFT/Minkowski/GreenData.lean"
+    },
+    {
+      "tex_label": "thm:mink-unique",
+      "declaration": "LinearAQFT.Minkowski.eq_gret, LinearAQFT.Minkowski.eq_gadv",
+      "source": "LinearAQFT/Minkowski/GreenData.lean"
+    },
+    {
+      "tex_label": "lem:mink-lorentz",
+      "declaration": "LinearAQFT.Minkowski.LorentzMap.injective_of_eta, LinearAQFT.Minkowski.Poincare.causalLE_iff, LinearAQFT.Minkowski.LorentzMap.isFutureUnit_map, LinearAQFT.Minkowski.LorentzMap.timeFun_symm, LinearAQFT.Minkowski.LorentzMap.abs_det, LinearAQFT.Minkowski.Poincare.measurePreserving, LinearAQFT.Minkowski.Poincare.wave_comp",
+      "source": "LinearAQFT/Minkowski/Lorentz.lean"
+    },
+    {
+      "tex_label": "prop:mink-symmetry",
+      "declaration": "LinearAQFT.Minkowski.Poincare.symmetry, LinearAQFT.Minkowski.Poincare.mapCutoff, LinearAQFT.Minkowski.Poincare.slab_mapCutoff, LinearAQFT.Minkowski.Poincare.gret_pushD, LinearAQFT.Minkowski.Poincare.gadv_pushD, LinearAQFT.Minkowski.Poincare.pairing_push",
+      "source": "LinearAQFT/Minkowski/Poincare.lean, LinearAQFT/Minkowski/Lorentz.lean"
+    },
+    {
+      "tex_label": "thm:mink-covariance",
+      "declaration": "LinearAQFT.Minkowski.poincareKappa, LinearAQFT.Minkowski.poincareAlpha, LinearAQFT.Minkowski.poincareKappa_apply, LinearAQFT.Minkowski.isCovariantUnder_poincare",
+      "source": "LinearAQFT/Minkowski/Poincare.lean"
+    },
+    {
+      "tex_label": "lem:kg-ibp",
+      "declaration": "LinearAQFT.Minkowski.IsLocal.supp_subset, LinearAQFT.Minkowski.IsLocal.integrable_mul, LinearAQFT.Minkowski.IsLocal.integral_mul_eq",
+      "source": "LinearAQFT/Minkowski/Basic.lean"
+    },
+    {
+      "tex_label": "thm:kg-greenops",
+      "declaration": "LinearAQFT.Minkowski.GreenOps.supp_P_chi_E, LinearAQFT.Minkowski.GreenOps.exists_test, LinearAQFT.Minkowski.GreenOps.toGreenData, LinearAQFT.Minkowski.GreenOps.ccrNet_axioms_primitive, LinearAQFT.Minkowski.GreenOps.eq_gret, LinearAQFT.Minkowski.GreenOps.eq_gadv, LinearAQFT.Minkowski.GreenOps.symmetry, LinearAQFT.Minkowski.GreenOps.poincareKappa, LinearAQFT.Minkowski.GreenOps.poincareAlpha, LinearAQFT.Minkowski.GreenOps.isCovariantUnder_poincare, LinearAQFT.Minkowski.GreenOps.poincareKappa_apply, LinearAQFT.Green.GreenData.ccrNet_axioms",
+      "source": "LinearAQFT/Minkowski/GreenOps.lean, LinearAQFT/Green/PhaseSpace.lean"
+    },
+    {
+      "tex_label": "prop:kg-wave",
+      "declaration": "LinearAQFT.Minkowski.isLocal_waveF, LinearAQFT.Minkowski.kirchhoffOps, LinearAQFT.Minkowski.isPoincareInvariant_waveF, LinearAQFT.Minkowski.greenData",
+      "source": "LinearAQFT/Minkowski/Cutoff.lean, LinearAQFT/Minkowski/GreenData.lean, LinearAQFT/Minkowski/Poincare.lean"
+    },
+    {
+      "tex_label": "lem:kg",
+      "declaration": "LinearAQFT.Minkowski.kgF_zero, LinearAQFT.Minkowski.kgD_zero, LinearAQFT.Minkowski.incl_kgD, LinearAQFT.Minkowski.pairing_kgD, LinearAQFT.Minkowski.isLocal_kgF, LinearAQFT.Minkowski.isPoincareInvariant_kgF",
+      "source": "LinearAQFT/Minkowski/KleinGordon.lean"
+    },
+    {
+      "tex_label": "lem:kg-causal",
+      "declaration": "LinearAQFT.Minkowski.kirchhoff_congr_of_eqOn, LinearAQFT.Minkowski.kirchhoffPast_congr_of_eqOn",
+      "source": "LinearAQFT/Minkowski/Extension.lean"
+    },
+    {
+      "tex_label": "lem:kg-cutoff",
+      "declaration": "LinearAQFT.Minkowski.isCompact_Jplus_inter_Jminus, LinearAQFT.Minkowski.exists_cutoff, LinearAQFT.Minkowski.cutoff_eventuallyEq",
+      "source": "LinearAQFT/Minkowski/Cutoff.lean, LinearAQFT/Minkowski/Extension.lean"
+    },
+    {
+      "tex_label": "prop:kg-ext",
+      "declaration": "LinearAQFT.Minkowski.contDiff_kirchhoff_of_futureSupported, LinearAQFT.Minkowski.dirDeriv_kirchhoff_of_futureSupported, LinearAQFT.Minkowski.tsupport_kirchhoff_subset, LinearAQFT.Minkowski.wave_kirchhoff_of_futureSupported, LinearAQFT.Minkowski.kirchhoff_wave_of_futureSupported, LinearAQFT.Minkowski.kirchhoffPast_eq, LinearAQFT.Minkowski.contDiff_kirchhoffPast_of_pastSupported, LinearAQFT.Minkowski.dirDeriv_kirchhoffPast_of_pastSupported, LinearAQFT.Minkowski.tsupport_kirchhoffPast_subset, LinearAQFT.Minkowski.wave_kirchhoffPast_of_pastSupported, LinearAQFT.Minkowski.kirchhoffPast_wave_of_pastSupported",
+      "source": "LinearAQFT/Minkowski/Extension.lean"
+    },
+    {
+      "tex_label": "lem:kg-power",
+      "declaration": "LinearAQFT.integral_mul_sub_pow, LinearAQFT.Minkowski.abs_kirchhoff_le",
+      "source": "LinearAQFT/Analysis/Calculus.lean, LinearAQFT/Minkowski/Extension.lean"
+    },
+    {
+      "tex_label": "cor:kg-iterate",
+      "declaration": "LinearAQFT.Minkowski.contDiff_kpow, LinearAQFT.Minkowski.tsupport_kpow_subset, LinearAQFT.Minkowski.kpow_eq_zero_of_lt, LinearAQFT.Minkowski.abs_kpow_le, LinearAQFT.Minkowski.dirDeriv_kpow, LinearAQFT.Minkowski.abs_dirDeriv_kpow_le",
+      "source": "LinearAQFT/Minkowski/Extension.lean"
+    },
+    {
+      "tex_label": "prop:kg-adj",
+      "declaration": "LinearAQFT.Minkowski.integral_mul_kirchhoff_eq",
+      "source": "LinearAQFT/Minkowski/Extension.lean"
+    },
+    {
+      "tex_label": "lem:kg-linear",
+      "declaration": "LinearAQFT.Minkowski.integrable_kirchhoff_integrand_of_futureSupported, LinearAQFT.Minkowski.kirchhoff_add_of_futureSupported, LinearAQFT.Minkowski.kpow_add, LinearAQFT.Minkowski.kpow_smul, LinearAQFT.Minkowski.kpow_succ'",
+      "source": "LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "prop:kg-conv",
+      "declaration": "LinearAQFT.Minkowski.abs_gmu_term_le_of_le, LinearAQFT.summable_cosh_series, LinearAQFT.Minkowski.summable_gmu, LinearAQFT.Minkowski.gmu_add, LinearAQFT.Minkowski.gmu_smul",
+      "source": "LinearAQFT/Analysis/Calculus.lean, LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "prop:kg-smooth",
+      "declaration": "LinearAQFT.Minkowski.coordCLM, LinearAQFT.Minkowski.hasFDerivAt_gmu, LinearAQFT.Minkowski.dirDeriv_gmu, LinearAQFT.Minkowski.contDiff_gmu",
+      "source": "LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "thm:kg-green-id",
+      "declaration": "LinearAQFT.Minkowski.wave_gmu, LinearAQFT.Minkowski.gmu_kg",
+      "source": "LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "prop:kg-supp",
+      "declaration": "LinearAQFT.Minkowski.tsupport_gmu_subset",
+      "source": "LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "prop:kg-adv",
+      "declaration": "LinearAQFT.Minkowski.kpowPast_eq, LinearAQFT.Minkowski.gmuPast_eq, LinearAQFT.Minkowski.summable_gmuPast, LinearAQFT.Minkowski.gmuPast_add, LinearAQFT.Minkowski.gmuPast_smul, LinearAQFT.Minkowski.dirDeriv_gmuPast, LinearAQFT.Minkowski.contDiff_gmuPast, LinearAQFT.Minkowski.wave_gmuPast, LinearAQFT.Minkowski.gmuPast_kg, LinearAQFT.Minkowski.tsupport_gmuPast_subset",
+      "source": "LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "prop:kg-series-adj",
+      "declaration": "LinearAQFT.Minkowski.integral_mul_gmu",
+      "source": "LinearAQFT/Minkowski/Series.lean"
+    },
+    {
+      "tex_label": "thm:kg-field",
+      "declaration": "LinearAQFT.Minkowski.gretMu, LinearAQFT.Minkowski.gadvMu, LinearAQFT.Minkowski.kgF_gretMu, LinearAQFT.Minkowski.kgF_gadvMu, LinearAQFT.Minkowski.gretMu_kgD, LinearAQFT.Minkowski.gadvMu_kgD, LinearAQFT.Minkowski.supp_gretMu, LinearAQFT.Minkowski.supp_gadvMu, LinearAQFT.Minkowski.pairing_gretMu, LinearAQFT.Minkowski.kleinGordonOps, LinearAQFT.Minkowski.greenDataKG, LinearAQFT.Minkowski.ccrNet_kg_isGenerating, LinearAQFT.Minkowski.ccrNet_kg_isCausal, LinearAQFT.Minkowski.ccrNet_kg_hasTimeSlice, LinearAQFT.Minkowski.ccrNet_axioms_primitive_kg, LinearAQFT.Minkowski.eq_gretMu, LinearAQFT.Minkowski.eq_gadvMu, LinearAQFT.Minkowski.isCovariantUnder_poincare_kg",
+      "source": "LinearAQFT/Minkowski/Mass.lean"
+    },
+    {
+      "tex_label": "cor:kg-zero",
+      "declaration": "LinearAQFT.Minkowski.gmu_zero, LinearAQFT.Minkowski.gmuPast_zero, LinearAQFT.Minkowski.gretMu_zero, LinearAQFT.Minkowski.gadvMu_zero, LinearAQFT.Minkowski.GreenOps.toGreenData_congr, LinearAQFT.Minkowski.greenDataKG_zero",
+      "source": "LinearAQFT/Minkowski/Series.lean, LinearAQFT/Minkowski/Mass.lean, LinearAQFT/Minkowski/GreenOps.lean"
+    },
+    {
+      "tex_label": "prop:kg-huygens",
+      "declaration": "LinearAQFT.Minkowski.supp_gret_subset_coneSurface, LinearAQFT.Minkowski.supp_gadv_subset_coneSurface, LinearAQFT.Minkowski.gret_apply_eq_zero_of_chronLT, LinearAQFT.Minkowski.gadv_apply_eq_zero_of_chronLT",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    },
+    {
+      "tex_label": "lem:kg-pos",
+      "declaration": "LinearAQFT.Minkowski.kirchhoff_pos",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    },
+    {
+      "tex_label": "prop:kg-pos2",
+      "declaration": "LinearAQFT.Minkowski.kpow_two_pos",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    },
+    {
+      "tex_label": "lem:kg-tail",
+      "declaration": "LinearAQFT.Minkowski.abs_gmu_sub_le",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    },
+    {
+      "tex_label": "lem:kg-dil",
+      "declaration": "LinearAQFT.Minkowski.kirchhoff_comp_smul, LinearAQFT.Minkowski.kpow_comp_smul, LinearAQFT.Minkowski.gmu_comp_smul",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    },
+    {
+      "tex_label": "thm:kg-fail",
+      "declaration": "LinearAQFT.Minkowski.exists_gretMu_ne_zero, LinearAQFT.Minkowski.exists_gadvMu_ne_zero",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    },
+    {
+      "tex_label": "thm:kg-iff",
+      "declaration": "LinearAQFT.Minkowski.huygens_iff, LinearAQFT.Minkowski.huygens_iff_past",
+      "source": "LinearAQFT/Minkowski/Huygens.lean"
+    }
+  ]
+}

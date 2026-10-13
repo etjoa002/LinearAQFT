@@ -1,0 +1,209 @@
+\clearpage
+\section{Propagators on the lattice}\label{sec:lattice}
+
+\noindent\motiv{\vet{The Weyl operators of the free field are labelled by test functions,
+two test functions giving the same operator when $E$ maps them to the same solution, and their
+commutation relations are fixed by $E$, the difference of the advanced and retarded Green
+operators (Remark~\ref{rem:dictionary}). On
+the lattice $\Z^2$ both Green operators are given by an explicit kernel, and the two properties
+of $E$ that the axioms need, vanishing at spacelike separation and a time-slice identity,
+become statements about finitely many terms.}}
+
+\subsection{The discrete Klein--Gordon equation}
+
+\noindent Points of $\Z^2$ are $p=(t,x)$, ordered and compared as in
+\revh{Chapter}~\ref{sec:nets}. A \emph{test function} is a finitely supported $f:\Z^2\to\R$; they form
+a real vector space $\cD$. The operator $P$ below acts on all functions $h:\Z^2\to\R$, and a solution is an $h$ with
+$Ph=0$. For $m^2\in\R$ (of either sign)
+let
+\[
+(Ph)(t,x)=h(t+1,x)+h(t-1,x)-h(t,x+1)-h(t,x-1)+m^2h(t,x),\qquad
+\langle f,h\rangle=\sum_pf(p)\,h(p).
+\]
+The operator $P$ is the discrete form of $-\square+m^2=\partial_t^2-\partial_x^2+m^2$, and it
+maps $\cD$ into $\cD$.
+
+\begin{lemma}[Symmetry of $P$]\label{lem:kg-symmetric}
+\revk{The lattice Klein--Gordon operator $P$ satisfies} $\langle Pf,h\rangle=\langle f,Ph\rangle$ for
+\revk{every test function} $f\in\cD$ and every $h\revk{:\Z^2\to\R}$.
+\end{lemma}
+\begin{proof}
+Each term of $P$ is a translation or a multiple of the identity, and the substitution
+$p\mapsto p-c$ in the finite sum $\sum_pf(p+c)h(p)$ moves a translation by $c$ from $f$ to a
+translation by $-c$ on $h$. The translations occur in pairs $\pm c$ with equal coefficients.
+\end{proof}
+
+\begin{definition}[Retarded kernel]\label{def:kernel}
+$K:\Z^2\to\R$ is given by $K(t,x)=0$ for $t\leq0$, $K(1,x)=[x=0]$, and, for $t\geq1$,
+\[
+K(t+1,x)=-K(t-1,x)+K(t,x+1)+K(t,x-1)-m^2K(t,x).
+\]
+\end{definition}
+
+\begin{lemma}[The kernel]\label{lem:kernel}
+\revk{The retarded kernel $K$ of Definition~\ref{def:kernel} satisfies:}
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $PK=\delta_{(0,0)}$.
+\item $K(t,x)\neq0$ implies $|x|\leq t-1$.
+\item $K(t,-x)=K(t,x)$.
+\item If $m^2=0$, then $K(t,x)\neq0$ implies that $t+x$ is odd.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] For $t\geq1$, $(PK)(t,x)=0$ is the recursion. At $t=0$ only the term
+$K(1,x)=[x=0]$ survives, and for $t\leq-1$ every term vanishes.
+\end{enumerate}
+\revm{Parts (b)--(d) follow by induction on $t\geq1$ over the pair of slices $t-1$, $t$, starting from
+$K(0,\cdot)=0$ and $K(1,\cdot)$. The inductive steps:}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(b)] each of the values $K(t-1,x)$, $K(t,x\pm1)$, $K(t,x)$ that
+determine $K(t+1,x)$ vanishes unless $|x|\leq t$.
+\item[(c)] $K(1,\cdot)$ and the recursion are invariant under
+$x\mapsto-x$.
+\item[(d)] for $m^2=0$, $K(t+1,x)$ is a sum of values at the points
+$(t-1,x)$ and $(t,x\pm1)$, each with the parity of $t+1+x$, and $K(1,x)\neq0$ only at $x=0$.
+\end{enumerate}
+\end{proof}
+
+\noindent\motiv{Part (b) says that $K$ lives strictly inside the forward light cone: a
+signal moves at most one site per time step.}
+
+\subsection{Green operators and the commutator function}
+
+\begin{definition}[Green operators]\label{def:green}
+For $f\in\cD$ and $p=(t,x)$,
+\[
+G^+f(p)=\sum_qf(q)\,K(p-q),\qquad G^-f(p)=\sum_qf(q)\,K(q_t-t,\,x-q_x),\qquad
+Ef=G^-f-G^+f,
+\]
+where $q=(q_t,q_x)$. Thus \rev{$Ef(p)=\sum_qf(q)\Delta(p-q)$ with the \revd{commutator function}
+$\Delta(t,x)=K(-t,x)-K(t,x)$}.
+\end{definition}
+
+\noindent\rev{The operator $G^+$ has support in the future of the source and is called
+\emph{retarded}, as in physics; $G^-$ is \emph{advanced}, and $E=G^--G^+$ is advanced minus
+retarded, as in Remark~\ref{rem:dictionary}. B\"ar, Ginoux and Pf\"affle name them the other way
+round: their advanced Green operator $G_+$ is the one with support in the causal
+future~\cite[Def.~3.4.1]{bgp}, and their $G=G_+-G_-$~\cite[\S3.4]{bgp} equals $-E$.} \revm{In~\cite[p.~222]{dimock}, $E=E^+-E^-$ with the support of $E^+f$ in
+the causal future of $\supp f$, which is $-E$ here; the relation
+$[\phi(f),\phi(f')]=\ii^{-1}\langle f,\revo{(E^+-E^-)}f'\rangle$ of~\cite[Thm.~2, p.~224]{dimock}\revo{, written with Dimock's $E^+-E^-=-E$,} agrees with
+Remark~\ref{rem:dictionary}.}
+
+\begin{lemma}[Uniqueness]\label{lem:unique}
+If \revk{$h:\Z^2\to\R$ satisfies} $Ph=0$ \revk{for the lattice Klein--Gordon operator $P$} and $h$ vanishes at all times before some \rev{$t_0$}, or at all times after some \rev{$t_0$}, then
+$h=0$.
+\end{lemma}
+\begin{proof}
+$Ph=0$ expresses $h$ on the slice $t+1$ through the slices $t$ and $t-1$, and $h$ on the slice
+$t-1$ through the slices $t$ and $t+1$. Induction in the respective direction gives $h=0$.
+\end{proof}
+
+\begin{proposition}[Green operators]\label{prop:green}
+For \revk{every test function} $f\in\cD$\revk{, the Green operators $G^\pm$ of
+Definition~\ref{def:green} satisfy}:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $PG^+f=PG^-f=f$;
+\item $G^+f(p)\neq0$ implies $|x-q_x|\leq t-q_t-1$ for some $q\in\supp f$, and $G^-f(p)\neq0$
+implies $|x-q_x|\leq q_t-t-1$ for some $q\in\supp f$;
+\item $G^+Pf=G^-Pf=f$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] $P$ commutes with translations and with the finite sum, so
+$PG^+f=\sum_qf(q)\delta_q=f$ by Lemma~\ref{lem:kernel}(a); the reflected kernel
+$(t,x)\mapsto K(-t,x)$ also satisfies $P(\cdot)=\delta_{(0,0)}$, since $P$ is invariant under
+$t\mapsto-t$.
+\item[(b)] This is Lemma~\ref{lem:kernel}(b).
+\item[(c)] $G^+Pf-f$ is annihilated by $P$ by (a) and vanishes at all times
+before the support of $f$ by (b) \rev{(if $t_f$ is the earliest time of $\supp f$, then $Pf$ vanishes
+before $t_f-1$, and the strict inequality in (b) makes $G^+Pf$ vanish before $t_f$)}, so it is zero by Lemma~\ref{lem:unique}; $G^-$ is the same
+with the future.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[The commutator function]\label{prop:commutator}
+For $f,g\in\cD$\revk{, the causal propagator $E$ and the commutator function $\Delta$ of
+Definition~\ref{def:green} satisfy}:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $PEf=0$ and $EPf=0$;
+\item \rev{$\Delta(-t,-x)=-\Delta(t,x)$}, hence $\langle f,Eg\rangle=-\langle g,Ef\rangle$;
+\item if $\supp f\perp\supp g$, then $\langle f,Eg\rangle=0$;
+\item if $m^2=0$, then \rev{$\Delta(t,x)=0$} whenever $t+x$ is even;
+\item \rev{$\Delta(-1,x)=[x=0]$ and $\Delta(0,x)=0$}.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] This is Proposition~\ref{prop:green}(a),(c).
+\item[(b)] By Lemma~\ref{lem:kernel}(c), \rev{$\Delta(-t,-x)=K(t,x)-K(-t,x)=-\Delta(t,x)$}, and
+\rev{$\langle f,Eg\rangle=\sum_{p,q}f(p)\Delta(p-q)g(q)$}.
+\item[(c)] A nonzero \rev{$\Delta(p-q)$} forces $|x_p-x_q|\leq|t_p-t_q|-1$ by Lemma~\ref{lem:kernel}(b),
+so $p$ and $q$ are comparable.
+\item[(d)] This is Lemma~\ref{lem:kernel}(d) for both terms of \rev{$\Delta$}.
+\item[(e)] \rev{$\Delta(-1,x)=K(1,x)$ and $\Delta(0,x)=K(0,x)-K(0,x)$}.
+\end{enumerate}
+\end{proof}
+
+\noindent\motiv{\vet{Part (e) is the canonical commutation relation: with
+$\sigma([f],[g])=\langle f,Eg\rangle$ as in Remark~\ref{rem:dictionary}, it gives
+$[\phi(0,x),\phi(1,y)-\phi(0,y)]=\ii[x=y]$, the lattice form of $[\phi,\Pi]=\ii\delta$. The sign of $E$ is therefore the
+one of canonical quantization.}}
+
+\begin{example}[Opposite parity]\label{ex:lattice-witness}
+For $m^2=0$, the recursion gives $K(2,\pm1)=1$, $K(2,0)=0$ and $K(3,0)=1$, so \rev{$\Delta(3,0)=-1$} and
+$\langle\delta_{(0,0)},E\delta_{(3,0)}\rangle=\rev{\Delta(-3,0)}=1$. By
+Proposition~\ref{prop:commutator}(d), a pair of points with a nonzero value of \rev{$\Delta$} at $m^2=0$
+must have $t+x$ of opposite parity, as here.
+\end{example}
+
+\subsection{Time slice}
+
+\begin{theorem}[Time slice]\label{thm:lattice-timeslice}
+Let $f\in\cD$, $t_1\in\Z$, $h=Ef$, and let $\chi$ be the indicator of the times $t\geq t_1+1$.
+Then $f'=P((1-\chi)h)$ is a test function with $\supp f'\subseteq S_{t_1}\cap J(\supp f)$ and
+$Ef'=Ef$.
+\end{theorem}
+\begin{proof}
+Since $Ph=0$, a term-by-term evaluation gives $f'(t_1,x)=-h(t_1+1,x)$,
+$f'(t_1+1,x)=h(t_1,x)$, and $f'=0$ at all other times. If $f'(p)\neq0$, then $h(p')\neq0$ for
+the other point $p'$ of $S_{t_1}$ with the same $x$, and Proposition~\ref{prop:green}(b) gives
+$q\in\supp f$ with $|x-q_x|\leq|t_{p'}-q_t|-1\leq|t_p-q_t|$; so $p\in J(\supp f)$, a finite
+set within $S_{t_1}$. Next, $G^+f'+\chi h$ is annihilated by $P$ and vanishes for $t\leq t_1$,
+since $f'$ is supported at times $\geq t_1$; and $G^-f'-(1-\chi)h$ is annihilated by $P$ and
+vanishes for $t\geq t_1+1$, since $f'$ is supported at times $\leq t_1+1$. By
+Lemma~\ref{lem:unique} both vanish, and $Ef'=(1-\chi)h+\chi h=h$.
+\end{proof}
+
+\noindent\motiv{\vet{The value $f'(t_1,x)=-h(t_1+1,x)$ can be nonzero where $h(t_1,x)=0$;
+that $p$ still lies in $J(\supp f)$ comes from the strict inequality in
+Lemma~\ref{lem:kernel}(b).}}
+
+\begin{remark}[Time slice from the Green operators alone]\label{rem:timeslice-direct}
+\rev{Given the support statement, the identity $Ef'=Ef$ also follows from the identities
+$PG^\pm f=f$ and $G^\pm Pf=f$ on test functions and the support bounds of
+Proposition~\ref{prop:green}, without applying Lemma~\ref{lem:unique} to $\chi h$ and
+$(1-\chi)h$; \revc{these notes prove the identities $G^\pm Pf=f$ with that lemma, but they also follow
+from the formal adjointness $\langle g,G^+f\rangle=\langle G^-g,f\rangle$ for $f,g\in\cD$\revh{, with
+the pairing $\sum_pf(p)h(p)$ written in either order when one argument is finitely supported}, a
+consequence of Lemma~\ref{lem:kernel}(c): $\langle g,G^+Pf\rangle=\langle
+G^-g,Pf\rangle=\langle PG^-g,f\rangle=\langle g,f\rangle$ by Lemma~\ref{lem:kg-symmetric} and
+Proposition~\ref{prop:green}(a), and likewise for $G^-$.} The function \revd{$k$}$=(1-\chi)G^+f+\chi G^-f$ is a test
+function: $G^+f$ vanishes before the earliest time of $\supp f$ and $G^-f$ after the latest, and
+each time slice meets $J(\supp f)$ in finitely many points. Since $PG^\pm f=f$,
+\[
+f'=P\bigl((1-\chi)G^-f\bigr)-P\bigl((1-\chi)G^+f\bigr)=f-P(\chi G^-f)-P\bigl((1-\chi)G^+f\bigr)
+=f-Pk,
+\]
+and $E(f-f')=EPk=0$ by Proposition~\ref{prop:commutator}(a).}
+\end{remark}
+
+\begin{corollary}[Dependence moves test functions]\label{cor:lattice-dep}
+If $O\dep O'$ in the causal index of Example~\ref{ex:lattice-index} and $\supp f\subseteq O$,
+there is $f'\in\cD$ with $\supp f'\subseteq O'$ and $Ef'=Ef$.
+\end{corollary}
+\begin{proof}
+\revh{$\supp f$ is a finite subset of $O$, so there is} $t_1$ with \revh{$J(\supp f)\cap S_{t_1}\subseteq O'$};
+apply Theorem~\ref{thm:lattice-timeslice}.
+\end{proof}

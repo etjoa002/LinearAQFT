@@ -1,0 +1,50 @@
+name = "LinearAQFT"
+version = "0.1.0"
+keywords = ["math", "quantum", "aqft", "operator-algebras"]
+defaultTargets = ["LinearAQFT"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+# The foundation library: nets, regions and their orthogonality.
+[[require]]
+name = "LocalAlgebrasLean"
+git = "https://github.com/etjoa002/LocalAlgebrasLean"
+rev = "060af367814fd7fb05da03322e24890868e26178"
+
+[[require]]
+name = "BosonicLean"
+git = "https://github.com/etjoa002/BosonicLean"
+rev = "e2c2da8f31d4d85555c12cb1ef91957380e005b9"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0-rc3"
+
+[[lean_lib]]
+name = "LinearAQFT"
+moreLeanArgs = ["-j1"]
+
+# The sealed statements and their proofs (verify/); `lake comparator` reads both modules.
+[[lean_lib]]
+name = "Verify"
+srcDir = "verify"
+roots = ["Challenge", "Solution"]
+
+# Facades of the Dimock slices (slices/*.toml); not a default target.
+# `lake build LinearAQFTDimock` builds only the modules the Dimock theorems need.
+[[lean_lib]]
+name = "LinearAQFTDimock"
+srcDir = "slices"
+roots = ["Dimock.Abstract", "Dimock.Lattice", "Dimock.Minkowski"]
+
+# Tooling for slices (not a default target): `SliceDecls.run` computes the declaration closure
+# of a slice; driven by `python tools/slice_closure.py --decls slices/<name>.toml`.
+[[lean_lib]]
+name = "SliceTools"
+srcDir = "scripts"
+roots = ["SliceDecls"]

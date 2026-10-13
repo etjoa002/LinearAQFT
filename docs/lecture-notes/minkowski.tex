@@ -1,0 +1,527 @@
+\clearpage
+\begingroup
+\revj
+\section{The free massless field on Minkowski space}\label{sec:minkowski}
+
+\noindent\motiv{Chapter~\ref{sec:green} reduces the axioms and covariance to Green data. This
+chapter constructs Green data for the massless wave operator $P=\partial_t^2-\nabla^2$ on $3+1$
+Minkowski space, the operator $P=-\square+m^2$ of Remark~\ref{rem:dictionary} with $m=0$. The
+retarded and advanced Green operators are given by the \revm{retarded potential and its advanced
+counterpart}, and the cutoffs are slabs
+between parallel spacelike hyperplanes.}
+
+\medskip\noindent\motiv{For the free massless field the hypothesis of the introduction, the existence of Green
+operators, thereby becomes a theorem. The CCR net is generating and causal, and it has the
+time-slice property for these slabs, which \revk{implies the time-slice axiom in the form
+of~\cite{dimock} (Example~\ref{ex:gh-index})} for flat Cauchy surfaces
+(Remark~\ref{rem:mink-slabs}\revk{, on paper}). Its algebra is primitive, given an irreducible representation, and
+it is covariant under the orthochronous Poincar\'e group.}
+
+\medskip\noindent\motiv{Remark~\ref{rem:green-continuum} sketches the general case with all Cauchy temporal functions
+as cutoffs; that larger family is not formalized. \revm{Chapter~\ref{sec:mass} adds the term $m^2$, for every real $m^2$.}}
+
+\subsection{Minkowski space and the wave operator}
+
+\begin{definition}[Minkowski space]\label{def:mink}
+Points are $p=(p^0,\vec p)\in M=\R\times\R^3$, with the Euclidean norm $|\cdot|$ on $\R^3$ and the
+Minkowski form $\eta(u,w)=-u^0w^0+\vec u\cdot\vec w$ (mostly plus); $e_0=(1,\vec0)$. A vector $v$ is
+\emph{future causal} if $v^0\geq|\vec v|$, and $p\leq q$ iff $q-p$ is future causal;
+$I^+=\{v:v^0>|\vec v|\}$ and $I^-=-I^+$ are the open future and past cones.
+
+$\cD=C_c^\infty(M)$ and $\cF=C^\infty(M)$ are the real test functions and smooth functions, $\iota$ is
+the inclusion, and $\supp h=\overline{\{h\neq0\}}$ is the closed support. The wave operator
+$P=\partial_0^2-\sum_{i=1}^3\partial_i^2=-\eta^{\mu\nu}\partial_\mu\partial_\nu$ acts on $\cF$ and on $\cD$,
+and $\langle f,h\rangle=\int_Mf(p)h(p)\,dp$ with Lebesgue measure on $M$. \revm{In coordinates
+$(t,x)$ the spatial variable $x\in\R^3$ carries no arrow.}
+\end{definition}
+
+\begin{remark}[Closed supports]\label{rem:mink-supports}
+With the closed support, $\cD(O)$ is $C_c^\infty(O)$ for open $O$, as in~\cite{dimock}: a test
+function localized in $O$ vanishes near the boundary of $O$.
+
+With the open support $\{h\neq0\}$ instead, a test function could be nonzero up to the boundary, and
+two things would change, as the double cone $D=\{|t|+|\vec x|<1\}$ shows. A test function positive
+exactly on $D\cap\{t>0\}$ would give a Weyl element outside the usual algebra of that region. And
+$D$ would no longer depend on a thin layer $D\cap\{|t|<\ell\}$ around its base, since one test
+function could fill all of $D$.
+
+\revm{\artefact{The formalization uses the closed support.}}
+\end{remark}
+
+\begin{proposition}[The Minkowski data]\label{prop:mink-basic}
+The objects of Definition~\ref{def:mink} satisfy (G1)--(G5) of Definition~\ref{def:green-data}. In
+detail:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item the causal relation $\leq$ on the set $M$ of points is a partial order (reflexive, transitive
+and antisymmetric);
+\item the support map $h\mapsto\supp h$ from $\cF$ to subsets of $M$ satisfies $\supp0=\emptyset$,
+$\supp(h+h')\subseteq\supp h\cup\supp h'$ and $\supp(\lambda h)\subseteq\supp h$ for $\lambda\in\R$, and
+each $\supp h$ is a closed subset of $M$;
+\item the wave operator $P$ maps $\cF$ into $\cF$ and $\cD$ into $\cD$, and $P(\iota f)=\iota(Pf)$ for
+$f\in\cD$ (so $P_\cD$ is $P$ on test functions);
+\item the pairing $\langle f,h\rangle=\int_Mfh\,dp$ of $f\in\cD$ and $h\in\cF$ vanishes when
+$\supp f\cap\supp h=\emptyset$, and it is nondegenerate in $h$: if $\langle f,h\rangle=0$ for all
+$f\in\cD$, then $h=0$;
+\item (integration by parts) for $h,h'\in\cF$ whose supports meet in a compact subset of $M$,
+$\int_M(Ph)h'\,dp=\int_Mh\,(Ph')\,dp$; in particular $\langle Pf,h\rangle=\langle f,Ph\rangle$ for
+$f\in\cD$ and $h\in\cF$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] Reflexivity is $0\leq0$; transitivity is the triangle inequality; if $p\leq q\leq p$ then
+$q^0=p^0$ and $|\vec q-\vec p|\le0$.
+\item[(b)] $\{h+h'\neq0\}\subseteq\{h\neq0\}\cup\{h'\neq0\}$; take closures.
+\item[(c)] Derivatives of smooth functions are smooth and do not enlarge supports.
+\item[(d)] Locality: the integrand vanishes everywhere. Nondegeneracy: if $\int fh=0$ for all
+$f\in\cD$, then $h=0$ almost everywhere by the fundamental lemma of the calculus of variations, hence
+everywhere by continuity.
+\item[(e)] Integrating by parts twice along each coordinate direction gives the identity when one of
+$h$, $h'$ has compact support. In general both integrands vanish outside the compact set
+$\supp h\cap\supp h'$; multiplying $h'$ by a test function equal to $1$ near that set changes neither
+integrand and makes $h'$ compactly supported.
+\end{enumerate}
+\end{proof}
+
+\subsection{The retarded and advanced Green operators}
+
+\begin{definition}[Cone measures and Green operators]\label{def:kirchhoff}
+The \emph{future cone measure} $\mu^+$ on $M$ is the image of the measure $dy/(4\pi|y|)$ on $\R^3$
+under $y\mapsto(|y|,y)$, and the \emph{past cone measure} $\mu^-$ is the image of $\mu^+$ under
+$w\mapsto-w$. For $f\in\cD$,
+\[
+(G^\pm f)(p)=\int_Mf(p-w)\,\mu^\pm(dw).
+\]
+\end{definition}
+
+\begin{proposition}[\revm{The retarded potential}]\label{prop:kirchhoff}
+For $f,g\in\cD\revk{=C_c^\infty(M)}$, \revk{the Green operators $G^\pm$ of Definition~\ref{def:kirchhoff}
+satisfy}:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $(G^\pm f)(t,x)=\frac1{4\pi}\int_{\R^3}f(t\mp|y|,x-y)\,|y|^{-1}\,dy$;
+\item $G^\pm f$ is smooth, $G^\pm:\cD\to\cF$ is linear, and $\partial_vG^\pm f=G^\pm\partial_vf$ for
+every direction $v$; hence $PG^\pm f=G^\pm Pf$;
+\item $\supp G^\pm f\subseteq J^\pm(\supp f)$;
+\item $\langle f,G^+g\rangle=\langle g,G^-f\rangle$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] Integration against an image measure; for $G^-$ it gives $f(t+|y|,x+y)$, and the
+substitution $y\mapsto-y$ gives the formula.
+\item[(b)] $\mu^\pm$ are finite on bounded sets, since $\int_{|y|<r}dy/(4\pi|y|)=r^2/2$. So $G^\pm f$ is
+the convolution of the smooth, compactly supported $f$ with a locally finite measure, which is
+smooth. The derivative is taken under the integral, dominated by a constant on a compact set.
+\item[(c)] If $(G^+f)(t,x)\neq0$, the integrand of (a) is not identically zero, so
+$(t-|y|,x-y)\in\supp f$ for some $y$, a point below $(t,x)$ on its light cone. So
+$\{G^+f\neq0\}\subseteq J^+(\supp f)$, which is closed by Lemma~\ref{lem:mink-compact}(b); likewise
+for $G^-$.
+\item[(d)] $(p,w)\mapsto f(p)g(p-w)$ is continuous and vanishes unless $p\in\supp f$ and
+$w\in p-\supp g$, a compact set on which $dp\,\mu^+(dw)$ is finite. So Fubini applies, and with
+translation invariance of Lebesgue measure both sides equal $\iint f(p)g(p-w)\,dp\,\mu^+(dw)$.
+\end{enumerate}
+\end{proof}
+\noindent\motiv{$G^+$ samples $f$ in the causal past of the point and is supported in the causal
+future of $\supp f$: it is the retarded operator in the naming of Remark~\ref{rem:sign-table}.}
+
+\subsection{The fundamental solution}
+
+\begin{theorem}[\revm{The fundamental solution}]\label{thm:mink-core}
+For \revk{every test function} $f\in\revk{C_c^\infty(M)}$ \revk{and the wave operator
+$P=\partial_t^2-\nabla^2$},
+\[
+\int_{\R^3}\frac{(Pf)(|y|,y)}{|y|}\,dy=4\pi\,f(0).
+\]
+\end{theorem}
+\begin{proof}
+\emph{Spherical means.} Let $(\mathsf Af)(s,y)$ be the mean of $f(s,\cdot)$ over the sphere of
+radius $|y|$ about $0$. The weight $1/|y|$ and Lebesgue measure are rotation invariant, so the left
+side does not change when $Pf$ is replaced by $\mathsf APf$; and $\mathsf APf=P\mathsf Af$, because
+rotations commute with $\nabla^2$. Put $\bar f(s,\rho)=(\mathsf Af)(s,\rho e_1)$ for $\rho\in\R$, with
+$e_1$ a unit vector of $\R^3$. It is smooth and compactly supported on $\R^2$, $(\mathsf
+Af)(s,y)=\bar f(s,|y|)$, and $\bar f(0,0)=f(0)$.
+
+\emph{Radial calculus.} For $y\neq0$, $P[\bar f(s,|y|)]=(\bar f_{ss}-\bar f_{\rho\rho}-\tfrac2\rho
+\bar f_\rho)(s,|y|)$ with $\rho=|y|$, and $\int_{\R^3}\Phi(|y|)\,dy=4\pi\int_0^\infty\rho^2\Phi(\rho)\,d\rho$
+for integrable $\Phi(|y|)$. The left side becomes
+$4\pi\int_0^\infty\rho\,(\bar f_{ss}-\bar f_{\rho\rho}-\tfrac2\rho\bar f_\rho)(\rho,\rho)\,d\rho$.
+
+\emph{A null ray.} $\rho(\bar f_{ss}-\bar f_{\rho\rho}-\tfrac2\rho\bar f_\rho)=(\partial_s+
+\partial_\rho)(\partial_s-\partial_\rho)(\rho\bar f)$, and $d/d\rho$ along the diagonal $s=\rho$ is
+$\partial_s+\partial_\rho$. So the integrand is the derivative along the diagonal of
+$(\partial_s-\partial_\rho)(\rho\bar f)$, which vanishes for large $\rho$ and equals $-\bar f(0,0)$ at
+$\rho=0$. The integral is $\bar f(0,0)=f(0)$.
+\end{proof}
+
+\begin{remark}[The method of spherical means]\label{rem:spherical-means}
+The theorem says that $\delta(t-|y|)/(4\pi|y|)$ is a fundamental solution of $P$. The proof is the
+classical method of spherical means~\cite[\S2.4.1]{evans}, which reduces the wave equation in $3+1$
+dimensions to the one-dimensional wave equation for $\rho\bar f$.
+
+\artefact{The formalization writes the spherical mean as an average over the group $O(3)$ of
+orthogonal operators on $\R^3$ with its Haar probability measure, $(\mathsf
+Af)(s,y)=\int_{O(3)}f(s,Q^{-1}y)\,dQ$. Mathlib has Haar measure on compact groups; for its measure on
+spheres it lacks the rotation invariance, and it lacks the divergence theorem on balls\revm{, on which
+the textbook proof rests}.} $O(3)$ acts transitively on each sphere: if
+$|y|=|y'|$ and $y\neq y'$, the reflection \revk{$1-2zz^\top/|z|^2$ with $z=y'-y$} maps $y'$ to $y$.
+\end{remark}
+
+\begin{corollary}[The Green identities]\label{cor:mink-green}
+For $f\in\cD$, \revk{the operators $G^\pm$ of Definition~\ref{def:kirchhoff} and the wave
+operator $P$ satisfy} $G^+Pf=f$, $G^-Pf=f$, $PG^+f=f$ and $PG^-f=f$.
+\end{corollary}
+\begin{proof}
+$P$ commutes with translations and with the reflections of time and of space. Fix $(t,x)$ and let
+$f_{t,x}(s,z)=f(t-s,x-z)$; then $(Pf_{t,x})(|y|,y)=(Pf)(t-|y|,x-y)$. So by
+Proposition~\ref{prop:kirchhoff}(a) and Theorem~\ref{thm:mink-core},
+$(G^+Pf)(t,x)=f_{t,x}(0)=f(t,x)$. For $G^-$ use $(s,z)\mapsto f(t+s,x-z)$. Finally,
+$PG^\pm f=G^\pm Pf$ by Proposition~\ref{prop:kirchhoff}(b).
+\end{proof}
+
+\subsection{Cutoffs and the Green data}
+
+\noindent\motiv{\emph{What the cutoffs do.} The observable $W([f])$ depends on the test function
+$f$ only through the solution $Ef$ it generates, since $[f]$ is the class of $f$ modulo $\ker E$. The
+time-slice axiom asks that every such observable already belong to the algebra of a thin slab of
+time $S$. To show this, one moves the smearing of $f$ into $S$ without changing $Ef$.}
+
+\medskip\noindent\motiv{Take $\chi$ equal to $0$ before $S$ and to $1$ after it, and replace $f$ by
+$f'=-P(\chi Ef)$. Since $PEf=0$, the function $P(\chi Ef)$ can be nonzero only where $\chi$ changes,
+that is inside $S$, and only where $Ef$ lives, inside the causal shadow of $\supp f$: this is
+condition (c1). And $f-f'=P\bigl((1-\chi)G^+f+\chi G^-f\bigr)$ is $P$ of a test function, which $E$
+annihilates, so $Ef'=Ef$: this is condition (c2). Physically, $f'$ is $f$ transported along the
+equation of motion into the slab.}
+
+\medskip\noindent\motiv{The slab must be allowed to be thin and to sit anywhere, and the family of slabs must be
+carried to itself by the symmetries. Here the slabs are the time intervals $t_1\le\tau\le t_2$ of all
+inertial observers.}
+
+\begin{definition}[Inertial slabs]\label{def:mink-cutoff}
+A vector $n$ is \emph{future unit}\revk{, short for future-directed unit timelike,} if $n^0>0$ and $\eta(n,n)=-1$; its time function is
+$\tau_n(p)=-\eta(n,p)=n^0p^0-\vec n\cdot\vec p$, the time of the inertial observer with four-velocity
+$n$.
+
+A \emph{cutoff} is $(n,t_1,t_2)$ with $n$ future unit and $t_1<t_2$. Its \emph{slab} is
+$S=\{t_1\leq\tau_n\leq t_2\}$, and $\chi$ is multiplication by
+$\chi(p)=\vartheta\bigl((\tau_n(p)-t_1)/(t_2-t_1)\bigr)$, with $\vartheta$ a smooth function equal to $0$
+on $(-\infty,0]$ and to $1$ on $[1,\infty)$ (\artefact{Mathlib's smooth transition function}).
+\end{definition}
+
+\begin{lemma}[Time functions and compactness]\label{lem:mink-compact}
+Let $n$ be future unit, \revk{$\tau_n$ its time function (Definition~\ref{def:mink-cutoff}), and
+$J^\pm$ the causal future and past for the order $\leq$ of Definition~\ref{def:mink}}.
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $n^0>|\vec n|$, and $\tau_n(v)\geq(n^0-|\vec n|)v^0\geq0$ for $v$ future causal.
+\item For $Y\subseteq M$ compact, $J^\pm(Y)$ are closed, and $J^+(Y)\cap\{\tau_n\leq t_2\}$ and
+$J^-(Y)\cap\{\tau_n\geq t_1\}$ are compact for all $t_1,t_2\in\R$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] $(n^0)^2=1+|\vec n|^2$, and $\tau_n(v)\geq n^0v^0-|\vec n||\vec v|\geq(n^0-|\vec n|)v^0$ by
+Cauchy--Schwarz.
+\item[(b)] $J^+(Y)$ is the sum of $Y$ and the closed cone of future causal vectors, which is closed.
+For $Y\neq\emptyset$ and $q=y+v$ with $y\in Y$ and $\tau_n(q)\leq t_2$, (a) bounds $v^0\geq|\vec v|$ by
+$(t_2-\min_Y\tau_n)/(n^0-|\vec n|)$, so the set is bounded; for $Y=\emptyset$ it is empty. The past
+case follows by $p\mapsto-p$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Conditions (c1) and (c2)]\label{prop:mink-cutoff}
+For every cutoff \revk{$(n,t_1,t_2)$ of Definition~\ref{def:mink-cutoff}, with slab $S$ and
+multiplication $\chi$,} and every $f\in\cD$, with $E=G^--G^+$ \revk{for the operators of
+Definition~\ref{def:kirchhoff}}:
+\begin{enumerate}[label=(c\arabic*),leftmargin=2.5em]
+\item $\supp P(\chi Ef)\subseteq S\cap J(\supp f)$;
+\item $(1-\chi)G^+f+\chi G^-f\in\cD$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\emph{(c1).} $P$ is local: functions equal near $p$ have equal $P$ at $p$. Below the slab
+$\chi Ef=0$ near $p$; above it $\chi Ef=Ef$ near $p$, and $PEf=f-f=0$ (Corollary~\ref{cor:mink-green}).
+Outside $J(\supp f)$, the open cone $p+I^-$ misses $J^+(\supp f)$, since $p'\leq q$ and $q-p\in I^-$
+would give $p'\leq p$ by transitivity. So $\chi G^+f=0$ there and $P(\chi G^+f)=0$ on $p+I^-$. The
+points $p-se_0$, $s>0$, tend to $p$, so $P(\chi G^+f)(p)=0$ by continuity. Likewise
+$P(\chi G^-f)(p)=0$ with the open cone $p+I^+$. So $P(\chi Ef)$ vanishes outside $S\cap J(\supp f)$, which is closed ($\tau_n$ is continuous;
+Lemma~\ref{lem:mink-compact}(b)) and therefore contains the support.
+
+\emph{(c2).} The function vanishes outside
+$\bigl(J^+(\supp f)\cap\{\tau_n\leq t_2\}\bigr)\cup\bigl(J^-(\supp f)\cap\{\tau_n\geq t_1\}\bigr)$,
+which is compact by Lemma~\ref{lem:mink-compact}.
+\end{proof}
+
+\begin{theorem}[The free massless field]\label{thm:mink-green}
+\revm{The objects of} Definition~\ref{def:mink}, the operators $G^\pm$ \revk{of Definition~\ref{def:kirchhoff}} and the cutoffs of Definition~\ref{def:mink-cutoff}
+\revm{form} Green data (Definition~\ref{def:green-data}). If the CCR algebra of the derived phase space has
+an irreducible representation, the CCR net of the free massless field is generating, causal and
+has the time-slice property over the derived causal index, and its algebra is primitive.
+\end{theorem}
+\begin{proof}
+(G1)--(G5) are Proposition~\ref{prop:mink-basic}; (G6) is Proposition~\ref{prop:kirchhoff}(b)--(d)
+and Corollary~\ref{cor:mink-green}; (G7) is Proposition~\ref{prop:mink-cutoff}. Then
+Theorem~\ref{thm:green-axioms}.
+\end{proof}
+\noindent\motiv{As after Theorem~\ref{thm:green-axioms}, generation, causality and the time-slice
+property hold without the hypothesis; only primitivity uses it. The data are not trivial: for $f\geq0$ nonzero, $G^+f$ vanishes before $\supp f$ while $G^-f$
+does not, so $Ef\neq0$, $V\neq0$, and $\sigma\neq0$ by nondegeneracy
+(Proposition~\ref{prop:green-nondeg}). Regions are all subsets of $M$. One whose interior is empty contains the support of no nonzero
+test function, so its algebra is $\C1$.}
+
+\begin{remark}[Which time slices]\label{rem:mink-slabs}
+The cutoffs are slabs between parallel spacelike hyperplanes, one family
+for each inertial frame $n$. Remark~\ref{rem:green-continuum} uses all Cauchy temporal functions, of
+which each $\tau_n$ is one. Fewer cutoffs give fewer pairs $O\dep O'$, so the derived dependence here
+is contained in the one derived from all Cauchy temporal functions (both with closed supports).
+\begin{itemize}[leftmargin=2em]
+\item \emph{Flat Cauchy surfaces.} For $\Sigma=\{\tau_n=c\}$, the first argument of
+Remark~\ref{rem:green-dep-spacetime} runs with $\mathcal T=\tau_n-c$ and
+Lemma~\ref{lem:mink-compact}(b). So\revk{, for open regions with compact closure,} the dependence
+of Example~\ref{ex:gh-index} with such a $\Sigma$ implies the one here, and the time-slice axiom in
+that form holds.
+\item \emph{Curved Cauchy surfaces.} Here \revk{the implication} can fail.
+
+\revk{\emph{Dependence in the sense of Example~\ref{ex:gh-index}.}} Let $\phi$ be smooth on $\R^3$
+with $\phi(\vec x)=|\vec x|^2$ for $|\vec x|\le2$ and $\revk{|\nabla\phi|\le5}$, so that
+$\Sigma=\{t=\phi(\vec x)/10\}$ is a smooth spacelike Cauchy surface. \revk{Such $\phi$ exist: take
+$\phi(\vec x)=g(|\vec x|^2)$ with $g$ smooth, $g(s)=s$ for $s\le4$, and $g'$ decreasing from $1$ to $0$
+on $[4,5]$ and zero beyond; then $|\nabla\phi|=2|\vec x|\,g'(|\vec x|^2)\le2\sqrt5$.} Let
+$D=\{|t|+|\vec x|<1\}$ and $O'=\{|t-\phi(\vec x)/10|<1/40,\ |\vec x|<2\}$, both open with compact
+closure.
+
+A causal curve from $D$ meets $\Sigma$ where $|\vec x|<1+\revk{|\phi(\vec x)|}/10$\revk{. For
+$|\vec x|\ge2$, $|\phi(\vec x)|\le4+5(|\vec x|-2)$ would give $|\vec x|<4/5$, which is impossible; so
+$|\vec x|<2$, $\phi(\vec x)=|\vec x|^2$, and} $|\vec x|<1.13$. So every endless causal curve through $D$ meets
+$\Sigma$ in $O'$, and $D\dep O'$ in the sense of Example~\ref{ex:gh-index}.
+
+\revk{\emph{No inertial slab serves.}} Now take $f\in\cD(D)$ with
+$\{0\}\times\{|\vec x|\le3/4\}\subseteq\supp f$. Then $J(\supp f)$ contains every line
+$\{(t,\vec x):t\in\R\}$ with $|\vec x|\le3/4$, and a slab meets such a line in a segment whose lowest
+point has $t$ an affine function of $\vec x$. For $S\cap J(\supp f)\subseteq O'$ that affine function
+would have to stay within $1/40$ of $|\vec x|^2/10$ on the ball $|\vec x|\le3/4$. But every affine
+function differs from $|\vec x|^2/10$ by at least $(3/4)^2/20=9/320>1/40$ somewhere on it (compare
+$\vec x=0$ with $\vec x=\pm\tfrac34e_1$). So $D\dep O'$ fails \revk{for the inertial slabs}.
+
+\revk{The inclusion $\cA(D)\subseteq\cA(O')$ itself still holds, on paper. The local algebras do
+not depend on the cutoffs. With all Cauchy temporal functions as cutoffs,
+Remark~\ref{rem:green-dep-spacetime} gives $D\dep O'$ for the derived index,
+Proposition~\ref{prop:green-phase} gives phase-space data over it, and the time-slice property of
+Theorem~\ref{thm:weyl-net} gives the inclusion. It is not a consequence of
+Theorem~\ref{thm:mink-green}.}
+\end{itemize}
+Cutoffs from curved Cauchy temporal functions \revm{are not treated in these notes}. The family of inertial slabs is
+carried to itself by Poincar\'e maps (Proposition~\ref{prop:mink-symmetry}), which covariance needs.
+\revk{Neither bullet is formalized.}
+\end{remark}
+
+\subsection{Uniqueness and Poincar\'e covariance}
+
+\begin{theorem}[Uniqueness of the Green operators]\label{thm:mink-unique}
+If \revk{a map} $G':\cD\to\cF$ satisfies $PG'f=f$ and $\supp G'f\subseteq J^+(\supp f)$ for every
+$f\revk{\in\cD}$, then $G'$ \revk{is the operator $G^+$ of Definition~\ref{def:kirchhoff}}; likewise with
+$J^-$ and $G^-$.
+\end{theorem}
+\begin{proof}
+\revk{\emph{Compact overlap.}} Let $f,g\in\cD$. The supports of $G^-g$ and $G'f$ lie in the closed sets $J^-(\supp g)$ and
+$J^+(\supp f)$. If \revk{$q\leq q'$ then $q^0\leq q'^0$}, so $J^-(\supp g)\subseteq\{\tau_{e_0}\leq t_2\}$ with $t_2$
+\revm{an upper bound of the times in} $\supp g$. The intersection is therefore a closed subset of
+$J^+(\supp f)\cap\{\tau_{e_0}\leq t_2\}$, which is compact by Lemma~\ref{lem:mink-compact}(b).
+
+\revk{\emph{Pairing.}} By Proposition~\ref{prop:mink-basic}(e), Corollary~\ref{cor:mink-green} and
+Proposition~\ref{prop:kirchhoff}(d),
+\[
+\langle g,G'f\rangle=\int(PG^-g)G'f=\int G^-g\,PG'f=\langle f,G^-g\rangle=\langle g,G^+f\rangle,
+\]
+and nondegeneracy gives $G'f=G^+f$.
+\end{proof}
+
+\begin{definition}[Orthochronous Poincar\'e group]\label{def:mink-poincare}
+An \emph{orthochronous Lorentz map} is a linear $\Lambda:\R^4\to\R^4$ with
+$\eta(\Lambda u,\Lambda w)=\eta(u,w)$ and $(\Lambda e_0)^0>0$. The \emph{orthochronous Poincar\'e
+group} $\mathcal P^\uparrow$ consists of the maps $\gamma(p)=\Lambda p+a$, $a\in\R^4$, under composition;
+it contains the space reflections.
+\end{definition}
+
+\begin{lemma}[Orthochronous Lorentz maps]\label{lem:mink-lorentz}
+Let $\gamma(p)=\Lambda p+a$ be in $\mathcal P^\uparrow$.
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $\Lambda$ is invertible, $\Lambda^{-1}$ and composites of orthochronous Lorentz maps are
+orthochronous Lorentz maps, and $\mathcal P^\uparrow$ is a group.
+\item $\gamma p\leq\gamma q$ iff $p\leq q$.
+\item If $n$ is future unit, so is $\Lambda n$, and \revk{$\tau_n(\Lambda^{-1}p)=\tau_{\Lambda n}(p)$}.
+\item $|\det\Lambda|=1$, so $\gamma$ preserves Lebesgue measure.
+\item $P(h\circ\gamma)=(Ph)\circ\gamma$ for smooth $h$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] $\eta$ is nondegenerate, so $\Lambda u=0$ implies $u=0$; $\Lambda^{-1}$ and composites
+preserve $\eta$. Orthochrony of $\Lambda^{-1}$ and of composites is shown in (b) and (c).
+\item[(b)] Let $n'=\Lambda^{-1}e_0$. Then $\eta(n',n')=\eta(e_0,e_0)=-1$ and
+$n'^0=-\eta(\Lambda^{-1}e_0,e_0)=-\eta(e_0,\Lambda e_0)=(\Lambda e_0)^0>0$, so $n'$ is future unit and
+$\Lambda^{-1}$ is orthochronous. For $v$ future causal,
+$(\Lambda v)^0=-\eta(\Lambda v,e_0)=-\eta(v,n')=\tau_{n'}(v)\geq(n'^0-|\vec n'|)v^0\geq0$ by
+Lemma~\ref{lem:mink-compact}(a), and $\eta(\Lambda v,\Lambda v)=\eta(v,v)\leq0$; so $\Lambda v$ is future
+causal. The converse is the same for $\Lambda^{-1}$.
+\item[(c)] $\eta(\Lambda n,\Lambda n)=-1$, and $(\Lambda n)^0\geq(n'^0-|\vec n'|)n^0>0$ by the inequality
+in (b), since $n^0>|\vec n|$. With $n=\Lambda'e_0$ this gives orthochrony of $\Lambda\Lambda'$. Also
+\revk{$-\eta(n,\Lambda^{-1}p)=-\eta(\Lambda n,p)$}.
+\item[(d)] In the standard basis $\Lambda^\top\eta\Lambda=\eta$ and $\det\eta=-1$, so
+$(\det\Lambda)^2=1$.
+\item[(e)] $Ph=-\operatorname{tr}(\eta^{-1}\partial^2h)$ with $\partial^2h$ the matrix of second
+derivatives, which transforms as $\Lambda^\top\partial^2h\,\Lambda$. And
+$\Lambda\eta^{-1}\Lambda^\top=\eta^{-1}$ follows from $\Lambda^\top\eta\Lambda=\eta$: here $\eta^{-1}=\eta$,
+$\Lambda^{-1}=\eta\Lambda^\top\eta$, so $\Lambda\eta\Lambda^\top\eta=1$. Translations commute with $P$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Poincar\'e maps are symmetries]\label{prop:mink-symmetry}
+Every $\gamma=(\Lambda,a)\in\mathcal P^\uparrow$ gives a symmetry of the Green data
+(Definition~\ref{def:green-symmetry}) with point map $\gamma$, $\gamma_\cD f=f\circ\gamma^{-1}$,
+$\gamma_\cF h=h\circ\gamma^{-1}$, and on cutoffs
+$(n,t_1,t_2)\mapsto(\Lambda n,\,t_1+\tau_{\Lambda n}(a),\,t_2+\tau_{\Lambda n}(a))$.
+\end{proposition}
+\begin{proof}
+\emph{Order, supports and pairing.} The order is preserved by Lemma~\ref{lem:mink-lorentz}(b);
+$\gamma$ is a homeomorphism, so it maps supports to supports; and the pairing is invariant by (d).
+
+\emph{Slabs.} By (c), $\gamma(S)=\{q:t_1\le\tau_n(\Lambda^{-1}(q-a))\le t_2\}$ is the slab of the image
+cutoff. The cutoff map is a bijection, with inverse the map of $\gamma^{-1}$, because the shifts add
+under composition: $\tau_{\Lambda\Lambda'n}(\Lambda a'+a)=\tau_{\Lambda'n}(a')+\tau_{\Lambda\Lambda'n}(a)$ by
+(c).
+
+\emph{Green operators.} $G'=\gamma_\cF G^+\gamma_\cD^{-1}$ satisfies $PG'f=f$ by (e) and
+$\supp G'f\subseteq J^+(\supp f)$ by (b), so $G'=G^+$ by Theorem~\ref{thm:mink-unique}; likewise for
+$G^-$.
+\end{proof}
+
+\begin{theorem}[Poincar\'e covariance]\label{thm:mink-covariance}
+The CCR net of Theorem~\ref{thm:mink-green} is covariant under $\mathcal P^\uparrow$: with
+$\kappa_\gamma(O)=\gamma(O)$ and $\alpha_\gamma$ the automorphism of the CCR algebra induced by the
+symmetry of Proposition~\ref{prop:mink-symmetry}, $\gamma\mapsto\kappa_\gamma$ and
+$\gamma\mapsto\alpha_\gamma$ are group homomorphisms and every $(\kappa_\gamma,\alpha_\gamma)$ is a
+covariance pair (Definition~\ref{def:covariance}).
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:green-symmetry} gives, for each $\gamma$, an isomorphism of phase-space data with
+$L_\gamma[f]=[\gamma_\cD f]$. Since $\gamma_\cD$ composes as $\gamma$ does,
+$L_{\gamma\gamma'}=L_\gamma L_{\gamma'}$ and $L_{\mathrm{id}}=\mathrm{id}$; likewise
+$\kappa_{\gamma\gamma'}=\kappa_\gamma\kappa_{\gamma'}$. Theorem~\ref{thm:ccr-cov} turns these
+isomorphisms into covariance pairs with $\alpha_{\mathrm{id}}=\mathrm{id}$ and
+$\alpha_{\gamma\gamma'}=\alpha_\gamma\alpha_{\gamma'}$.
+\end{proof}
+\noindent\motiv{Every isometry of Minkowski space is affine, so $\mathcal P^\uparrow$ is the group of
+isometries that preserve the time orientation. This is covariance in the sense of
+Definition~\ref{def:covariance} under that group, Axiom~5 of~\cite{dimock} for this spacetime\revo{, restricted to the isometries that preserve the time orientation (Remark~\ref{rem:time-orientation})}.}
+
+\medskip\noindent\motiv{Two other maps are left out. Time reversal exchanges $G^+$ and $G^-$, so it is not a symmetry
+of Green data in the sense of Definition~\ref{def:green-symmetry}. Dilations $p\mapsto\lambda p$, $\lambda>0$, also preserve the order and the slabs, and, with
+$f\mapsto\lambda^{-3}f(\cdot/\lambda)$ on test functions, the form $\sigma$. Definition~\ref{def:green-symmetry}
+does not express rescalings, and they are not used.}
+\subsection{Green operators of a local operator}\label{sec:kg-greenops}
+
+\noindent\motiv{The proofs of \revm{this chapter} on cutoffs, uniqueness and covariance use
+only these properties of the wave operator and its Green operators: the operator is local and can be
+integrated by parts; its Green operators satisfy the Green identities, are formally adjoint and are
+supported in the causal future and past; and, for covariance, the operator is Poincar\'e invariant.}
+
+\medskip\noindent\motiv{This section states the construction on Minkowski space for every operator with these properties
+(Theorem~\ref{thm:kg-greenops}), so that for the Klein--Gordon operator only the Green operators
+remain to be constructed. In this section $P$ is any such operator and $G^\pm$ are its Green
+operators\revm{; in Chapter~\ref{sec:mass}}, from Definition~\ref{def:kg-supported} on, $P$ is the wave operator and $G^\pm$ are the
+extended Green operators of Definition~\ref{def:kg-supported}. \artefact{In the formalization the results of
+\revm{this chapter} on cutoffs, uniqueness and covariance are derived as the instance of
+Theorem~\ref{thm:kg-greenops} in Proposition~\ref{prop:kg-wave}, with their statements
+unchanged.}}
+
+\begin{definition}[Local operators and their Green operators]\label{def:kg-greenops}
+Let $M$, $\le$, $\cD$, $\cF$, $\iota$, $\supp$ and the pairing be as in Definition~\ref{def:mink}. A
+linear map $P:\cF\to\cF$ is \emph{local} if, for all $h,h'\in\cF$ and $p\in M$, $h=h'$ on a
+neighbourhood of $p$ implies $(Ph)(p)=(Ph')(p)$. It is \emph{Poincar\'e invariant} if
+$P(h\circ\gamma^{-1})=(Ph)\circ\gamma^{-1}$ for all $h\in\cF$ and all $\gamma\in\mathcal P^\uparrow$
+(Definition~\ref{def:mink-poincare}).
+
+Let $P$ be local, and let $P_\cD:\cD\to\cD$ be linear with $\iota P_\cD=P\iota$ and
+$\langle P_\cD f,h\rangle=\langle f,Ph\rangle$ for $f\in\cD$ and $h\in\cF$ (formal self-adjointness).
+Since $\iota$ is injective, $P_\cD$ is determined by $P$. \emph{Green operators for $P$} are linear
+maps $G^\pm:\cD\to\cF$ such that, for all $f,g\in\cD$:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $PG^\pm f=f$ and $G^\pm P_\cD f=f$;
+\item $\supp G^+f\subseteq J^+(\supp f)$ and $\supp G^-f\subseteq J^-(\supp f)$;
+\item $\langle f,G^+g\rangle=\langle g,G^-f\rangle$.
+\end{enumerate}
+\revm{Condition (c) and $G^\pm P_\cD f=f$ follow from $PG^\pm f=f$, (b), locality and formal
+self-adjointness, on paper: $\langle f,G^+g\rangle=\int(PG^-f)\,G^+g=\int G^-f\,PG^+g=\langle
+g,G^-f\rangle$ by Lemma~\ref{lem:kg-ibp}, and then $\langle g,G^+P_\cD f\rangle=\langle P_\cD
+f,G^-g\rangle=\langle f,PG^-g\rangle=\langle g,f\rangle$ for all $g$, so $G^+P_\cD f=f$ by
+nondegeneracy (likewise for $G^-$). They are listed because Definition~\ref{def:green-data} lists
+them, and for the Klein--Gordon operator they are proved directly.}
+\end{definition}
+
+\begin{lemma}[Locality and integration by parts]\label{lem:kg-ibp}
+Let $P:\cF\to\cF$ be local (Definition~\ref{def:kg-greenops}). Then $\supp Ph\subseteq\supp h$ for
+every $h\in\cF$. For $h_1,h_2\in\cF$ whose supports meet in a compact set, $(Ph_1)h_2$ and $h_1\,Ph_2$
+are integrable on $M$; if moreover $P_\cD$ is as in Definition~\ref{def:kg-greenops}, then
+$\int_M(Ph_1)h_2\,dp=\int_Mh_1\,(Ph_2)\,dp$.
+\end{lemma}
+\begin{proof}
+\emph{Supports.} If $p\notin\supp h$, then $h=0$ near $p$, so $(Ph)(p)=(P0)(p)=0$ by locality. The
+complement of $\supp h$ is open, so $Ph$ vanishes on it, and $\supp Ph\subseteq\supp h$.
+
+\emph{Integrability.} Let $K=\supp h_1\cap\supp h_2$. By the first part both products are continuous
+and vanish outside $K$, which is compact.
+
+\emph{Integration by parts.} Take $\psi\in\cD$ equal to $1$ on a neighbourhood $U$ of $K$. On $U$,
+$\psi h_1=h_1$, so $P(\psi h_1)=Ph_1$ there by locality; off $K$ both $(Ph_1)h_2$ and
+$(P(\psi h_1))h_2$ vanish. Hence $(Ph_1)h_2=(P(\psi h_1))h_2$, and likewise $h_1\,Ph_2=(\psi
+h_1)\,Ph_2$. With $\iota P_\cD=P\iota$ and formal self-adjointness,
+$\int(Ph_1)h_2=\langle P_\cD(\psi h_1),h_2\rangle=\langle\psi h_1,Ph_2\rangle=\int h_1\,Ph_2$.
+\end{proof}
+
+\begin{theorem}[Green data from Green operators]\label{thm:kg-greenops}
+Let $G^\pm$ be Green operators for a local operator $P$ (Definition~\ref{def:kg-greenops}).
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item The data of Definition~\ref{def:mink} with $P$, $P_\cD$, $G^\pm$ and the inertial slabs of
+Definition~\ref{def:mink-cutoff} are Green data (Definition~\ref{def:green-data}). If the CCR algebra
+of the derived phase space has an irreducible representation, the CCR net is generating, causal and
+has the time-slice property over the derived causal index, and its algebra is primitive; as after
+Theorem~\ref{thm:green-axioms}, only primitivity uses the hypothesis.
+\item If a map $G':\cD\to\cF$ satisfies $PG'f=f$ and $\supp G'f\subseteq J^+(\supp f)$ for every
+$f\in\cD$, then $G'=G^+$; likewise with $J^-$ and $G^-$.
+\item If $P$ is Poincar\'e invariant, every $\gamma\in\mathcal P^\uparrow$ gives a symmetry of these
+Green data with the maps of Proposition~\ref{prop:mink-symmetry}, and the CCR net is covariant under
+$\mathcal P^\uparrow$ in the sense of Theorem~\ref{thm:mink-covariance}.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] (G1)--(G5) are Proposition~\ref{prop:mink-basic}(a), (b), (d) and $\iota P_\cD=P\iota$,
+and (G6) is Definition~\ref{def:kg-greenops}(a)--(c). The proof of Proposition~\ref{prop:mink-cutoff}
+uses of $P$ only locality, continuity of $P(\chi G^\pm f)$ and $PEf=f-f=0$, together with the
+supports of $G^\pm$ (Definition~\ref{def:kg-greenops}(b)) and the closedness of $J(\supp f)$, so it
+gives (c1); (c2) uses no property of $P$. The rest is Theorem~\ref{thm:green-axioms}.
+\item[(b)] The proof of Theorem~\ref{thm:mink-unique}, with Lemma~\ref{lem:kg-ibp} for the
+integration by parts, Definition~\ref{def:kg-greenops}(a)--(c) for $G^\pm$, and
+Proposition~\ref{prop:mink-basic}(d) for nondegeneracy.
+\item[(c)] In the proof of Proposition~\ref{prop:mink-symmetry} only the Green operators involve $P$.
+For them, the map $G'f=G^+(f\circ\gamma)\circ\gamma^{-1}$ of that proof satisfies $PG'f=f$ by
+invariance and $\supp G'f\subseteq J^+(\supp f)$ by Lemma~\ref{lem:mink-lorentz}(b), so $G'=G^+$ by
+(b); likewise for $G^-$. The proof of Theorem~\ref{thm:mink-covariance} does not involve $P$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[The wave operator]\label{prop:kg-wave}
+The wave operator $P$ of Definition~\ref{def:mink} is local and Poincar\'e invariant, and the
+operators $G^\pm$ of Definition~\ref{def:kirchhoff} are Green operators for it
+(Definition~\ref{def:kg-greenops}). Their Green data (Theorem~\ref{thm:kg-greenops}) are the Green
+data of Theorem~\ref{thm:mink-green}.
+\end{proposition}
+\begin{proof}
+\emph{Locality and invariance.} $(Ph)(p)$ is a combination of second derivatives at $p$, so $P$ is
+local; it is Poincar\'e invariant by Lemma~\ref{lem:mink-lorentz}(e).
+
+\emph{Green operators.} $\iota P=P\iota$ and formal self-adjointness are
+Proposition~\ref{prop:mink-basic}(c), (e), and (a)--(c) of Definition~\ref{def:kg-greenops} are
+Corollary~\ref{cor:mink-green} and Proposition~\ref{prop:kirchhoff}(c), (d). The two Green data
+coincide component by component.
+\end{proof}
+\endgroup

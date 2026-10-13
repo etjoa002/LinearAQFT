@@ -1,0 +1,52 @@
+% Navigation only; checked labels are maintained with reviewed correspondence.
+\definecolor{AQFTTagFill}{HTML}{EEEAF8}
+\definecolor{AQFTTagBorder}{HTML}{D6CEEB}
+\definecolor{AQFTTagText}{HTML}{5B477D}
+\newcommand{\AQFTLeanTag}{%
+  \tikz[baseline=(tag.base)]\node[rounded corners=1.5pt,
+    fill=AQFTTagFill,draw=AQFTTagBorder,text=AQFTTagText,
+    line width=0.3pt,inner xsep=3pt,inner ysep=1.5pt] (tag)
+    {\normalfont\scriptsize\sffamily Lean\,\ensuremath{\checkmark}};}
+\definecolor{AQFTArtFill}{HTML}{F2F2F2}
+\definecolor{AQFTArtBorder}{HTML}{BDBDBD}
+\definecolor{AQFTArtText}{HTML}{555555}
+\newcommand{\AQFTArtefactTag}{%
+  \tikz[baseline=(tag.base)]\node[rounded corners=1.5pt,
+    fill=AQFTArtFill,draw=AQFTArtBorder,text=AQFTArtText,dashed,
+    line width=0.3pt,inner xsep=3pt,inner ysep=1.5pt] (tag)
+    {\normalfont\scriptsize\sffamily formalization};}
+\newcommand{\artefact}[1]{#1\nobreak\hspace{0.3em}\AQFTArtefactTag}
+% Status tags for examples without a reviewed Lean counterpart: script ✓ (exhaustively
+% verified by a check script) and paper (checked on paper only).
+\definecolor{AQFTScrFill}{HTML}{E8F3EC}
+\definecolor{AQFTScrBorder}{HTML}{BFDCC9}
+\definecolor{AQFTScrText}{HTML}{2F6B45}
+\newcommand{\AQFTScriptTag}{%
+  \tikz[baseline=(tag.base)]\node[rounded corners=1.5pt,
+    fill=AQFTScrFill,draw=AQFTScrBorder,text=AQFTScrText,
+    line width=0.3pt,inner xsep=3pt,inner ysep=1.5pt] (tag)
+    {\normalfont\scriptsize\sffamily script\,\ensuremath{\checkmark}};}
+\definecolor{AQFTPapFill}{HTML}{FBF1E3}
+\definecolor{AQFTPapBorder}{HTML}{E6CFA8}
+\definecolor{AQFTPapText}{HTML}{7A5520}
+\newcommand{\AQFTPaperTag}{%
+  \tikz[baseline=(tag.base)]\node[rounded corners=1.5pt,
+    fill=AQFTPapFill,draw=AQFTPapBorder,text=AQFTPapText,
+    line width=0.3pt,inner xsep=3pt,inner ysep=1.5pt] (tag)
+    {\normalfont\scriptsize\sffamily paper};}
+\makeatletter
+\newcommand{\AQFTExampleStatus}[2]{\expandafter\gdef\csname aqft@status@#1\endcsname{#2}}
+\newcommand{\AQFTCheckedLabel}[1]{\expandafter\gdef\csname aqft@checked@#1\endcsname{}}
+\newcommand{\AQFTEnableLinks}{%
+  \let\AQFTOriginalLabel\label
+  \renewcommand{\label}[1]{%
+    \AQFTOriginalLabel{##1}%
+    \ifcsname aqft@checked@##1\endcsname
+      \nobreak\hspace{0.4em}\hyperlink{lean:##1}{\AQFTLeanTag}%
+    \else\ifcsname aqft@status@##1\endcsname
+      \nobreak\hspace{0.4em}\AQFTStatusTag{\csname aqft@status@##1\endcsname}%
+    \fi\fi}}
+\def\aqft@script{script}\def\aqft@paper{paper}
+\newcommand{\AQFTStatusTag}[1]{\edef\aqft@s{#1}%
+  \ifx\aqft@s\aqft@script\AQFTScriptTag\else\ifx\aqft@s\aqft@paper\AQFTPaperTag\fi\fi}
+\makeatother

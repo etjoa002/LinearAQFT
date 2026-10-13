@@ -1,0 +1,282 @@
+\clearpage
+\begingroup
+\section{The net of the lattice field}\label{sec:latticenet}
+
+\noindent\motiv{\reve{This chapter restates Example~\ref{ex:lattice-phase} as numbered results,
+including nondegeneracy, shows that no condition is vacuous, and constructs isomorphisms of phase-space data
+for the lattice translations and the spatial reflection. With Chapter~\ref{sec:phasespace} this
+gives the lattice CCR net with generation, causality, time slice and translation covariance, for
+every $m^2$ and with no hypotheses. The last subsection shows that the net defined through Cauchy
+data, as in~\cite[\S2]{dimock}, is the net of a pulled-back Weyl system, and for the
+CCR algebra over Cauchy data is isomorphic to the lattice CCR net.}}
+
+\medskip
+\noindent\motiv{\reve{Throughout this chapter, $m^2\in\R$ is fixed, $\cD$ is the space of test functions on
+$\Z^2$, and three consequences of Chapter~\ref{sec:lattice} are used repeatedly. By
+Proposition~\ref{prop:commutator}(e), and for the third value by (b) with the evenness below,
+\begin{equation}\label{eq:delta-slices}
+\Delta(-1,x)=[x=0],\qquad \Delta(0,x)=0,\qquad \Delta(1,x)=-[x=0].
+\end{equation}
+By Lemma~\ref{lem:kernel}(b),(c), applied to each term of $\Delta(t,x)=K(-t,x)-K(t,x)$,
+$\Delta(t,x)\neq0$ implies $|x|\leq|t|-1$, and $\Delta(t,-x)=\Delta(t,x)$. By
+Proposition~\ref{prop:commutator}(a), $PEf=0$.}}
+
+\subsection{Phase-space data}
+
+\begin{proposition}[The lattice phase-space data]\label{prop:lattice-data}
+\revlt{For $m^2\in\R$, the lattice test functions $\cD$ and the causal propagator $E$ of
+Definition~\ref{def:green},} let $\cD(O)=\{f\in\cD:\supp f\subseteq O\}$, $V=\cD/\ker E$ with $[f]$ the class of $f$, and
+$\sigma([f],[g])=\langle f,Eg\rangle$. Then $E$ is linear, $\sigma$ is a well-defined alternating
+bilinear form, and $(\cD,V,\sigma,[\cdot])$ are phase-space data over the lattice causal index
+(Example~\ref{ex:lattice-index}).
+\end{proposition}
+\begin{proof}
+$(Ef)(p)=\sum_qf(q)\Delta(p-q)$ and $\langle f,h\rangle$ are finite sums, linear in $f$ and in $h$.
+The form $(f,g)\mapsto\langle f,Eg\rangle$ vanishes when $Eg=0$, and when $Ef=0$ because
+$\langle f,Eg\rangle=-\langle g,Ef\rangle$ (Proposition~\ref{prop:commutator}(b)); so it descends
+to $V\times V$, and $\langle f,Ef\rangle=-\langle f,Ef\rangle$ makes it alternating. $\cD(O)$ is a
+subspace, monotone in $O$, and $f\in\cD(\supp f)$. (P1) is Proposition~\ref{prop:commutator}(c),
+since no point of a subset of $O_1$ is comparable with a point of a subset of $O_2$ when
+$O_1\perp O_2$. (P2) is Corollary~\ref{cor:lattice-dep}: $Ef'=Ef$ means $f'-f\in\ker E$, that is,
+$[f']=[f]$.
+\end{proof}
+\noindent\motiv{\reve{$V$ is taken as the quotient $\cD/\ker E$ rather than the space $E\cD$ of
+solutions; the two are isomorphic through $[f]\mapsto Ef$.} \artefact{\reve{The quotient makes
+$f\mapsto[f]$ a quotient map, and the form descends by the universal property.}}}
+
+\begin{proposition}[Nondegeneracy]\label{prop:lattice-nondeg}
+\revk{For the lattice phase-space data of Proposition~\ref{prop:lattice-data},}
+$\sigma([f],[\delta_p])=-(Ef)(p)$ for all $f\revk{\in\cD}$ and $p\revk{\in\Z^2}$. \reve{By definition of $V$}, $[f]=0$ if
+and only if $Ef=0$, and $\sigma(u,w)=0$ for all $w$ implies $u=0$.
+\end{proposition}
+\begin{proof}
+$\sigma([f],[\delta_p])=-\langle\delta_p,Ef\rangle=-(Ef)(p)$. $[f]=0$ means $f\in\ker E$. If
+$\sigma([f],w)=0$ for all $w$, then $(Ef)(p)=0$ for all $p$.
+\end{proof}
+
+\begin{example}[The conditions are not vacuous]\label{ex:lattice-nonvacuous}
+(a) \reve{$\sigma\neq0$: the recursion gives $K(2,\pm1)=1$, $K(2,0)=-m^2$ and
+$K(3,0)=-K(1,0)+K(2,1)+K(2,-1)-m^2K(2,0)=1+m^4$, so}
+$\sigma([\delta_{(0,0)}],[\delta_{(3,0)}])=\Delta(-3,0)=-\Delta(3,0)=\reve{1+m^4}$\reve{, which is $1$ at
+$m^2=0$} (Example~\ref{ex:lattice-witness}).
+(b) The regions $\{(0,0)\}$ and $\{(0,1)\}$ are orthogonal, and $[\delta_{(0,0)}]$, $[\delta_{(0,1)}]$
+are nonzero: by~\eqref{eq:delta-slices}, $\sigma([\delta_{(0,x)}],[\delta_{(1,x)}])=\Delta(-1,0)=1$.
+(c) $O=\{(5,0)\}$ and $O'=J(O)\cap S_0$, of $11+9=20$ points, satisfy $O\dep O'$ and
+$O\not\subseteq O'$, so the time-slice property is not isotony\reve{: the algebra of a point is
+contained in that of a region, far from it in time, that does not contain the point}.
+\end{example}
+
+\subsection{Translations and the spatial reflection}
+
+\noindent For $a\in\Z^2$ let $\kappa_a O=O+a$ and $(\kappa_{a*}f)(p)=f(p-a)$. Let
+$\rho(t,x)=(t,-x)$, $\kappa_\rho O=\rho O$ and $(\kappa_{\rho*}f)(p)=f(\rho p)$.
+
+\begin{lemma}[\revm{Covariance of $E$}]\label{lem:lattice-cov-E}
+\revk{For $a\in\Z^2$ and the reflection $\rho(t,x)=(t,-x)$, the lattice causal propagator $E$
+satisfies} $(E\kappa_{a*}f)(p)=(Ef)(p-a)$ and $(E\kappa_{\rho*}f)(p)=(Ef)(\rho p)$ \revk{for
+$f\in\cD$}.
+\end{lemma}
+\begin{proof}
+Substitute $q\mapsto q+a$, respectively $q\mapsto\rho q$, in $\sum_qf(q)\Delta(p-q)$; the second
+uses $\Delta(\rho(p-q))=\Delta(p-q)$, the evenness of $\Delta$ in $x$.
+\end{proof}
+
+\begin{proposition}[Isomorphisms of the lattice data]\label{prop:lattice-iso}
+\revm{For the lattice phase-space data of Proposition~\ref{prop:lattice-data}:}
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item For each $a\in\Z^2$, $\theta_a=(\kappa_a,\kappa_{a*},L_a)$ with \revk{$\kappa_aO=O+a$,
+$\kappa_{a*}f=f(\cdot-a)$ and} $L_a[f]=[\kappa_{a*}f]$ is an
+isomorphism \revm{of these data to themselves} (Definition~\ref{def:phase-iso}), and $L_0=\mathrm{id}$,
+$L_{a+b}=L_aL_b$.
+\item $\theta_\rho=(\kappa_\rho,\kappa_{\rho*},L_\rho)$ with \revk{$\kappa_\rho O=\rho O$,
+$\kappa_{\rho*}f=f\circ\rho$ for the reflection $\rho(t,x)=(t,-x)$, and} $L_\rho[f]=[\kappa_{\rho*}f]$ is an
+isomorphism \revm{of these data to themselves}.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Both are cases of one construction: a bijection $\zeta$ of $\Z^2$ with
+$\Delta(\zeta p-\zeta q)=\Delta(p-q)$ for all $p,q$, together with an automorphism $\kappa$ of the
+causal index with $\kappa O=\zeta O$. \reve{Applying the hypothesis to $\zeta^{-1}p$ and $q$ gives
+$E(f\circ\zeta^{-1})=(Ef)\circ\zeta^{-1}$, as in Lemma~\ref{lem:lattice-cov-E}.} So the pushforward
+$f\mapsto f\circ\zeta^{-1}$, a linear bijection with $\cD(O)\mapsto\cD(\zeta O)$, maps $\ker E$
+onto $\ker E$; $L[f]=[f\circ\zeta^{-1}]$ is a well-defined linear bijection, and $\langle
+f\circ\zeta^{-1},E(g\circ\zeta^{-1})\rangle=\langle f,Eg\rangle$. For (a), $\zeta(p)=p+a$;
+$L_0=\mathrm{id}$ and $L_{a+b}=L_aL_b$ because the pushforwards compose. For (b), $\zeta=\rho$
+($\rho^{-1}=\rho$). In both cases $\kappa$ is an automorphism by
+Example~\ref{ex:lattice-aut}\reve{, which lists the translations and the reflection}.
+\end{proof}
+\noindent\motiv{\reve{Example~\ref{ex:lattice-aut} lists the spatial reflection among the
+automorphisms of the lattice causal index; what is new here is the isomorphism of phase-space data
+over it. \revo{The time reversal $r$ carries one for $m^2=0$, with a sign twist (Remark~\ref{rem:massless-reversal}), and for $m^2\neq0$ these notes leave open whether it carries one;} the reflection carries
+one for every $m^2$, without a sign twist.}}
+
+\subsection{The net}
+
+\begin{theorem}[The net of the lattice field]\label{thm:lattice-net}
+For every $m^2\in\R$ the CCR net $\cA$ of the lattice phase-space data is generating, causal and
+has the time-slice property, and it is covariant under the translation group $\Z^2$: with
+$\alpha_a=\alpha_{\theta_a}$ (Definition~\ref{def:ccr-net}), $a\mapsto\kappa_a$ and $a\mapsto\alpha_a$
+are group homomorphisms and every $(\kappa_a,\alpha_a)$ is a covariance pair.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{thm:weyl-net} for Proposition~\ref{prop:lattice-data} gives the first three
+properties, and Theorem~\ref{thm:ccr-cov} with Proposition~\ref{prop:lattice-iso}(a) gives the
+covariance pairs. $a\mapsto\kappa_a$ is a homomorphism since $O+0=O$ and $O+(a+b)=(O+b)+a$. The
+$*$-isomorphism $\alpha_\theta$ depends on $\theta$ only through $L$, and $L_0=\mathrm{id}$,
+$L_{a+b}=L_aL_b$, so Theorem~\ref{thm:ccr-cov} gives $\alpha_0=\mathrm{id}$ and
+$\alpha_{a+b}=\alpha_a\alpha_b$.
+\end{proof}
+\noindent\motiv{\reve{The theorem has no hypotheses: the propagators are the explicit ones of
+Chapter~\ref{sec:lattice}, and Example~\ref{ex:lattice-nonvacuous} shows that $\sigma\neq0$,
+that orthogonal regions carry nonzero elements of $V$, and that dependence does not reduce to
+inclusion. No hypothesis on $m^2$ is needed either: the axioms
+say nothing about energy, so $m^2<0$, where the classical field grows exponentially, is included.
+The theorem is the lattice form of Axioms 1, 3 and 4 of~\cite{dimock} and of the translation part
+of Axiom~5; primitivity (Axiom~2) is \revf{Corollary~\ref{cor:lattice-dimock}, given an irreducible
+representation}. By
+Theorem~\ref{thm:ccr-cov} and Proposition~\ref{prop:lattice-iso}(b), $(\kappa_\rho,\alpha_{\theta_\rho})$
+is a covariance pair as well.}}
+
+\subsection{The Cauchy-data net}
+
+\noindent\motiv{\reve{In~\cite[\S2, pp.~222--225]{dimock} the net is built from a
+representation of the Weyl relations over Cauchy data: $e^{\ii\phi(f)}$ is represented by the Weyl
+operator of the Cauchy data of $Ef$ on a Cauchy surface. On the lattice two consecutive time
+slices play the part of a Cauchy surface (Chapter~\ref{sec:lattice}), and this subsection proves
+that the net so defined is the net of a pulled-back Weyl system, isomorphic for the CCR algebra
+to the net of Theorem~\ref{thm:lattice-net}.}}
+
+\begin{definition}[Pullback of a Weyl system]\label{def:pullback}
+Let $(V,\sigma)$ and $(V_S,\sigma_S)$ be real vector spaces with alternating forms, and
+$\Lambda:V\to V_S$ a linear map with $\sigma_S(\Lambda u,\Lambda w)=\sigma(u,w)$. The
+\emph{pullback} of a Weyl system $(A,W_S)$ over $(V_S,\sigma_S)$ along $\Lambda$ is the pair
+$(A,W_S\circ\Lambda)$\reve{; it is a Weyl system when $\Lambda$ is onto (Proposition~\ref{prop:pullback})}.
+\end{definition}
+
+\begin{proposition}[Pullback]\label{prop:pullback}
+\revk{Let $\Lambda:V\to V_S$ and $(A,W_S)$ be as in Definition~\ref{def:pullback}. Then}
+$W_S\circ\Lambda$ consists of unitaries and satisfies the Weyl relation over $(V,\sigma)$. If
+$\Lambda$ is onto, $(A,W_S\circ\Lambda)$ is a Weyl system over $(V,\sigma)$, and for phase-space
+data with phase space $(V,\sigma)$ its net is $O\mapsto\calg\{W_S(\Lambda[f]):f\in\cD(O)\}$.
+\end{proposition}
+\begin{proof}
+$W_S(\Lambda u)W_S(\Lambda w)=e^{-\ii\sigma_S(\Lambda u,\Lambda w)/2}W_S(\Lambda u+\Lambda w)
+=e^{-\ii\sigma(u,w)/2}W_S(\Lambda(u+w))$. If $\Lambda$ is onto, the ranges of $W_S\circ\Lambda$
+and $W_S$ coincide, so they generate $A$. The net is Definition~\ref{def:weyl-net}.
+\end{proof}
+\noindent\motiv{\reve{The relabelling of Proposition~\ref{prop:relabel} acts along symplectic
+bijections and changes the algebra; the pullback keeps the algebra $A$ of $W_S$.}}
+
+\begin{definition}[Cauchy data and the Cauchy map]\label{def:cauchy-map}
+\emph{Cauchy data} are pairs $d=(d_0,d_1)$ of finitely supported functions $\Z\to\R$; they form a
+real vector space $V_S$ with the \emph{Wronskian}
+$\sigma_S(d,d')=\sum_x\bigl(d_0(x)d_1'(x)-d_1(x)d_0'(x)\bigr)$, an alternating form. For
+$t_1\in\Z$ the \emph{Cauchy map} is
+$\Lambda_{t_1}[f]=\bigl((Ef)(t_1,\cdot),\,(Ef)(t_1+1,\cdot)\bigr)$.
+\end{definition}
+\noindent $\Lambda_{t_1}$ is well defined and linear: $(Ef)(t,x)\neq0$ requires some $q\in\supp f$
+with $|x-x_q|\leq|t-t_q|-1$, so each slice of $Ef$ is finitely supported, and $Ef$ depends only on
+$[f]$. \reve{The data are the field on two consecutive slices. With the discrete momentum
+$\Pi=d_1-d_0$ the Wronskian is $\sum_x\bigl(d_0\Pi'-\Pi d_0'\bigr)$, the lattice form of
+$\int(\phi\,\partial_t\phi'-\partial_t\phi\,\phi')$ on a Cauchy surface, and its sign is that of
+Remark~\ref{rem:dictionary}.}
+
+\begin{lemma}[Two slices determine a solution]\label{lem:two-slices}
+If \revk{$h:\Z^2\to\R$ satisfies} $Ph=0$ \revk{for the lattice Klein--Gordon operator $P$} and
+$h(t_1,\cdot)=h(t_1+1,\cdot)=0$ \revk{for some $t_1\in\Z$}, then $h=0$.
+\end{lemma}
+\begin{proof}
+$(Ph)(t,x)=0$ gives $h(t+1,x)$ from $h(t,\cdot)$ and $h(t-1,x)$, and equally $h(t-1,x)$ from
+$h(t,\cdot)$ and $h(t+1,x)$. \reve{By induction on \revg{$j\geq0$} over pairs of consecutive slices, $h$
+vanishes on the pairs \revg{$(t_1+j,t_1+j+1)$ and $(t_1-j,t_1-j+1)$}.}
+\end{proof}
+\noindent\motiv{\reve{This sharpens Lemma~\ref{lem:unique}: two consecutive vanishing slices
+suffice, with no condition in the past or future.}}
+
+\begin{theorem}[The Cauchy map is a symplectic bijection]\label{thm:cauchy-map}
+\revlt{For $t_1\in\Z$, the lattice phase-space data $(V,\sigma)$ of
+Proposition~\ref{prop:lattice-data} and} Cauchy data $d$ \revlt{(Definition~\ref{def:cauchy-map})}, let
+$f'=f'_{t_1}(d)$ be the test function with $f'(t_1,x)=-d_1(x)$,
+$f'(t_1+1,x)=d_0(x)$, and zero elsewhere. Then $\Lambda_{t_1}[f']=d$, $\Lambda_{t_1}$ is
+injective, and $\sigma_S(\Lambda_{t_1}u,\Lambda_{t_1}w)=\sigma(u,w)$. So $\Lambda_{t_1}$ is a
+symplectic bijection $V\to V_S$.
+\end{theorem}
+\begin{proof}
+By~\eqref{eq:delta-slices},
+$(Ef')(t_1,x)=\sum_y\bigl(-d_1(y)\Delta(0,x-y)+d_0(y)\Delta(-1,x-y)\bigr)=d_0(x)$ and
+$(Ef')(t_1+1,x)=\sum_y\bigl(-d_1(y)\Delta(1,x-y)+d_0(y)\Delta(0,x-y)\bigr)=d_1(x)$. If
+$\Lambda_{t_1}[f]=0$, then $h=Ef$ has $Ph=0$ and vanishes on two consecutive slices, so $Ef=0$
+by Lemma~\ref{lem:two-slices} and $[f]=0$ by Proposition~\ref{prop:lattice-nondeg}. For the
+form, let $u=[f]$, $w=[g]$, $d=\Lambda_{t_1}u$ and $d'=\Lambda_{t_1}w$. Injectivity and the first
+statement give $u=[f'_{t_1}(d)]$, so
+\[
+\begin{aligned}
+\sigma(u,w)=\langle f'_{t_1}(d),Eg\rangle
+&=\sum_x\bigl(-d_1(x)(Eg)(t_1,x)+d_0(x)(Eg)(t_1+1,x)\bigr)\\
+&=\sum_x\bigl(d_0(x)d_1'(x)-d_1(x)d_0'(x)\bigr).
+\end{aligned}
+\qedhere
+\]
+\end{proof}
+\noindent\motiv{\reve{The preimage is explicit, and the symplectic property needs no summation by
+parts; the sign of $\sigma_S$ is the one that makes $\Lambda_{t_1}$ symplectic for
+$\sigma([f],[g])=\langle f,Eg\rangle$. For $d=\Lambda_{t_1}[f]$ the preimage $f'_{t_1}(d)$, with
+$f'(t_1,\cdot)=-(Ef)(t_1+1,\cdot)$ and $f'(t_1+1,\cdot)=(Ef)(t_1,\cdot)$, is the test function
+$P((1-\chi)Ef)$ of Theorem~\ref{thm:lattice-timeslice}: the time-slice construction is the inverse
+of the Cauchy map.}}
+
+\begin{definition}[The Cauchy-data net]\label{def:cauchy-net}
+For a Weyl system $(A,W_S)$ over $(V_S,\sigma_S)$ and $t_1\in\Z$, the \emph{Cauchy-data net} is
+$O\mapsto\calg\{W_S(\Lambda_{t_1}[f]):\supp f\subseteq O\}$.
+\end{definition}
+
+\begin{theorem}[The Cauchy-data net is the lattice net]\label{thm:cauchy-net}
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item For every Weyl system $(A,W_S)$ over $(V_S,\sigma_S)$ and every $t_1$, the Cauchy-data net
+is the net of the pullback $W_S\circ\Lambda_{t_1}$ over the lattice phase-space data; hence it is
+generating, causal and has the time-slice property.
+\item For $A=\CCR(V_S,\sigma_S)$, the Cauchy-data net is isomorphic to the CCR net $\cA$ of
+Theorem~\ref{thm:lattice-net} through $\alpha_{\Lambda_{t_1}}$, and it is covariant under the
+translations with the automorphisms $\alpha_{\Lambda_{t_1}}\alpha_a\alpha_{\Lambda_{t_1}}^{-1}$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+(a) By Theorem~\ref{thm:cauchy-map}, $\Lambda_{t_1}$ is onto and symplectic, so
+Proposition~\ref{prop:pullback} applies and the two nets have the same generators;
+Theorem~\ref{thm:weyl-net} gives the properties. (b) The relabelling isomorphism
+$\alpha_{\Lambda_{t_1}}:\CCR(V,\sigma)\to\CCR(V_S,\sigma_S)$ of Proposition~\ref{prop:relabel}
+satisfies $\alpha_{\Lambda_{t_1}}(W(u))=W_S(\Lambda_{t_1}u)$, so it carries the Weyl system of
+$\CCR(V,\sigma)$ to the pullback, a Weyl system over the same $(V,\sigma)$.
+Corollary~\ref{cor:weyl-iso} and (a) give the isomorphism of nets. Covariance pairs are
+transported by conjugation (Lemma~\ref{lem:pairs}), and conjugation preserves the homomorphism
+property.
+\end{proof}
+
+\begin{proposition}[Change of slice]\label{prop:leapfrog}
+\revlt{For the lattice mass parameter $m^2$ and every $t_1\in\Z$,} let
+$F(d_0,d_1)=\bigl(d_1,\,-d_0+d_1(\cdot+1)+d_1(\cdot-1)-m^2d_1\bigr)$. Then
+$\Lambda_{t_1+1}=F\circ\Lambda_{t_1}$, and $\sigma_S(Fd,Fd')=\sigma_S(d,d')$.
+\end{proposition}
+\begin{proof}
+With $h=Ef$, the first component of $\Lambda_{t_1+1}[f]$ is $h(t_1+1,\cdot)$, the second of
+$\Lambda_{t_1}[f]$; the second, by $(Ph)(t_1+1,x)=0$, is
+$h(t_1+2,x)=-h(t_1,x)+h(t_1+1,x+1)+h(t_1+1,x-1)-m^2h(t_1+1,x)$. Since $\Lambda_{t_1}$ and
+$\Lambda_{t_1+1}$ are symplectic bijections, $F=\Lambda_{t_1+1}\Lambda_{t_1}^{-1}$ preserves
+$\sigma_S$.
+\end{proof}
+\noindent\motiv{\reve{$F$ is one step of the leapfrog scheme for $P$, and the proof shows why
+it is symplectic without a matrix computation: it is the composite of two symplectic bijections,
+the Cauchy maps at consecutive times. In Fourier variables\revg{, with $z$ on the unit circle
+dual to $x$,} $F$ is the matrix
+$\bigl(\begin{smallmatrix}0&1\\-1&z+z^{-1}-m^2\end{smallmatrix}\bigr)$.}}
+
+\begin{remark}[Dynamics on Cauchy data]\label{rem:cauchy-dynamics}
+\reve{From Lemma~\ref{lem:lattice-cov-E}, $\Lambda_{t_1}L_{(1,0)}=\Lambda_{t_1-1}$ and
+$(\Lambda_{t_1}L_{(0,b)}[f])_i=(\Lambda_{t_1}[f])_i(\cdot-b)$. With Proposition~\ref{prop:leapfrog},
+the unit time translation acts on Cauchy data as
+$\Lambda_{t_1}L_{(1,0)}\Lambda_{t_1}^{-1}=F^{-1}$, and a spatial translation by $b$ as the shift
+$d\mapsto d(\cdot-b)$. For the CCR algebra over Cauchy data the Cauchy-data nets at consecutive
+times are related by the relabelling of $F$: their generators are $W_S(F\Lambda_{t_1}[f])=
+\alpha_F(W_S(\Lambda_{t_1}[f]))$, so the net at $t_1+1$ is $\alpha_F$ applied to the net at $t_1$.}
+\end{remark}
+\endgroup

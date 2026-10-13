@@ -1,0 +1,336 @@
+\clearpage
+\begingroup
+\section{The net of a Green-hyperbolic operator}\label{sec:green}
+
+\noindent\motiv{\revh{Chapter~\ref{sec:phasespace} takes phase-space data as given. For a free field
+they come from the retarded and advanced Green operators of the field equation: $V$ is the space
+of test functions modulo the kernel of $E=G^--G^+$, and $\sigma([f],[g])=\langle f,Eg\rangle$. This
+chapter isolates what that construction uses, as \emph{Green data}, derives the causal index and
+the phase-space data from them, and proves nondegeneracy; the conclusions of
+Theorem~\ref{thm:dimock} then hold for every instance, over the derived causal index, with
+primitivity given an irreducible representation.\extraonly{ The lattice of Chapter~\ref{sec:lattice} is an
+instance whose derived data are those of Chapter~\ref{sec:latticenet}.}}}
+
+\medskip\noindent\motiv{\revh{Formal adjointness in (G6)
+forces $P$ to be formally self-adjoint on test functions,
+$\langle P_\cD f,g\rangle=\langle P_\cD f,G^+P_\cD g\rangle=\langle P_\cD g,G^-P_\cD f\rangle=\langle P_\cD g,f\rangle$,
+so on a spacetime Green data are \revi{modelled on} the formally self-adjoint Green-hyperbolic operators
+of~\revi{\cite[Def.~3.2]{baer-green}, the class used for the CCR quantization in~\cite[\S3.1, Def.~3.1, Thm.~3.10]{baer-ginoux}}\revi{;
+Remark~\ref{rem:green-continuum} sketches the Klein--Gordon instance}.}}
+
+\subsection{Green data}
+
+\begin{definition}[Green data]\label{def:green-data}
+\emph{Green data} consist of:
+\begin{enumerate}[label=(G\arabic*),leftmargin=3em]
+\item a set $M$ of points with a relation $p\leq q$ ($q$ lies in the causal future of $p$); for
+\revh{$O$}$\subseteq M$, $J^+(O)=\{q:\exists p\in O,\ p\leq q\}$, $J^-(O)=\{q:\exists p\in O,\ q\leq p\}$
+and $J(O)=J^+(O)\cup J^-(O)$;
+\item a real vector space $\cF$ (functions) with a map $\supp:\cF\to2^M$ such that
+$\supp0=\emptyset$, $\supp(h+h')\subseteq\supp h\cup\supp h'$ and $\supp(\lambda h)\subseteq\supp h$ for
+$\lambda\in\R$;
+\item a real vector space $\cD$ (test functions) with a linear map $\iota:\cD\to\cF$, written
+$f\mapsto f$ when no confusion arises\revh{, and $\supp f=\supp\iota f$ for $f\in\cD$};
+\item a linear map $P:\cF\to\cF$ and a linear map $P_\cD:\cD\to\cD$ with $\iota P_\cD=P\iota$;
+\item a bilinear pairing $\langle f,h\rangle$ for $f\in\cD$ and $h\in\cF$ that vanishes when
+$\supp f\cap\supp h=\emptyset$, and is nondegenerate in $h$: if $\langle f,h\rangle=0$ for all
+$f\in\cD$, then $h=0$;
+\item linear maps $G^\pm:\cD\to\cF$ \revm{satisfying the \emph{Green identities}} $PG^\pm f=f$, $G^\pm P_\cD f=f$,
+$\supp G^\pm f\subseteq J^\pm(\supp f)$, and \emph{formal adjointness}
+$\langle f,G^+g\rangle=\langle g,G^-f\rangle$ for $f,g\in\cD$;
+\item a set of \emph{cutoffs} $\chi$, each \revh{carrying} a linear map $\chi:\cF\to\cF$ and a \emph{slab}
+$S_\chi\subseteq M$ \revh{(two cutoffs may share the map and differ in the slab)}, such that for
+every $f\in\cD$, with $E=G^--G^+$:
+\begin{enumerate}[label=(c\arabic*),leftmargin=2.5em]
+\item $\supp P(\chi Ef)\subseteq S_\chi\cap J(\supp f)$;
+\item $(1-\chi)G^+f+\chi G^-f=\iota k$ for some $k\in\cD$.
+\end{enumerate}
+\end{enumerate}
+\end{definition}
+\noindent\motiv{\revh{The relation $\leq$ need not be transitive, and $\iota$ need not be
+injective, which costs nothing: if $\iota f=0$ then $\langle g,Ef\rangle=-\langle f,Eg\rangle=0$ for
+all $g$ by (G5) and Lemma~\ref{lem:green-E}(c), so $Ef=0$. $P$ is not required to be local;
+(c1) is where finite propagation speed enters: in the continuum through the locality of $P$
+(Remark~\ref{rem:green-continuum})\extraonly{, on the lattice through the strict light cone of the kernel
+(Lemma~\ref{lem:kernel}(b))}.\extraonly{ On the lattice, $\chi$ is the step at $t_1$ and $k$ is the function of
+Remark~\ref{rem:timeslice-direct}.}}}
+
+\begin{remark}[The continuum]\label{rem:green-continuum}
+\revh{For the Klein--Gordon operator on a globally hyperbolic spacetime \revi{$M$} of dimension at
+least $2$, $3+1$ Minkowski space included, with $M$ also the set of points:}
+\begin{itemize}[leftmargin=2em]
+\item \revh{$p\leq q$ iff $q\in J^+(p)$; $\cF=C^\infty(M)$ and $\cD=C_c^\infty(M)$ with the usual
+support; $\langle f,h\rangle=\int_Mfh\,d\mathrm{vol}$, nondegenerate by the fundamental lemma of the
+calculus of variations;}
+\item \revh{$G^\pm$ are the retarded and advanced Green operators, which exist and satisfy (G6)
+by~\cite[Cor.~3.4.3, Lemma~3.4.4]{bgp}; the lemma pairs the Green operators of $P$
+with those of its formal adjoint, which is $P$ itself;}
+\item \revh{a Cauchy temporal function $\mathcal T$ exists, and every smooth spacelike Cauchy surface is a
+level set of one~\revi{\cite[Thm.~1.1]{bernal-sanchez-2005}, \cite[Thm.~1.2]{bernal-sanchez-2006}}. The cutoffs are indexed by all Cauchy temporal
+functions $\mathcal T$, all $t_1<t_2$ and all smooth functions of $\mathcal T$ equal to $0$ for $\mathcal T<t_1$ and to $1$ for
+$\mathcal T>t_2$; $\chi$ is multiplication by that function, with slab $\mathcal T^{-1}[t_1,t_2]$. \revjt{The family must be carried to itself by the isometries for them to act on it
+(Definition~\ref{def:green-symmetry}); on Minkowski space the smaller family of inertial slabs is
+(Proposition~\ref{prop:mink-symmetry}).} Then (c1)
+holds because $P(\chi Ef)=[P,\chi]Ef$ and $[P,\chi]$ is a differential operator supported where
+the cutoff function is not locally constant; (c2) holds because $J^+(\supp f)\cap\mathcal T^{-1}(-\infty,t_2]$ and
+$J^-(\supp f)\cap\mathcal T^{-1}[t_1,\infty)$ are compact~\cite[Cor.~A.5.4]{bgp}.}
+\end{itemize}
+\revh{This instance is not formalized in LinearAQFT\revjt{ in this generality; the massless field on
+$3+1$ Minkowski space, with inertial slabs as cutoffs, is (Chapter~\ref{sec:minkowski})}\revlt{, and so is
+the Klein--Gordon field on $3+1$ Minkowski space with any real $m^2$ and the same cutoffs
+(Chapter~\ref{sec:mass})}. Its dependence is compared with that of
+Example~\ref{ex:gh-index} in Remark~\ref{rem:green-dep-spacetime}.}
+\end{remark}
+
+\begin{remark}[Sign conventions]\label{rem:sign-table}
+\revh{The literature names and signs the Green operators differently. The table relates these
+notes (Remark~\ref{rem:dictionary}) to~\cite{dimock} and to~\cite{bgp}\extraonly{, as compared after
+Definition~\ref{def:green}}.}
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.36\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}@{}}
+\toprule
+\revh{these notes} & \revh{\cite{dimock}} & \revh{\cite{bgp}} \\
+\midrule
+\revh{$G^+=E^{\mathrm{ret}}$, supported in $J^+$} & \revh{$E^+$}~\cite[p.~222]{dimock} & \revh{$G_+$, called advanced}~\cite[Def.~3.4.1]{bgp} \\
+\revh{$E=G^--G^+$} & \revh{$E^+-E^-=-E$}~\cite[p.~222]{dimock} & \revh{$G_+-G_-=-E$}~\cite[\S3.4]{bgp} \\
+\revh{$\sigma([f],[g])=\langle f,Eg\rangle$} & \revh{$[\phi(f),\phi(g)]=\ii^{-1}\langle f,(E^+-E^-)g\rangle$}~\revi{\cite[Thm.~2, p.~224]{dimock}} & \revh{not compared here} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{remark}
+
+\subsection{The derived causal index}
+
+\begin{definition}[Derived causal index]\label{def:green-index}
+\revm{For Green data (Definition~\ref{def:green-data}),} on the subsets of $M$ ordered by inclusion:
+\begin{itemize}[leftmargin=2em]
+\item $O_1\perp O_2$ if no point of $O_1$ is comparable, in either order, with a point of $O_2$;
+\item $O\dep O'$ if \revh{every $f\in\cD$ with $\supp f\subseteq O$ has a cutoff $\chi$ with
+$S_\chi\cap J(\supp f)\subseteq O'$.}
+\end{itemize}
+\end{definition}
+
+\begin{lemma}[\revh{Causal index}]\label{lem:green-index}
+\revk{For Green data, the relations $\perp$ and $\dep$ of Definition~\ref{def:green-index} on the
+subsets of $M$, ordered by inclusion,} form a causal index (Definition~\ref{def:causal-index}).
+\end{lemma}
+\begin{proof}
+$\perp$ is symmetric because comparability is. If $O_0\subseteq O_1$ and $O_1\perp O_2$, then
+$O_0\perp O_2$. \revh{If $O_0\subseteq O$, a test function supported in $O_0$ is supported in $O$;
+if $O'\subseteq O''$, $S_\chi\cap J(\supp f)\subseteq O'$ gives $S_\chi\cap J(\supp f)\subseteq O''$.}
+\end{proof}
+\noindent\motiv{\revh{The slab may depend on the test function; one slab for the whole region,
+$S_\chi\cap J(O)\subseteq O'$, suffices, since $J$ is monotone, but on a spacetime it is not
+necessary (Remark~\ref{rem:green-dep-spacetime}). The time-slice argument moves one test function
+at a time, so this is the dependence it uses.\extraonly{ On the lattice, where the supports of test functions
+are the finite sets, it is Example~\ref{ex:lattice-index}.} With no cutoffs no pair is dependent and
+the time-slice property is vacuous; every instance below has cutoffs.}}
+
+\begin{remark}[\revh{Dependence on a spacetime}]\label{rem:green-dep-spacetime}
+\revh{For the Green data of Remark~\ref{rem:green-continuum}, on open regions with compact closure:}
+\begin{itemize}[leftmargin=2em]
+\item \revh{\emph{The dependence of Example~\ref{ex:gh-index} implies that of
+Definition~\ref{def:green-index}.} Let every \revi{endless} causal curve through $O$ meet the Cauchy surface
+$\Sigma$ in $O'$, and let $\supp f\subseteq O$. \revi{Then $J(O)\cap\Sigma\subseteq O'$: a point $q$ of
+$J(O)\cap\Sigma$ lies on a causal curve from a point of $O$, which extends to an endless causal
+curve meeting the acausal $\Sigma$ only at $q$.} Then $Y=\supp f$ is compact, $J(Y)$ is closed, and
+$J(Y)\cap\Sigma$ is compact~\revi{\cite[Lemma~A.5.1, Cor.~A.5.4]{bgp}} and contained in
+$J(O)\cap\Sigma\subseteq O'$. Take $\mathcal T$ with
+$\Sigma=\mathcal T^{-1}(0)$~\revi{\cite[Thm.~1.2]{bernal-sanchez-2006}}. The compact sets
+$\bigl(J(Y)\cap\mathcal T^{-1}[-\revi{\nu},\revi{\nu}]\bigr)\setminus O'$~\revi{\cite[Lemma~A.5.1, Cor.~A.5.4]{bgp}}
+decrease, as $\revi{\nu}\downarrow0$, to $(J(Y)\cap\Sigma)\setminus O'=\emptyset$, so one of them is
+empty, and the slab $\mathcal T^{-1}[-\revi{\nu},\revi{\nu}]$ serves for $f$.}
+\item \revh{\emph{One slab for the whole region is not necessary.} In $1+1$ Minkowski space let
+$O=\{|t|+|x|<1\}$, $\Sigma=\{t=0\}$ and $O'=\{|x|<1,\ |t|<(1-|x|)^2\}$. Every \revi{endless} causal curve through
+$O$ meets $\Sigma$ in $O'$, so $O\dep O'$. But $J(O)=\{t>|x|-1\}\cup\{t<1-|x|\}$ contains every
+$(\revi{t_0},1)$ with $\revi{t_0}\neq0$, and every slab $\mathcal T^{-1}[t_1,t_2]$ meets the timelike line $x=1$ in a
+segment of positive length, hence in such a point, which is not in $O'$.}
+\end{itemize}
+\revh{\revo{The CCR net of the Green data of Remark~\ref{rem:green-continuum}, with all Cauchy temporal functions as cutoffs,} therefore \revo{has} the time-slice axiom in the form of
+Example~\ref{ex:gh-index}\revo{; with fewer cutoffs, such as the inertial slabs of Chapter~\ref{sec:minkowski}, the implication can fail (Remark~\ref{rem:mink-slabs})}. None of this remark is formalized.}
+\end{remark}
+
+\subsection{The derived phase-space data}
+
+\begin{definition}[\revm{Derived phase-space data}]\label{def:green-phase}
+\revm{For Green data, the \emph{derived phase-space data} are:} $E=G^--G^+:\cD\to\cF$; $\cD(O)=\{f\in\cD:\supp f\subseteq O\}$; $V=\cD/\ker E$ with classes
+$[f]$; $\sigma([f],[g])=\langle f,Eg\rangle$.
+\end{definition}
+
+\begin{lemma}[The causal propagator]\label{lem:green-E}
+For \revk{Green data,} \revk{$E=G^--G^+$ and} $f,g\in\cD$:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $\supp Ef\subseteq J(\supp f)$;
+\item $EP_\cD f=0$ and $PEf=0$;
+\item $\langle f,Eg\rangle=-\langle g,Ef\rangle$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] $\supp(G^-f-G^+f)\subseteq\supp G^-f\cup\supp G^+f$ by (G2), and (G6).
+\item[(b)] $EP_\cD f=G^-P_\cD f-G^+P_\cD f=f-f=0$ and $PEf=PG^-f-PG^+f=f-f=0$.
+\item[(c)] By formal adjointness applied to $(f,g)$ and to $(g,f)$,
+$\langle f,G^-g\rangle-\langle f,G^+g\rangle=\langle g,G^+f\rangle-\langle g,G^-f\rangle$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Phase-space data]\label{prop:green-phase}
+\revk{For Green data, the derived data} $(\cD,V,\sigma,[\cdot])$ \revk{of
+Definition~\ref{def:green-phase}} are phase-space data (Definition~\ref{def:phase-space}) over the
+derived causal index.
+\end{proposition}
+\begin{proof}
+\emph{Localization.} $\cD(O)$ is a subspace by (G2), monotone in $O$, and $f\in\cD(\supp f)$.
+
+\emph{The form.} $(f,g)\mapsto\langle f,Eg\rangle$ vanishes for $g\in\ker E$, and for $f\in\ker E$
+by Lemma~\ref{lem:green-E}(c), so it descends to $V\times V$; it is alternating by the same
+lemma. The map $f\mapsto[f]$ is linear and surjective.
+
+\emph{(P1).} If $O_1\perp O_2$, $f\in\cD(O_1)$ and $g\in\cD(O_2)$, then
+$\supp Eg\subseteq J(O_2)$ contains no point of $O_1$, so $\langle f,Eg\rangle=0$ by (G5).
+
+\emph{(P2).} Let \revh{$O\dep O'$ and $f\in\cD(O)$, and take $\chi$ with
+$S_\chi\cap J(\supp f)\subseteq O'$.} With $k$ from (c2) and
+$f'=f-P_\cD k$,
+\[
+\iota f'=f-P\bigl((1-\chi)G^+f+\chi G^-f\bigr)=-P(\chi Ef),
+\]
+by $PG^+f=f$ and linearity. By (c1), $\supp f'\subseteq S_\chi\cap J(\supp f)\subseteq O'$, and by
+Lemma~\ref{lem:green-E}(b), $Ef'=Ef$, so $[f']=[f]$.
+\end{proof}
+
+\begin{proposition}[Nondegeneracy]\label{prop:green-nondeg}
+\revk{For Green data, the derived form $\sigma([f],[g])=\langle f,Eg\rangle$ on $V=\cD/\ker E$} is
+nondegenerate (Definition~\ref{def:nondegenerate}).
+\end{proposition}
+\begin{proof}
+If $\sigma([f],w)=0$ for all $w$, then $\langle g,Ef\rangle=-\sigma([f],[g])=0$ for every $g$, so
+$Ef=0$ by (G5) and $[f]=0$.
+\end{proof}
+
+\begin{theorem}[The axioms for Green data]\label{thm:green-axioms}
+For Green data such that $\CCR(V,\sigma)$ has an irreducible representation, the CCR net of the
+derived phase-space data is generating, causal and has the time-slice property over the derived
+causal index, and its algebra is primitive.
+\end{theorem}
+\begin{proof}
+Propositions~\ref{prop:green-phase} and~\ref{prop:green-nondeg}, and Theorem~\ref{thm:dimock}.
+\end{proof}
+\noindent\motiv{\revh{Without the hypothesis the proof still gives generation, causality and
+time slice (Theorem~\ref{thm:weyl-net}), and simplicity of $\CCR(V,\sigma)$
+(Theorem~\ref{thm:simple}); only primitivity uses the irreducible representation. Every subset
+of $M$ is a region, so $M\dep S_\chi$ for every cutoff, and the time-slice property gives
+$\cA(S_\chi)=\cA(M)$: the algebra of a slab \revo{of the cutoff family} is the whole algebra. This is \revo{a} form of the
+time-slice axiom of locally covariant field theory mentioned in Remark~\ref{rem:time-slice}\revo{, for these slabs. For the Green data of Remark~\ref{rem:green-continuum}, (N3) and isotony also give $\cA(U)=\cA(M)$ for every open neighbourhood $U$ of a smooth spacelike Cauchy surface: the first argument of Remark~\ref{rem:green-dep-spacetime} uses only that the support of a test function is compact, so it gives $M\dep U$}.}}
+
+\subsection{Symmetries}
+
+\begin{definition}[Symmetry of Green data]\label{def:green-symmetry}
+A \emph{symmetry} $\gamma$ of Green data consists of a bijection $\gamma$ of $M$ with
+$\gamma p\leq\gamma q\iff p\leq q$; linear bijections $\gamma_\cD$ of $\cD$ and $\gamma_\cF$ of
+$\cF$ with $\iota\gamma_\cD=\gamma_\cF\iota$, $\supp\gamma_\cF h=\gamma(\supp h)$,
+$G^\pm\gamma_\cD=\gamma_\cF G^\pm$ and $\langle\gamma_\cD f,\gamma_\cF h\rangle=\langle f,h\rangle$; and a
+bijection $\chi\mapsto\gamma\chi$ of the cutoffs with $S_{\gamma\chi}=\gamma(S_\chi)$.
+\end{definition}
+
+\begin{proposition}[Symmetries act on the phase space]\label{prop:green-symmetry}
+A symmetry \revk{$\gamma$ of Green data} gives an isomorphism of the derived phase-space data (Definition~\ref{def:phase-iso})
+with regions \revh{$\kappa_\gamma O=\gamma(O)$}, test functions $\gamma_\cD$, and \revh{the linear bijection}
+$L_\gamma[f]=[\gamma_\cD f]$.
+The identity maps form a symmetry with $L=\mathrm{id}$, and the composite of two symmetries is a
+symmetry with $L_{\gamma_2\gamma_1}=L_{\gamma_2}L_{\gamma_1}$.
+\end{proposition}
+\begin{proof}
+$\gamma$ preserves comparability, so it preserves $\perp$; it maps shadows to shadows and slabs to
+slabs, so $S_\chi\cap J(\revh{Y})\subseteq O'$ iff $S_{\gamma\chi}\cap J(\gamma \revh{Y})\subseteq\gamma O'$
+\revh{for every $Y\subseteq M$}. Since $\supp\gamma_\cD f=\gamma(\supp f)$, $\gamma_\cD\cD(O)=\cD(\gamma O)$\revh{;
+since every cutoff is some $\gamma\chi$ and every test function some $\gamma_\cD f$, $O\dep O'$ iff
+$\gamma O\dep\gamma O'$}. From
+$E\gamma_\cD=\gamma_\cF E$ and injectivity of $\gamma_\cF$, $\gamma_\cD\ker E=\ker E$, so $L_\gamma$ is
+well defined \revh{and bijective, with inverse $[f]\mapsto[\gamma_\cD^{-1}f]$}, and
+$\langle\gamma_\cD f,E\gamma_\cD g\rangle=\langle\gamma_\cD f,\gamma_\cF Eg\rangle
+=\langle f,Eg\rangle$. The identity and composition statements hold on classes.
+\end{proof}
+\noindent\motiv{\revh{The inverse maps of a symmetry form a symmetry, so the symmetries form a
+group. With Theorem~\ref{thm:ccr-cov}, $\gamma\mapsto(\kappa_\gamma,\alpha_{L_\gamma})$ gives
+covariance pairs with the composition law of Axiom~5. Time reversal exchanges $J^+$ and $J^-$,
+hence $G^+$ and $G^-$, so it is not a symmetry in this sense\extraonly{ (compare
+Remark~\ref{rem:massless-reversal})}. Maps between two sets of Green data are defined in the same
+way; they are not needed here.}}
+
+\begin{extra}
+\subsection{The lattice}
+
+\begin{proposition}[Lattice Green data]\label{prop:lattice-green}
+For every $m^2\in\R$ the following are Green data: $M=\Z^2$ with the order of
+Chapter~\ref{sec:nets}; $\cF$ the functions $\Z^2\to\R$ with $\supp h=\{p:h(p)\neq0\}$; $\cD$ the
+finitely supported functions and $\iota$ the inclusion; $P$ the lattice Klein--Gordon operator
+\revh{and $P_\cD$ its restriction to $\cD$};
+the pairing of Chapter~\ref{sec:lattice}; $G^\pm$ of Definition~\ref{def:green}; and the cutoffs
+$\chi_{t_1}$, $t_1\in\Z$, with $\chi_{t_1}h(t,x)=h(t,x)$ for $t\geq t_1+1$ and $0$ otherwise, and
+$S_{\chi_{t_1}}=S_{t_1}$.
+\end{proposition}
+\begin{proof}
+(G1)--(G4) are immediate, and (G5) holds with $\langle\delta_p,h\rangle=h(p)$. (G6):
+Proposition~\ref{prop:green} gives $PG^\pm f=f$, $G^\pm P_\cD f=f$ and the supports. Formal
+adjointness: $\langle f,G^+g\rangle=\sum_{p,q}f(p)g(q)K(p-q)$ and
+$\langle g,G^-f\rangle=\sum_{p,q}g(q)f(p)K(t_p-t_q,x_q-x_p)$ agree because $K$ is even in $x$
+(Lemma~\ref{lem:kernel}(c)). (c1): $P(\chi_{t_1}Ef)=PEf-P((1-\chi_{t_1})Ef)=-f'$ with $f'$ the
+test function of Theorem~\ref{thm:lattice-timeslice}. (c2): $(1-\chi_{t_1})G^+f$ vanishes before the
+earliest time of $\supp f$ and after $t_1$, and at each time for $|x|$ beyond the spatial extent
+of $\supp f$ plus the elapsed time (Lemma~\ref{lem:kernel}(b)); likewise $\chi_{t_1}G^-f$. So $k$
+is finitely supported.
+\end{proof}
+
+\begin{theorem}[Comparison with Chapter~\ref{sec:latticenet}]\label{thm:lattice-green-compare}
+For the lattice Green data, the derived causal index is that of Example~\ref{ex:lattice-index},
+$E$ is the causal propagator of Chapter~\ref{sec:lattice}, and the identity maps of regions, test
+functions and $\cD/\ker E$ form an isomorphism from the derived phase-space data to those of
+Proposition~\ref{prop:lattice-data}.
+\end{theorem}
+\begin{proof}
+Comparability is the lattice's, $J(O)$ is the lattice shadow and $S_{\chi_{t_1}}=S_{t_1}$, so
+$\perp$ \revh{agrees, and $\dep$ agrees because the supports of test functions are the finite sets
+(the indicator of a finite $Y$ has support $Y$)}. $E=G^--G^+$ is the definition of Chapter~\ref{sec:lattice}, and
+$\cD(O)$, $V$ and $\sigma$ are given by the same formulas as in
+Proposition~\ref{prop:lattice-data}.
+\end{proof}
+
+\begin{proposition}[Translations]\label{prop:lattice-green-translate}
+For $a\in\Z^2$, the translation $\gamma p=p+a$, with $\gamma_\cD f=f(\cdot-a)$,
+$\gamma_\cF h=h(\cdot-a)$ and $\gamma\chi_{t_1}=\chi_{t_1+a_t}$, is a symmetry \revm{of the lattice Green data of
+Proposition~\ref{prop:lattice-green}}, and under the
+comparison $L_\gamma=L_a$ (Proposition~\ref{prop:lattice-iso}).
+\end{proposition}
+\begin{proof}
+The order, supports and pairing are translation invariant, $G^\pm$ commute with translations
+because their kernels depend on $p-q$, and $S_{t_1+a_t}=S_{t_1}+a$. On classes,
+$L_\gamma[f]=[f(\cdot-a)]=L_a[f]$.
+\end{proof}
+\noindent\motiv{\revh{By Theorem~\ref{thm:lattice-green-compare} and
+Proposition~\ref{prop:lattice-green-translate}, with Propositions~\ref{prop:green-phase}
+and~\ref{prop:green-symmetry}, the generation, causality, time slice and translation covariance of Theorem~\ref{thm:lattice-net}
+follow from the Green data alone; primitivity, Corollary~\ref{cor:lattice-dimock}, carries the
+irreducible-representation hypothesis of Theorem~\ref{thm:green-axioms}. A continuum instance needs
+Green data on a spacetime, sketched in Remark~\ref{rem:green-continuum}; \revjt{with all Cauchy temporal
+functions as cutoffs} it has the time-slice axiom in
+the form of Example~\ref{ex:gh-index} (Remark~\ref{rem:green-dep-spacetime})\revjt{. Chapter~\ref{sec:minkowski}
+formalizes the massless field on Minkowski space with slabs between parallel hyperplanes as cutoffs,
+which gives that form for flat Cauchy surfaces (Remark~\ref{rem:mink-slabs})}\revlt{, and
+Chapter~\ref{sec:mass} the Klein--Gordon field with any real $m^2$ and the same cutoffs}.}}
+\end{extra}
+
+\dimockonly{\noindent\motiv{\revm{A continuum instance needs Green data on a spacetime, sketched in
+Remark~\ref{rem:green-continuum}; with all Cauchy temporal functions as cutoffs it has the time-slice
+axiom in the form of Example~\ref{ex:gh-index} (Remark~\ref{rem:green-dep-spacetime}).
+Chapter~\ref{sec:minkowski} formalizes the massless field on Minkowski space with slabs between
+parallel hyperplanes as cutoffs, which gives that form for flat Cauchy surfaces
+(Remark~\ref{rem:mink-slabs}), and Chapter~\ref{sec:mass} the Klein--Gordon field with any real
+$m^2$ and the same cutoffs.}}}
+
+\medskip\noindent\motiv{\revm{\extraonly{Chapters~\ref{sec:lattice}--\ref{sec:latticenet} prove these lattice facts directly; this
+chapter recovers them from the Green data, and Corollary~\ref{cor:lattice-dimock} collects them.
+}Uniqueness of the Green operators is not a consequence of Green data: it needs $P$ to be formally
+self-adjoint on pairs of functions whose supports meet in a compact set, and it is proved for each
+instance (\extraonly{Lemma~\ref{lem:unique}, }Theorems~\ref{thm:mink-unique} and~\ref{thm:kg-greenops}(b)).}}
+\endgroup

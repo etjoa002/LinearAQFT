@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\numberwithin{equation}{section}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta}
+\usepackage{enumitem}
+\usepackage{booktabs,longtable,array}
+% Motivating paragraphs; set \motiv to \textcolor{Blue}{#1} to highlight them while vetting.
+\newcommand{\motiv}[1]{#1}
+% Editions. LinearAQFT.tex typesets the full notes; LinearAQFT-Dimock.tex defines
+% \AQFTDimockEdition and inputs this file, and typesets only what the verification of Dimock's
+% axioms for the free field needs. Material outside that (the lattice field, Huygens' principle,
+% illustrations) is in the environment `extra` (on lines of their own) or in \extraonly{...};
+% \dimockonly{...} is text for the Dimock edition alone.
+\newif\ifdimockedition
+\ifdefined\AQFTDimockEdition\dimockeditiontrue\fi
+\usepackage{comment}
+\ifdimockedition\excludecomment{extra}\else\includecomment{extra}\fi
+\newcommand{\extraonly}[1]{\ifdimockedition\else#1\fi}
+\newcommand{\dimockonly}[1]{\ifdimockedition#1\fi}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\alg}{\operatorname{alg}}
+\newcommand{\calg}{\overline{\operatorname{alg}}}
+\newcommand{\dep}{\mathrel{\triangleleft}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\CCR}{\operatorname{CCR}}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cF}{\mathcal F}
+\DeclareMathOperator{\supp}{supp}
+% Passages for the user to vet; set to {#1} once accepted.
+\newcommand{\vet}[1]{#1}
+\newcommand{\vetsource}[1]{#1}  % awaits a check against the source
+% Revisions after the oral examination of 26 Sep 2026; set to {#1} once the user accepts them.
+\newcommand{\rev}[1]{#1}  % accepted by the user, 26 Sep 2026
+% Terminology revision of 26 Sep 2026 (standard terms; citations for credit); set to {#1} once accepted.
+\newcommand{\revb}[1]{#1}  % accepted by the user, 27 Sep 2026
+% Revisions after the oral examination of milestone C (26 Sep 2026); set to {#1} once accepted.
+\newcommand{\revc}[1]{#1}  % accepted by the user, 27 Sep 2026
+% Additions from the chapter-by-chapter reading of 27 Sep 2026; set to {#1} once accepted.
+\newcommand{\revd}[1]{#1}  % accepted by the user, 27 Sep 2026
+% Milestone E2 (chapter 5 and its oral exam, 27 Sep 2026); set to {#1} once accepted.
+\newcommand{\reve}[1]{#1}  % accepted by the user, 27 Sep 2026
+% Milestone D1 (chapter 6 and its oral exam, 27 Sep 2026); set to {#1} once accepted.
+\newcommand{\revf}[1]{#1}  % accepted by the user, 27 Sep 2026
+% Milestone D1 whole-document meaning pass (27 Sep 2026); set to {#1} once accepted.
+\newcommand{\revg}[1]{#1}  % accepted by the user, 27 Sep 2026
+% Stage F (chapter 7 and its oral exam, 28 Sep 2026); set to {#1} once accepted.
+\newcommand{\revh}[1]{#1}  % accepted by the user, 28 Sep 2026
+% Stage F whole-document meaning pass (28 Sep 2026); set to {#1} once accepted.
+\newcommand{\revi}[1]{#1}  % accepted by the user, 28 Sep 2026
+% Stage G (chapter 8, its oral exam and the closed-supports amendment, 29 Sep 2026).
+\newcommand{\revj}{\relax}  % accepted by the user, 29 Sep 2026
+\newcommand{\revjt}[1]{#1}  % accepted by the user, 29 Sep 2026
+% Stage G whole-document meaning pass (29 Sep 2026); set to {#1} once accepted.
+\newcommand{\revk}[1]{#1}  % accepted by the user, 29 Sep 2026 (after an exposition read)
+% Stage H (chapter 9, the Klein--Gordon field, 30 Sep 2026).
+\newcommand{\revl}{\relax}  % accepted by the user, 30 Sep 2026
+\newcommand{\revlt}[1]{#1}  % accepted by the user, 30 Sep 2026
+% Closing pass of the programme (30 Sep 2026); set to {#1} once accepted.
+\newcommand{\revm}[1]{#1}  % accepted by the user, 30 Sep 2026
+\newcommand{\revtag}[1]{#1}  % tag explanation standardized, 13 Oct 2026; accepted by the user, 13 Oct 2026
+% Dependency sentence for the Dimock slices (cloud session, 30 Sep 2026; approved in an earlier
+% wording, revised after merging the closing pass); set to {#1} once accepted.
+\newcommand{\revn}[1]{#1}  % accepted by the user, 30 Sep 2026
+\newcommand{\revo}[1]{#1}  % notes pass of 1 Oct 2026; accepted by the user, 1 Oct 2026
+\title{Algebraic quantum field theory of linear fields\dimockonly{\\[4pt]\large The axioms of Dimock for the free scalar field}}
+\author{}
+\date{}
+\input{lean-links}
+\input{checked-labels}
+\begin{document}
+\AQFTEnableLinks
+\sloppy
+\maketitle
+\vspace{-2em}
+\noindent\motiv{In algebraic quantum field theory~\cite{haagkastler} the observables measurable in a region $O$
+of spacetime form a C*-algebra $\cA(O)$. \revc{The observables are taken bounded, such as the exponentials
+$e^{\ii\phi(f)}$ of smeared fields rather than the unbounded fields $\phi(f)$, which avoids
+questions of domains; closing in norm makes each $\cA(O)$ a C*-algebra\revd{, which for the free
+field is determined by the canonical commutation relations up to isomorphism, independently of the
+Hilbert space (Remark~\ref{rem:weyl-covariance})}.}}
+
+\motiv{These algebras sit inside one another: larger regions have larger algebras, algebras of spacelike separated
+regions commute, and the algebra of a region is already contained in the algebra of any
+region that determines it causally. Dimock~\cite{dimock} formulated these requirements for a
+Lorentzian manifold as five axioms and verified them for the free scalar field on a globally
+hyperbolic spacetime. \revm{These notes give a formalized version of that verification} \revo{in an abstract form: the spacetime enters only through the Green data described next, primitivity is proved given an irreducible representation, and Dimock's form of the time-slice axiom follows on paper}\revm{.}}
+
+\motiv{\revm{The analysis the verification rests on is the existence of retarded and advanced Green
+operators for the Klein--Gordon operator, a theorem of hyperbolic partial differential
+equations~\cite{bgp}. Here it enters as a hypothesis, the Green data of Chapter~\ref{sec:green},
+modelled on the Green-hyperbolic operators of~\cite{baer-green}. The hypothesis is proved \extraonly{on a
+lattice spacetime, the running example (Chapters~\ref{sec:lattice} and~\ref{sec:latticenet}), }for
+the free massless field on $3+1$ Minkowski space (Chapter~\ref{sec:minkowski}), and for the
+Klein--Gordon field there with any real $m^2$, negative values included (Chapter~\ref{sec:mass}).}}
+
+{\small\tableofcontents}
+\medskip
+
+\section*{About these notes}
+\noindent\motiv{\revm{These notes are the mathematical account of the Lean library LinearAQFT and the
+blueprint from which it was built. The library depends on Mathlib, on LocalAlgebrasLean, which
+holds regions with their orthogonality and nets of local algebras, and on BosonicLean, which holds
+the CCR algebra, Weyl systems, their relabelling and pullback, the simplicity theorem, irreducible
+representations and primitivity; the
+declaration index at the end names the declarations of LinearAQFT and BosonicLean.}}
+
+\medskip
+\noindent\motiv{\revm{\textbf{Terminology.} Standard terms keep their usual meaning: net of local
+algebras; Weyl operator; Weyl system (here required to generate its algebra); CCR algebra; vector
+state; retarded and advanced Green operators; \extraonly{commutator function; }causal propagator; Cauchy
+surface; globally hyperbolic; Cauchy temporal function; Green-hyperbolic
+operator~\cite{baer-green}; the retarded potential; spherical means; orthochronous Lorentz and
+Poincar\'e maps; the Klein--Gordon operator; local operators; the tachyonic case\extraonly{; chronological
+order; Huygens' principle}. The axioms are those of~\cite[p.~220]{dimock}: Axioms~1--3 (isotony
+with generation, primitivity, causality) are essentially the Haag--Kastler
+axioms~\cite{haagkastler}, Axiom~4 (time slice) goes back to Haag and
+Schroer~\cite{haag-schroer}, and Axiom~5 is covariance. Results of~\cite{dimock} are
+cited by their numbers there, for example Axiom~4 or Theorem~4 of~\cite{dimock}.}}
+
+\medskip
+\noindent\motiv{\revm{The \emph{time-slice property} is condition (N3) of
+Definition~\ref{def:axioms} for the causal index at hand; the \emph{time-slice axiom} is Axiom~4
+of~\cite{dimock}, (N3) for the dependence of Example~\ref{ex:gh-index}. For Green data the first is
+proved (\revo{Proposition~\ref{prop:green-phase} and Theorem~\ref{thm:weyl-net}}). \revo{On paper it implies the second for the Green data of Remark~\ref{rem:green-continuum}, whose cutoffs are given by all Cauchy temporal functions (Remark~\ref{rem:green-dep-spacetime}), and for the instances of Chapters~\ref{sec:minkowski} and~\ref{sec:mass}, whose cutoffs are inertial slabs, when the Cauchy surface is flat. For a curved Cauchy surface that implication can fail, and the axiom then rests on all Cauchy temporal functions as cutoffs, which are not formalized (Remark~\ref{rem:mink-slabs}).}}}
+
+\medskip
+\noindent\motiv{\revm{\textbf{Coined terms.} These terms are coined for these notes and defined where
+they first appear: causal index (Definition~\ref{def:causal-index}); covariance pair
+(Definition~\ref{def:covariance}); family of generators and generated net
+(Definition~\ref{def:generated}); relabelling unitary (Definition~\ref{def:relabel}); right Weyl
+operator (Definition~\ref{def:right-weyl}); phase-space data (Definition~\ref{def:phase-space}); the
+net of a Weyl system (Definition~\ref{def:weyl-net}); the CCR net (Definition~\ref{def:ccr-net});
+\extraonly{the pullback of a Weyl system (Definition~\ref{def:pullback}); the Cauchy map
+(Definition~\ref{def:cauchy-map}); the Cauchy-data net (Definition~\ref{def:cauchy-net}); }the
+average $\mathsf M^u_n$ (Definition~\ref{def:average}); Green data with their Green identities
+$PG^\pm f=f$, $G^\pm P_\cD f=f$ (not Green's identities of vector calculus), cutoffs and slabs
+(Definition~\ref{def:green-data}); the derived causal index (Definition~\ref{def:green-index}); the
+derived phase-space data (Definition~\ref{def:green-phase}); a symmetry of Green data
+(Definition~\ref{def:green-symmetry}); the future and past cone measures
+(Definition~\ref{def:kirchhoff}); future unit vectors and inertial slabs
+(Definition~\ref{def:mink-cutoff}); the extended Green operators and functions supported in the
+future or past of a compact set (Definition~\ref{def:kg-supported}).}}
+
+\medskip
+\noindent\motiv{\textbf{Reading conventions.} C*-algebras are unital and complex; a
+$*$-homomorphism is unital. For a subset $s$ of a C*-algebra $A$, $\alg(s)$ is the smallest
+$*$-subalgebra of $A$ containing $s$, and $\calg(s)$ is its norm closure, the C*-subalgebra
+generated by $s$. Subalgebras and $*$-subalgebras contain the unit. Two elements commute when $ab=ba$. Inner
+products are linear in the second argument. \revg{$\pi$ and $e$ also keep their numerical
+meaning.} $[x=y]$ is $1$ if $x=y$ and $0$ otherwise.}
+
+\medskip
+\noindent\motiv{A statement marked
+\revtag{\AQFTLeanTag{}} has a checked proof in LinearAQFT\revm{ or in its dependency BosonicLean}
+whose correspondence with the statement here has been independently reviewed; the declaration index at the end names the
+checked declarations. Every Example carries exactly one status: \AQFTLeanTag{} as above,
+\AQFTScriptTag{} when a check script verifies it exhaustively, or \AQFTPaperTag{} when it is
+checked on paper only. Definitions, Remarks and paragraphs of motivation carry no marks\revm{; they are
+checked on paper, and ``on paper'' in them marks a claim that goes beyond the marked statements they
+cite}. A sentence tagged \AQFTArtefactTag{} records a choice made for the formalization that
+a proof on paper would not need.}
+
+\section*{Notation}
+\noindent \revm{Each row lists symbols and their meanings, with the chapter where each meaning is
+defined in parentheses; a second meaning of a symbol is used only in the place its row names.}
+{\small
+\ifdimockedition\def\notationfile{notation-dimock}\else\def\notationfile{notation-full}\fi
+\begin{longtable}{@{}l>{\raggedright\arraybackslash}p{0.66\textwidth}@{}}
+\input{\notationfile}
+\end{longtable}}
+\input{roadmap}
+\input{nets}
+\input{weyl}
+\extraonly{\input{lattice}}
+\input{phasespace}
+\extraonly{\input{latticenet}}
+\input{simple}
+\input{green}
+\input{minkowski}
+\input{mass}
+\input{references}
+\ifdimockedition\input{lean-index-dimock}\else\input{lean-index}\fi
+\end{document}

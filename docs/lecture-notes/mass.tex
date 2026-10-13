@@ -1,0 +1,598 @@
+\clearpage
+\begingroup
+\revl
+\section{The Klein--Gordon field on Minkowski space}\label{sec:mass}
+
+\noindent\motiv{Chapter~\ref{sec:minkowski} constructs Green data for the wave operator $P$ on
+$3+1$ Minkowski space. This chapter adds a mass term. For every real $m^2$ it constructs the
+retarded and advanced Green operators of the Klein--Gordon operator $P+m^2$, which gives the free
+field with that operator: its CCR net is generating, causal and has the time-slice property for the
+inertial slabs, its algebra is primitive given an irreducible representation, its Green operators are
+unique, and it is covariant under the orthochronous
+Poincar\'e group (Theorem~\ref{thm:kg-field}). At $m^2=0$ the Green data are those of
+Chapter~\ref{sec:minkowski} (Corollary~\ref{cor:kg-zero}).}
+
+\medskip\noindent\motiv{The Green operators are the series $G^\pm_{m^2}=\sum_{j\ge0}(-m^2)^j(G^\pm)^{j+1}$ in the
+Green operators $G^\pm$ of the wave operator (Definition~\ref{def:kirchhoff}). Formally
+$(P+m^2)^{-1}=P^{-1}(1+m^2P^{-1})^{-1}$, and the series is the geometric series of the second factor.
+It is a sum of smooth functions $(G^\pm)^{j+1}f$, not of distribution kernels\extraonly{
+(Remark~\ref{rem:kg-kernels})}.}
+
+\medskip\noindent\motiv{Already its second term applies $G^+$ to $G^+f$, which is not compactly supported. The
+chapter therefore first extends $G^\pm$ to functions supported in the causal future or past of a
+compact set and bounds the iterates by $(t-t_0)^{2j}/(2j)!$; these factorials make the series
+converge for every real $m^2$ (Proposition~\ref{prop:kg-conv}).\extraonly{ It ends by comparing propagation:
+for $m^2=0$ the Green operators propagate only along the light cone, and for every $m^2\neq0$ they
+also propagate inside it (Theorem~\ref{thm:kg-iff}).}}
+
+\subsection{The Klein--Gordon operator}
+
+\begin{definition}[Klein--Gordon operator]\label{def:kg}
+For a real number $m^2$, the Klein--Gordon operator $P_{m^2}=P+m^2$ acts on $\cF$ and on $\cD$ by
+$P_{m^2}h=Ph+m^2h$, with $P$ the wave operator of Definition~\ref{def:mink}. The parameter $m^2$ is
+written as a square, as in Remark~\ref{rem:dictionary}, whose operator $P$ is $P_{m^2}$ here, but may
+be negative: $m^2>0$ is the free field of mass $m$, and $m^2<0$ is the tachyonic case.
+\end{definition}
+
+\begin{lemma}[Properties of the Klein--Gordon operator]\label{lem:kg}
+For every $m^2\in\R$ the operator $P_{m^2}$ of Definition~\ref{def:kg} satisfies:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $P_0=P$, on $\cF$ and on $\cD$;
+\item $\iota P_{m^2}f=P_{m^2}\iota f$ for $f\in\cD$;
+\item $\langle P_{m^2}f,h\rangle=\langle f,P_{m^2}h\rangle$ for $f\in\cD$ and $h\in\cF$;
+\item $P_{m^2}$ is local, and it is Poincar\'e invariant (Definition~\ref{def:kg-greenops}).
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Each property holds for $P$ (Proposition~\ref{prop:kg-wave}) and for multiplication by the constant
+$m^2$, and is preserved by sums.
+\end{proof}
+
+\subsection{The Green operators beyond test functions}\label{sec:kg-extend}
+
+\noindent\motiv{By Theorem~\ref{thm:kg-greenops}, the axioms, uniqueness and covariance for the field
+with $P_{m^2}$ follow once Green operators for $P_{m^2}$ exist; they are the series of
+Definition~\ref{def:kg-series}, built on the extension of $G^\pm$ in Proposition~\ref{prop:kg-ext}.
+The value $G^+h(p)$ samples $h$ only on the causal past of $p$. Cutting $h$ off far from that past
+turns it into a test function without changing $G^+h$ near $p$, so the results of
+Chapter~\ref{sec:minkowski} for test functions carry over.}
+
+\begin{definition}[Extended Green operators; functions supported in a causal cone]\label{def:kg-supported}
+A function $h:M\to\R$ is \emph{supported in the future of a compact set} if $\supp h\subseteq J^+(K)$
+for some compact $K\subseteq M$, and \emph{supported in the past of a compact set} if
+$\supp h\subseteq J^-(K)$ for some compact $K$. $\cF^+$ and $\cF^-$ are the smooth such functions;
+test functions lie in both.
+
+The \emph{extended Green operators} are the Green operators $G^\pm$ of
+Definition~\ref{def:kirchhoff}, extended to all functions: for $h:M\to\R$ and $p\in M$,
+\revm{$G^\pm h(p)=\int_Mh(p-w)\,\mu^\pm(dw)$,} \artefact{taken as $0$ when it does not converge
+absolutely}\revm{. For continuous $h$ this is
+\[
+G^\pm h(p)=\frac1{4\pi}\int_{\R^3}h(p^0\mp|y|,\vec p-y)\,\frac{dy}{|y|}
+\]
+by the proof of Proposition~\ref{prop:kirchhoff}(a).} On test functions they are the operators of Definition~\ref{def:kirchhoff}, by
+Proposition~\ref{prop:kirchhoff}(a). Their iterates are $(G^\pm)^0h=h$ and
+$(G^\pm)^{j+1}h=G^\pm\bigl((G^\pm)^jh\bigr)$.
+\end{definition}
+
+\begin{lemma}[Causality of $G^\pm$]\label{lem:kg-causal}
+Let $h,h':M\to\R$ be continuous and $p\in M$. If $h=h'$ on $J^-(\{p\})$, then the extended Green operator
+$G^+$ of Definition~\ref{def:kg-supported} satisfies $G^+h(p)=G^+h'(p)$. If $h=h'$ on $J^+(\{p\})$,
+then $G^-h(p)=G^-h'(p)$.
+\end{lemma}
+\begin{proof}
+The sample point $q=(p^0-|y|,\vec p-y)$ of $G^+h(p)$ has $p-q=(|y|,y)$ future causal, so $q\le p$,
+and the two integrands agree for every $y$. The sample points of $G^-h(p)$ are
+$(p^0+|y|,\vec p-y)\ge p$.
+\end{proof}
+
+\begin{lemma}[\revm{Localization}]\label{lem:kg-cutoff}
+Let $M$, $\le$, $J^\pm$ and $\cD$ be as in Definition~\ref{def:mink}, and $\operatorname{dist}$ the
+distance of the norm $\max(|q^0|,|\vec q|)$ on $M$.
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item For compact $K,K'\subseteq M$, the set $J^+(K)\cap J^-(K')$ is compact.
+\item For compact $A\subseteq M$ there is $\psi\in\cD$ with $\psi=1$ on
+$\{q:\operatorname{dist}(q,A)<1\}$.
+\item Let $h,\psi:M\to\R$ and $K,U\subseteq M$ with $\supp h\subseteq J^+(K)$ and $\psi=1$ on
+$\{q:\operatorname{dist}(q,A)<1\}$, where $A=J^+(K)\cap J^-(\overline U)$. Then for every $p\in U$, $\psi h=h$ on a
+neighbourhood of every point of $J^-(\{p\})$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] The set is closed (Lemma~\ref{lem:mink-compact}(b)). It lies in
+$J^+(K)\cap\{q^0\le t_2\}$, with $t_2$ \revm{an upper bound of the times in} $K'$, which is compact by
+Lemma~\ref{lem:mink-compact}(b) for the future unit vector $e_0$.
+\item[(b)] A smooth bump function equal to $1$ on the closed $1$-neighbourhood of $A$ and supported in
+its $2$-neighbourhood, which is compact.
+\item[(c)] Let $q\le p$. If $q\in\supp h$, then $q\in A$ and $\psi=1$ near $q$. Otherwise $h=0$ near
+$q$, and so is $\psi h$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[$G^\pm$ on $\cF^\pm$]\label{prop:kg-ext}
+For the extended Green operators $G^\pm$ and the spaces $\cF^\pm$ of Definition~\ref{def:kg-supported}:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item \revm{if $h$ is continuous with $\supp h\subseteq J^+(K)$, $K$ compact, then
+$\supp G^+h\subseteq J^+(K)$;}
+\item \revm{for $h\in\cF^+$,} $G^+h$ is smooth, and $\partial_vG^+h=G^+\partial_vh$ for every direction $v$;
+\item \revm{for $h\in\cF^+$,} $G^+h\in\cF^+$;
+\item \revm{for $h\in\cF^+$,} $PG^+h=h$ and $G^+Ph=h$;
+\item \revm{with $r(t,\vec x)=(-t,\vec x)$, $G^-h(p)=G^+(h\circ r)(rp)$ for continuous $h$, and
+(a)--(d) hold for $G^-$ on $\cF^-$ with $J^-$ in place of $J^+$.}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\emph{Supports.} If $G^+h(p)\ne0$, some sample point $q\le p$ has $h(q)\ne0$, so $p\in J^+(K)$ by
+transitivity; $J^+(K)$ is closed. This gives \revm{(a)}\revo{, and with (b) below, (c)}.
+
+\emph{Localizing.} Fix $p'$, let $U$ be the open unit ball about it in the norm of
+Lemma~\ref{lem:kg-cutoff}, and take $\psi$ from Lemma~\ref{lem:kg-cutoff}(b), (a) with
+$A=J^+(K)\cap J^-(\overline U)$. For $p\in U$, $h=\psi h$ on $J^-(\{p\})$ by
+Lemma~\ref{lem:kg-cutoff}(c), so $G^+h=G^+(\psi h)$ on $U$ by Lemma~\ref{lem:kg-causal}. Since $\psi h\in\cD$,
+Proposition~\ref{prop:kirchhoff}(b) gives smoothness on $U$. For the derivative,
+$\partial_vh=\partial_v(\psi h)$ near every point of $J^-(\{p\})$ by Lemma~\ref{lem:kg-cutoff}(c),
+so $\partial_vG^+h=G^+\partial_v(\psi h)=G^+\partial_vh$ on $U$. This is \revm{(b)}.
+
+\emph{Green identities.} On $U$, $PG^+h=PG^+(\psi h)=\psi h$ by locality of $P$ and
+Corollary~\ref{cor:mink-green}, and $\psi h(p)=h(p)$. Since $Ph=P(\psi h)$ near every point of
+$J^-(\{p\})$, also $G^+Ph(p)=G^+P(\psi h)(p)=h(p)$. This is \revm{(d)}.
+
+\emph{The advanced case.} $\mu^-$ is the image of $\mu^+$ under $r$, since $dy/|y|$ is invariant
+under $y\mapsto-y$; this gives the formula for $G^-$. The involution $r$ reverses the order, so it
+exchanges $\cF^+$ and $\cF^-$; it commutes with $P$, and
+$\partial_v(h'\circ r)=(\partial_{rv}h')\circ r$ for smooth $h'$. Applying the retarded statements to
+$h\circ r$ gives the advanced ones\revm{, (e)}.
+\end{proof}
+
+\begin{lemma}[Power bound]\label{lem:kg-power}
+For every $s\ge0$ and every integer $n\ge0$,
+\[
+\int_0^s\rho(s-\rho)^n\,d\rho=\frac{s^{n+2}}{(n+1)(n+2)}.
+\]
+Let $h:M\to\R$ be continuous, $n\ge0$ an integer, and $t_0,T,C\in\R$, with $h(q)=0$ for $q^0<t_0$
+and $|h(q)|\le C(q^0-t_0)^n/n!$ for $t_0\le q^0\le T$. Then the extended Green operator $G^+$ of
+Definition~\ref{def:kg-supported} satisfies
+\[
+|G^+h(p)|\le C\,\frac{(p^0-t_0)^{n+2}}{(n+2)!}\qquad\text{for }t_0\le p^0\le T.
+\]
+\end{lemma}
+\begin{proof}
+\emph{The integral.} Substitute $\rho\mapsto s-\rho$ and integrate $(s-\rho)\rho^n$ term by term.
+
+\emph{The bound.} Put $s=p^0-t_0$. The sample point $(p^0-|y|,\vec p-y)$ has time at most $T$, and
+$h$ vanishes there unless $|y|\le s$, when its time exceeds $t_0$ by $s-|y|$. In polar coordinates,
+\[
+|G^+h(p)|\le\frac C{4\pi}\int_{|y|\le s}\frac{(s-|y|)^n}{n!\,|y|}\,dy
+=\frac C{n!}\int_0^s\rho(s-\rho)^n\,d\rho=C\,\frac{s^{n+2}}{(n+2)!}.
+\]
+\end{proof}
+
+\begin{corollary}[Iterates]\label{cor:kg-iterate}
+Let $h$ be smooth with $\supp h\subseteq J^+(K)$, $K$ compact, let $j\ge0$, and let $(G^+)^j$ be the
+iterate of Definition~\ref{def:kg-supported}. Then:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $(G^+)^jh$ is smooth with support in $J^+(K)$, and for every $t_0\in\R$ it vanishes on
+$\{q^0<t_0\}$ when $h$ does;
+\item if $t_0,T,C\in\R$, $h$ vanishes on $\{q^0<t_0\}$ and $|h|\le C$ on $\{q^0\le T\}$, then
+$|(G^+)^jh(p)|\le C(p^0-t_0)^{2j}/(2j)!$ for $t_0\le p^0\le T$;
+\item $\partial_v(G^+)^jh=(G^+)^j\partial_vh$ for every direction $v$; so if $t_0,T,C'\in\R$, $h$
+vanishes on $\{q^0<t_0\}$ and $|\partial_vh|\le C'$ on $\{q^0\le T\}$, then
+$|\partial_v(G^+)^jh(p)|\le C'(p^0-t_0)^{2j}/(2j)!$ for $t_0\le p^0\le T$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+Induction on $j$.
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] Proposition~\ref{prop:kg-ext}\revm{(b), (c)}; the vanishing before $t_0$ follows from
+Lemma~\ref{lem:kg-causal}, since all sample points of $G^+h(p)$ lie at times at most $p^0$.
+\item[(b)] Lemma~\ref{lem:kg-power} with $n=2j$, since $2j+2=2(j+1)$.
+\item[(c)] Proposition~\ref{prop:kg-ext}\revm{(b)}, applied $j$ times, and (b) for $\partial_vh$, which
+vanishes on the open set $\{q^0<t_0\}$.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Formal adjointness of $G^\pm$ on $\cF^\pm$]\label{prop:kg-adj}
+For $h_1\in\cF^-$ and $h_2\in\cF^+$ (Definition~\ref{def:kg-supported}), the functions $h_1\,G^+h_2$
+and $(G^-h_1)\,h_2$ are integrable, and $\int_Mh_1\,G^+h_2\,dp=\int_M(G^-h_1)\,h_2\,dp$.
+\end{proposition}
+\begin{proof}
+\emph{Integrability.} Let $\supp h_1\subseteq J^-(K')$ and $\supp h_2\subseteq J^+(K)$. By
+Proposition~\ref{prop:kg-ext} both products vanish outside $A=J^+(K)\cap J^-(K')$, which is compact
+(Lemma~\ref{lem:kg-cutoff}(a)); they are continuous, hence integrable.
+
+\emph{Cutting off.} Take $\psi\in\cD$ equal to $1$ near $A$. For $p\in A$ and $q\le p$, either
+$h_2(q)=0$ or $q\in J^+(K)\cap J^-(K')=A$; so $\psi h_2=h_2$ on $J^-(\{p\})$, and likewise $\psi
+h_1=h_1$ on $J^+(\{p\})$. Hence $G^+h_2(p)=G^+(\psi h_2)(p)$ and $G^-h_1(p)=G^-(\psi h_1)(p)$ by
+Lemma~\ref{lem:kg-causal}, and the \revm{localized} products also vanish outside $A$. So
+Proposition~\ref{prop:kirchhoff}(d) for the test functions $\psi h_1$, $\psi h_2$ gives
+$\int h_1\,G^+h_2=\int\psi h_1\,G^+(\psi h_2)=\int G^-(\psi h_1)\,\psi h_2=\int(G^-h_1)\,h_2$.
+\end{proof}
+
+\subsection{The Green operators as a series}
+
+\begin{definition}[The series]\label{def:kg-series}
+For $m^2\in\R$ and $f:M\to\R$, with the iterates $(G^\pm)^{j+1}$ of the extended Green operators
+(Definition~\ref{def:kg-supported}),
+\[
+G^\pm_{m^2}f(p)=\sum_{j\ge0}(-m^2)^j(G^\pm)^{j+1}f(p),
+\]
+with $(-m^2)^0=1$, the sum taken pointwise (\artefact{and as $0$ where the series does not converge
+absolutely}). For test functions the series converges absolutely (Proposition~\ref{prop:kg-conv}), so
+the convention is not used for them.
+\end{definition}
+
+\begin{lemma}[Linearity of the iterates]\label{lem:kg-linear}
+For the extended Green operators $G^\pm$ and their iterates (Definition~\ref{def:kg-supported}): for
+continuous $h$ supported in the future of a compact set, the integrand $y\mapsto
+h(p^0-|y|,\vec p-y)/|y|$ of $G^+h(p)$ is integrable for every $p$, and $G^+$ is additive on such
+functions. For smooth $h_1,h_2$ supported in the future of compact sets and every $j$,
+$(G^+)^j(h_1+h_2)=(G^+)^jh_1+(G^+)^jh_2$. For every $h:M\to\R$ and $\lambda\in\R$,
+$(G^\pm)^j(\lambda h)=\lambda\,(G^\pm)^jh$ and $(G^\pm)^{j+1}h=(G^\pm)^j(G^\pm h)$.
+\end{lemma}
+\begin{proof}
+\emph{Integrability and additivity.} Let $\supp h\subseteq J^+(K)$; if $K$ is empty, $h=0$.
+Otherwise let $t_K=\min_Kq^0$. A sample
+point in $J^+(K)$ has time at least $t_K$, so the integrand vanishes unless $|y|\le p^0-t_K$. There it
+is bounded by $\max_B|h|/|y|$, with $B$ the compact set of the sample points $(p^0-|y|,\vec p-y)$,
+$|y|\le p^0-t_K$, and $1/|y|$ is integrable on balls of $\R^3$. Additivity of $G^+$ follows.
+
+\emph{Iterates.} Additivity of $(G^+)^j$ follows by induction with Proposition~\ref{prop:kg-ext}\revm{(b),
+(c)}. Homogeneity holds for every integral, and the last identity is associativity of iteration.
+\end{proof}
+
+\begin{proposition}[Convergence]\label{prop:kg-conv}
+Let $m^2,t_0\in\R$, $C\ge0$, and let $f\in\cD$ vanish on $\{q^0<t_0\}$ with $|f|\le C$. \revm{For the
+iterates of Definition~\ref{def:kg-supported} and the series of Definition~\ref{def:kg-series}:}
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item \revm{for} every $j\ge0$, $p\in M$ and $T\ge t_0$ with $p^0\le T$,
+\[
+\bigl|(-m^2)^j(G^+)^{j+1}f(p)\bigr|\le C\,(T-t_0)^2\,\frac{\bigl(\sqrt{|m^2|}\,(T-t_0)\bigr)^{2j}}{(2j)!}.
+\]
+\item \revm{the series $G^+_{m^2}f(p)$ converges absolutely at every $p$, and on each set
+$\{q^0\le T\}$ its terms are bounded by a summable sequence that does not depend on $p$; since
+every test function vanishes before some time and is bounded, this holds for every test function;}
+\item \revm{$G^+_{m^2}(f+g)=G^+_{m^2}f+G^+_{m^2}g$ for $f,g\in\cD$, and $G^+_{m^2}(\lambda f)=\lambda\,G^+_{m^2}f$
+for every $f:M\to\R$ and $\lambda\in\R$.}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\emph{The bound.} Corollary~\ref{cor:kg-iterate}(b) with $j+1$ in place of $j$ gives
+$C(p^0-t_0)^{2j+2}/(2j+2)!$, which is at most the right side, since $(2j+2)!\ge(2j)!$ and
+$p^0-t_0\le T-t_0$; for $p^0<t_0$ the term vanishes (Corollary~\ref{cor:kg-iterate}(a)).
+
+\emph{Convergence.} On $\{q^0\le T\}$ the bound is the $j$-th term of $C(T-t_0)^2\cosh\xi$ with
+$\xi=\sqrt{|m^2|}(T-t_0)$\revm{, a convergent series, since $\sum_j\xi^{2j}/(2j)!=\cosh\xi$ for every
+real $\xi$}.
+
+\emph{Linearity.} Each term is additive on $\cD$ (Lemma~\ref{lem:kg-linear}), and absolutely
+convergent series add termwise. Each term is homogeneous.
+\end{proof}
+
+\begin{proposition}[Derivatives and smoothness]\label{prop:kg-smooth}
+Let $e_0,\dots,e_3$ be the standard basis of $\R^4$ and $e^0,\dots,e^3$ its dual basis. For every
+$f\in\cD$ and $m^2\in\R$, the series $G^+_{m^2}f$ of Definition~\ref{def:kg-series} satisfies:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $G^+_{m^2}f$ is differentiable at every $p\in M$, with derivative
+$\sum_{i=0}^3G^+_{m^2}(\partial_{e_i}f)(p)\,e^i$;
+\item $\partial_vG^+_{m^2}f=G^+_{m^2}\partial_vf$ for every $v\in\R^4$;
+\item $G^+_{m^2}f$ is smooth.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] Fix $p$ and the open unit ball $U$ about it. Each term $H_j=(-m^2)^j(G^+)^{j+1}f$ is
+smooth with $\partial_{e_i}H_j=(-m^2)^j(G^+)^{j+1}\partial_{e_i}f$ (Corollary~\ref{cor:kg-iterate}). By
+Proposition~\ref{prop:kg-conv} for the test functions $\partial_{e_i}f$, with $t_0$ below $\supp f$
+and $T=\max(t_0,p^0+1)$, the norms of the derivatives of $H_j$ are bounded on $U$ by a summable
+sequence in $j$.
+
+A series of differentiable functions that converges at one point of a convex open set, with
+derivatives bounded there by a summable sequence, is differentiable on the set with the summed
+derivative. Summing gives the formula.
+\item[(b)] Write $v=\sum_iv^ie_i$ and use (a), additivity and homogeneity
+(Proposition~\ref{prop:kg-conv}).
+\item[(c)] By induction on $n$, $G^+_{m^2}f$ is $n$ times continuously differentiable for every test
+function $f$: by (a) its derivative is $p\mapsto\sum_iG^+_{m^2}(\partial_{e_i}f)(p)\,e^i$, and each
+$\partial_{e_i}f$ is a test function.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Green identities]\label{thm:kg-green-id}
+For every $f\in\cD$ and $m^2\in\R$, the series $G^+_{m^2}$ of Definition~\ref{def:kg-series} and the
+operator $P_{m^2}$ of Definition~\ref{def:kg} satisfy $P_{m^2}G^+_{m^2}f=f$ and $G^+_{m^2}P_{m^2}f=f$.
+\end{theorem}
+\begin{proof}
+\emph{Commuting with $P$.} $P$ is a combination of second directional derivatives, so
+Proposition~\ref{prop:kg-smooth}(b) twice, additivity and homogeneity give $PG^+_{m^2}f=G^+_{m^2}Pf$.
+
+\emph{Telescoping.} By Lemma~\ref{lem:kg-linear} and Corollary~\ref{cor:mink-green},
+$(G^+)^{j+1}Pf=(G^+)^j(G^+Pf)=(G^+)^jf$. Hence, shifting the index of an absolutely convergent
+series,
+\[
+G^+_{m^2}Pf=\sum_{j\ge0}(-m^2)^j(G^+)^jf=f+\sum_{j\ge0}(-m^2)^{j+1}(G^+)^{j+1}f=f-m^2G^+_{m^2}f.
+\]
+So $P_{m^2}G^+_{m^2}f=G^+_{m^2}Pf+m^2G^+_{m^2}f=f$, and $G^+_{m^2}P_{m^2}f=f$ by additivity and
+homogeneity.
+\end{proof}
+
+\begin{proposition}[Supports]\label{prop:kg-supp}
+For every $f\in\cD$ and $m^2\in\R$, the series of Definition~\ref{def:kg-series} satisfies
+$\supp G^+_{m^2}f\subseteq J^+(\supp f)$.
+\end{proposition}
+\begin{proof}
+Every term vanishes outside $J^+(\supp f)$ (Corollary~\ref{cor:kg-iterate}(a)), so the sum does, and
+$J^+(\supp f)$ is closed.
+\end{proof}
+
+\begin{proposition}[The advanced series]\label{prop:kg-adv}
+For every $f\in\cD$, $m^2\in\R$ and $j\ge0$, with $r(t,\vec x)=(-t,\vec x)$ and the iterates and series
+of Definitions~\ref{def:kg-supported} and~\ref{def:kg-series},
+$(G^-)^jf=\bigl((G^+)^j(f\circ r)\bigr)\circ r$ and $G^-_{m^2}f=\bigl(G^+_{m^2}(f\circ r)\bigr)\circ r$.
+\revm{Consequently:}
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item the series $G^-_{m^2}f(p)$ converges absolutely at every $p$;
+\item $G^-_{m^2}$ is additive on $\cD$ and homogeneous;
+\item $\partial_vG^-_{m^2}f=G^-_{m^2}\partial_vf$;
+\item $G^-_{m^2}f$ is smooth;
+\item $P_{m^2}G^-_{m^2}f=f$ and $G^-_{m^2}P_{m^2}f=f$;
+\item $\supp G^-_{m^2}f\subseteq J^-(\supp f)$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\emph{The identities.} The one-step identity is Proposition~\ref{prop:kg-ext}. By induction, applying
+it to $h=((G^+)^j(f\circ r))\circ r$ gives $(G^-)^{j+1}f=((G^+)^{j+1}(f\circ r))\circ r$, since
+$r\circ r$ is the identity. Summing gives the series identity.
+
+\emph{Consequences.} The reflection commutes with $P$ and exchanges $J^+$ and $J^-$, so the
+consequences follow from Propositions~\ref{prop:kg-conv}, \ref{prop:kg-smooth} and~\ref{prop:kg-supp}
+and Theorem~\ref{thm:kg-green-id} for $f\circ r$.
+\end{proof}
+
+\begin{proposition}[Formal adjointness of the series]\label{prop:kg-series-adj}
+For $f,g\in\cD$ and $m^2\in\R$, the series of Definition~\ref{def:kg-series} satisfy
+$\int_Mf\,G^+_{m^2}g\,dp=\int_M(G^-_{m^2}f)\,g\,dp$.
+\end{proposition}
+\begin{proof}
+\emph{Exchanging sum and integral.} On the compact set $\supp f$, the terms of $G^+_{m^2}g$ are
+bounded by a summable sequence: Proposition~\ref{prop:kg-conv} for $g$, with $t_0$ below $\supp g$ and
+\revm{$T=\max(t_0,T')$ with $T'$ an upper bound of the times in $\supp f$}. So $\int f\,G^+_{m^2}g=\sum_j(-m^2)^j\int f\,(G^+)^{j+1}g$ by dominated
+convergence. Likewise on the other side, where the terms of $G^-_{m^2}f$ are bounded on $\supp g$
+through $(G^-)^{j+1}f=((G^+)^{j+1}(f\circ r))\circ r$ (Proposition~\ref{prop:kg-adv}) and
+Proposition~\ref{prop:kg-conv} for $f\circ r$.
+
+\emph{Moving one $G$ at a time.} For $0\le i\le j$, Proposition~\ref{prop:kg-adj} with
+$h_1=(G^-)^if\in\cF^-$ and $h_2=(G^+)^{j-i}g\in\cF^+$ gives
+$\int(G^-)^if\,(G^+)^{j+1-i}g=\int(G^-)^{i+1}f\,(G^+)^{j-i}g$. Here $h_1$ is supported in the past of
+$\supp f$ by the advanced case of Proposition~\ref{prop:kg-ext}, applied $i$ times, and $h_2$ in the
+future of $\supp g$ by Corollary~\ref{cor:kg-iterate}(a). The $j+1$ steps give
+$\int f\,(G^+)^{j+1}g=\int(G^-)^{j+1}f\,g$; summing gives the claim.
+\end{proof}
+
+\subsection{\revm{The Klein--Gordon field}}
+
+\begin{theorem}[\revm{The Klein--Gordon field}]\label{thm:kg-field}
+For every $m^2\in\R$, the series $G^\pm_{m^2}$ of Definition~\ref{def:kg-series}, restricted to test
+functions, are Green operators (Definition~\ref{def:kg-greenops}) for the Klein--Gordon operator
+$P_{m^2}$ of Definition~\ref{def:kg}. Consequently:
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item they give Green data with the inertial slabs, whose CCR net is generating, causal and has the
+time-slice property over the derived causal index; if the CCR algebra has an irreducible
+representation, its algebra is moreover primitive;
+\item every map $G':\cD\to\cF$ with $P_{m^2}G'f=f$ and $\supp G'f\subseteq J^+(\supp f)$ for all
+$f\in\cD$ equals $G^+_{m^2}$, and likewise $G^-_{m^2}$ with $J^-$;
+\item the CCR net is covariant under the orthochronous Poincar\'e group $\mathcal P^\uparrow$, with
+$\kappa_\gamma(O)=\gamma(O)$ and $\alpha_\gamma$ induced by the symmetry of
+Theorem~\ref{thm:kg-greenops}(c).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+$G^\pm_{m^2}$ map $\cD$ linearly into $\cF$ (Propositions~\ref{prop:kg-conv}, \ref{prop:kg-smooth}
+and~\ref{prop:kg-adv}). Condition (a) of Definition~\ref{def:kg-greenops} is
+Theorem~\ref{thm:kg-green-id} and Proposition~\ref{prop:kg-adv}, (b) is
+Propositions~\ref{prop:kg-supp} and~\ref{prop:kg-adv}, and (c) is
+Proposition~\ref{prop:kg-series-adj}; $P_{m^2}$ has the required properties by Lemma~\ref{lem:kg}.
+Then Theorem~\ref{thm:kg-greenops}; generation, causality and time slice hold without the hypothesis,
+as after Theorem~\ref{thm:green-axioms}.
+\end{proof}
+\noindent\motiv{The cutoffs, and with them the derived causal index, do not depend on $m^2$. So
+Remark~\ref{rem:mink-slabs} applies unchanged: the time-slice property implies the time-slice axiom
+in the form of Example~\ref{ex:gh-index} for flat Cauchy surfaces, on paper; for a curved Cauchy
+surface the implication can fail, and the axiom then rests on all Cauchy temporal functions as
+cutoffs (Remark~\ref{rem:green-dep-spacetime}), which are not formalized.}
+
+\begin{corollary}[The massless field is the case $m^2=0$]\label{cor:kg-zero}
+The series of Definition~\ref{def:kg-series} satisfy $G^\pm_0f=G^\pm f$ for every $f:M\to\R$, and the
+Green data of Theorem~\ref{thm:kg-field} with $m^2=0$ are equal to the Green data of the free massless
+field (Theorem~\ref{thm:mink-green}). So every statement of Chapter~\ref{sec:minkowski} about the
+massless field is a statement about $P_0$.
+\end{corollary}
+\begin{proof}
+All terms with $j\ge1$ carry the factor $0^j=0$. By Lemma~\ref{lem:kg}(a), the Green data of
+Theorem~\ref{thm:kg-field} at $m^2=0$ are those of Theorem~\ref{thm:kg-greenops} for $P$ and the
+extended Green operators, which are the Green data of Theorem~\ref{thm:mink-green} by
+Proposition~\ref{prop:kg-wave}. Green data are determined by their components, since (G1)--(G7) are properties, so equal
+components give equal Green data.
+\end{proof}
+
+\begin{extra}
+\subsection{Huygens' principle}
+
+\noindent\motiv{For $m^2=0$ the operator $G^+$ samples $f$ only on the past light-cone surface of
+the point, so $G^+f$ vanishes at every point strictly inside the future cone of all of $\supp f$:
+signals travel exactly at the speed of light (Proposition~\ref{prop:kg-huygens}). For $m^2\neq0$ the
+second term $-m^2(G^+)^2f$ already reaches inside the cone, and Theorem~\ref{thm:kg-fail} shows that,
+for suitable $f$ and $p$, the rest of the series does not cancel it.}
+
+\begin{definition}[Light-cone surface, chronological order\revm{, Huygens' principle}]\label{def:kg-cone}
+$C^+=\{v\in M:v^0\ge|\vec v|\}$ is the closed future cone, and $\partial C^+=\{v:v^0=|\vec v|\}$ is
+its boundary, the future light-cone surface. For $p,q\in M$, $p\ll q$ means $q-p\in I^+$, that is
+$|\vec q-\vec p|<q^0-p^0$ ($I^+$ as in Definition~\ref{def:mink}). For $A,B\subseteq M$,
+$A+B=\{a+b:a\in A,\ b\in B\}$ and $-B=\{-b:b\in B\}$; so $\supp f+\partial C^+$ is the union of the
+light-cone surfaces $q+\partial C^+$, $q\in\supp f$. \revm{A \revo{linear} map $G:\cD\to\cF$ with the supports of
+$G^+$ in Definition~\ref{def:kg-greenops}(b) satisfies \emph{Huygens' principle} if $Gf(p)=0$ for every
+$f\in\cD$ and every $p\in M$ with $q\ll p$ for all $q\in\supp f$; one with the supports of $G^-$
+satisfies it if $Gf(p)=0$ whenever $p\ll q$ for all $q\in\supp f$.}
+\end{definition}
+
+\begin{proposition}[Huygens' principle for the wave operator]\label{prop:kg-huygens}
+For every $f\in\cD$, the extended Green operators of Definition~\ref{def:kg-supported} and the sets of
+Definition~\ref{def:kg-cone} satisfy $\supp G^+f\subseteq\supp f+\partial C^+$ and
+$\supp G^-f\subseteq\supp f+(-\partial C^+)$. In particular $G^+f(p)=0$ whenever $q\ll p$ for all
+$q\in\supp f$, and $G^-f(p)=0$ whenever $p\ll q$ for all $q\in\supp f$.
+\end{proposition}
+\begin{proof}
+\emph{Supports.} Every sample point of $G^+f(p)$ is $p-(|y|,y)$ with $(|y|,y)\in\partial C^+$. If
+$p\notin\supp f+\partial C^+$, no sample point lies in $\supp f$, and $G^+f(p)=0$. The set
+$\supp f+\partial C^+$ is closed, as the sum of a compact and a closed set, so it contains
+$\supp G^+f$. For $G^-$ the sample points are $p-(-|y|,y)$ with $(-|y|,y)\in-\partial C^+$.
+
+\emph{Points inside the cone.} If $q\ll p$ for all $q\in\supp f$, then $p-q\in I^+$, which misses
+$\partial C^+$, so $p\notin\supp f+\partial C^+$. The advanced case is the same with $-I^+$.
+\end{proof}
+
+\begin{lemma}[Positivity of $G^+$]\label{lem:kg-pos}
+Let $h:M\to\R$ be continuous and nonnegative, $p\in M$, and let $y\mapsto h(p^0-|y|,\vec p-y)/|y|$ be
+integrable on $\R^3$. If $h(p^0-|y_1|,\vec p-y_1)>0$ for some $y_1\ne0$, then the extended Green operator
+of Definition~\ref{def:kg-supported} satisfies $G^+h(p)>0$.
+\end{lemma}
+\begin{proof}
+The integrand is nonnegative, and continuous and positive at $y_1\neq0$, hence positive on a ball
+about $y_1$, which has positive measure.
+\end{proof}
+
+\begin{proposition}[Positivity of $(G^+)^2$]\label{prop:kg-pos2}
+Let $f\in\cD$ be nonnegative with $f(q_0)>0$, and let $q_0\ll p$ (Definition~\ref{def:kg-cone}). Then
+the iterate of Definition~\ref{def:kg-supported} satisfies $(G^+)^2f(p)>0$.
+\end{proposition}
+\begin{proof}
+\emph{A point on both cones.} Put $s=p^0-q_0^0$ and $d=\vec p-\vec q_0$, so $|d|<s$. Choose a
+unit vector $\hat d$ with $d=|d|\hat d$ (any unit vector if $d=0$) and let
+$y_1=\tfrac12(s+|d|)\hat d\ne0$. The sample point $q=(p^0-|y_1|,\vec p-y_1)$ has
+$q^0-q_0^0=\tfrac12(s-|d|)>0$ and $\vec q-\vec q_0=\tfrac12(|d|-s)\hat d$. So $z_1=\vec q-\vec q_0$
+satisfies $|z_1|=q^0-q_0^0>0$, and $(q^0-|z_1|,\vec q-z_1)=q_0$.
+
+\emph{Two applications of Lemma~\ref{lem:kg-pos}.} For $h=f$ at $q$ with $z_1$, whose integrand is
+integrable by Lemma~\ref{lem:kg-linear}, it gives $G^+f(q)>0$. The function $G^+f$ is continuous,
+nonnegative (its integrand is) and supported in the future of a compact set
+(Proposition~\ref{prop:kg-ext}), so its integrand is integrable (Lemma~\ref{lem:kg-linear}). For
+$h=G^+f$ at $p$ with $y_1$ the lemma gives $(G^+)^2f(p)>0$.
+\end{proof}
+
+\begin{lemma}[The tail]\label{lem:kg-tail}
+Let $m^2,t_0,C\in\R$, and let $f$ be smooth with compact support, $f(q)=0$ for $q^0<t_0$, and
+$|f|\le C$. For $p^0\ge t_0$ and $s=p^0-t_0$, the series of Definition~\ref{def:kg-series} satisfies
+\[
+\bigl|G^+_{m^2}f(p)-G^+f(p)+m^2(G^+)^2f(p)\bigr|\le C\,(m^2)^2\,s^6\cosh\bigl(\sqrt{|m^2|}\,s\bigr).
+\]
+\end{lemma}
+\begin{proof}
+The left side is $|\sum_{j\ge2}(-m^2)^j(G^+)^{j+1}f(p)|$. With $\xi=\sqrt{|m^2|}\,s$,
+Proposition~\ref{prop:kg-conv} with $T=p^0$ bounds it by $Cs^2\sum_{j\ge2}\xi^{2j}/(2j)!$; here $C\ge0$,
+since $|f|\le C$. And
+$\sum_{j\ge2}\xi^{2j}/(2j)!=\xi^4\sum_{k\ge0}\xi^{2k}/(2k+4)!\le\xi^4\cosh\xi$, since $(2k+4)!\ge(2k)!$,
+and $Cs^2\xi^4=C(m^2)^2s^6$.
+\end{proof}
+
+\begin{lemma}[Dilation]\label{lem:kg-dil}
+Let $\lambda>0$, $f:M\to\R$ and $f_\lambda(q)=f(q/\lambda)$, with the extended Green operators, iterates and series of
+Definitions~\ref{def:kg-supported} and~\ref{def:kg-series}.
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item For continuous $f$ and every $p$, $G^+f_\lambda(\lambda p)=\lambda^2\,G^+f(p)$.
+\item For smooth $f$ with compact support and every $m^2\in\R$,
+$(G^+)^jf_\lambda(q)=\lambda^{2j}(G^+)^jf(q/\lambda)$ for all $j$ and $q$, and
+$G^+_{m^2}f_\lambda(\lambda p)=\lambda^2\,G^+_{\lambda^2m^2}f(p)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] Substitute $y=\lambda z$: $dy=\lambda^3dz$ and $|y|=\lambda|z|$, which leaves $\lambda^2$. One
+integral converges absolutely exactly when the other does.
+\item[(b)] Induction on $j$, using (a) for the continuous function $(G^+)^jf$
+(Corollary~\ref{cor:kg-iterate}) and homogeneity. Then
+$\sum_j(-m^2)^j\lambda^{2j+2}(G^+)^{j+1}f(p)=\lambda^2\sum_j(-\lambda^2m^2)^j(G^+)^{j+1}f(p)$.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Failure of Huygens' principle for $m^2\neq0$]\label{thm:kg-fail}
+For every $m^2\neq0$, with the series of Definition~\ref{def:kg-series} and $\ll$ as in
+Definition~\ref{def:kg-cone}, there are a test function $f$ and a point $p$ with $q\ll p$ for all
+$q\in\supp f$ and $G^+_{m^2}f(p)\ne0$. Likewise there are $f\in\cD$ and $p$ with $p\ll q$ for all
+$q\in\supp f$ and $G^-_{m^2}f(p)\neq0$.
+\end{theorem}
+\begin{proof}
+\emph{A fixed configuration.} Let $f_0$ be a smooth bump function with $0\le f_0\le1$, $f_0(0)=1$ and
+support in $\{\max(|q^0|,|\vec q|)\le\tfrac14\}$, and let $p_0=(1,\vec0)$. Every $q\in\supp f_0$ has
+$|\vec p_0-\vec q|\le\tfrac14<\tfrac34\le p_0^0-q^0$, so $q\ll p_0$. Hence $G^+f_0(p_0)=0$
+(Proposition~\ref{prop:kg-huygens}) and $c=(G^+)^2f_0(p_0)>0$ (Proposition~\ref{prop:kg-pos2} with
+$q_0=0$).
+
+\emph{Small parameters.} Lemma~\ref{lem:kg-tail} with $C=1$, $t_0=-\tfrac14$ and $s=\tfrac54$ gives
+$|G^+_{m_0^2}f_0(p_0)+m_0^2c|\le(m_0^2)^2s^6\cosh s$ for $|m_0^2|\le1$, since $\cosh$ is increasing
+on $[0,\infty)$. If moreover $m_0^2\ne0$ and $|m_0^2|\,s^6\cosh s<c$, the right side is less than
+$|m_0^2|\,c$, so $G^+_{m_0^2}f_0(p_0)\ne0$.
+
+\emph{Every $m^2$.} Choose $\lambda>0$ so small that $m_0^2=\lambda^2m^2$ satisfies both conditions,
+and put $f=(f_0)_\lambda$, $p=\lambda p_0$. Then $\supp f=\lambda\supp f_0$, and $q\ll p$ if and only if
+$q/\lambda\ll p_0$. By Lemma~\ref{lem:kg-dil}, $G^+_{m^2}f(p)=\lambda^2G^+_{m_0^2}f_0(p_0)\ne0$.
+
+\emph{The advanced case.} Take $g=f\circ r$ and the point $rp$. Then
+$G^-_{m^2}g(rp)=G^+_{m^2}f(p)\ne0$ by Proposition~\ref{prop:kg-adv}, and $q\ll p$ for all
+$q\in\supp f$ becomes $rp\ll q'$ for all $q'\in\supp g$.
+\end{proof}
+
+\begin{theorem}[Huygens' principle holds exactly at $m^2=0$]\label{thm:kg-iff}
+For $m^2\in\R$, the series $G^+_{m^2}$ of Definition~\ref{def:kg-series} and $\ll$ as in
+Definition~\ref{def:kg-cone}, the following are equivalent:
+\begin{enumerate}[label=(\roman*),leftmargin=2.5em]
+\item $G^+_{m^2}f(p)=0$ for every $f\in\cD$ and every $p\in M$ with $q\ll p$ for all $q\in\supp f$;
+\item $m^2=0$.
+\end{enumerate}
+The same holds for $G^-_{m^2}$, with $p\ll q$ in (i).
+\end{theorem}
+\begin{proof}
+(ii)$\Rightarrow$(i) is Corollary~\ref{cor:kg-zero} with Proposition~\ref{prop:kg-huygens};
+(i)$\Rightarrow$(ii) is Theorem~\ref{thm:kg-fail}.
+\end{proof}
+\noindent\motiv{Condition (i) is not vacuous: the configuration of
+Theorem~\ref{thm:kg-fail} has $\supp f\neq\emptyset$ and $p$ in the open future cone of each of its
+points.}
+
+\medskip\noindent\motiv{For $m^2\neq0$ the Green data are not trivial: \revo{for the test function $f$ and the point $p$ of the second sentence of Theorem~\ref{thm:kg-fail} (the advanced case)}, $G^+_{m^2}f(p)=0$ because $p\notin J^+(\supp f)$, so
+$Ef(p)=G^-_{m^2}f(p)\neq0$, and $\sigma\neq0$ by Proposition~\ref{prop:green-nondeg}.}
+
+\medskip\noindent\motiv{By Theorem~\ref{thm:kg-field}(b), Huygens' principle is a property of $P_{m^2}$, not of the series.
+For operators with the supports of Definition~\ref{def:kg-greenops}(b), it is equivalent to the
+support form of Proposition~\ref{prop:kg-huygens}, on paper: if $p\notin\supp f+\partial C^+$, then
+$\supp f$ lies in the union of the disjoint open sets $p-I^+$ and $M\setminus(p-C^+)$, and splitting
+$f$ accordingly gives one part covered by (i) and one part whose support misses $J^-(\{p\})$.}
+
+\begin{remark}[Kernels]\label{rem:kg-kernels}
+Condition (i) of Theorem~\ref{thm:kg-iff} says that the convolution kernel of $G^+_{m^2}$, a
+distribution in $(t,x)\in M$ (its Schwartz kernel is $k(p-q)$), vanishes on the open future cone
+$I^+$ (on paper; kernels are not formalized). For $m^2=0$ the kernel is $\delta(t-|x|)/(4\pi|x|)$ (Remark~\ref{rem:spherical-means}),
+and the kernel of $(G^+)^2$ is $1/(8\pi)$ times the indicator function of $C^+$, so that
+$c=\frac1{8\pi}\int_{p_0-C^+}f_0$ in Theorem~\ref{thm:kg-fail}.
+
+For $m^2>0$, with $m=\sqrt{m^2}$, the kernel has, on $I^+$, the additional term
+\[
+-\frac m{4\pi}\,\frac{J_1\bigl(m\sqrt{t^2-|x|^2}\bigr)}{\sqrt{t^2-|x|^2}},
+\]
+with $J_1$ the Bessel function~\vetsource{\cite{gunther} (pinpoint to be checked)}. For $m^2<0$ the additional term is
+\revm{\[
+\frac{\sqrt{-m^2}}{4\pi}\,\frac{I_1\bigl(\sqrt{-m^2}\sqrt{t^2-|x|^2}\bigr)}{\sqrt{t^2-|x|^2}},
+\]}
+with the modified Bessel function $I_1$. Summing the kernels of the powers $(G^+)^{j+1}$, which are locally integrable
+functions for $j\ge1$, gives these terms.
+
+The proof above uses neither formula, only the first two terms of the series and a bound on the
+rest. For $m^2<0$ and $f\ge0$ every term $(-m^2)^j(G^+)^{j+1}f$ is nonnegative, so
+Proposition~\ref{prop:kg-pos2} alone gives $G^+_{m^2}f(p)>0$ at every $p$ in the open future cone of
+a point where $f>0$, without the tail bound or dilation. For $m^2>0$, $f\ge0$ and $p$ in the open
+future cone of every point of $\supp f$, Lemma~\ref{lem:kg-tail} gives $G^+_{m^2}f(p)<0$ for the
+dilated configurations of Theorem~\ref{thm:kg-fail} with small $\lambda$. The additional kernel term
+changes sign at the zeros of $J_1(m\sqrt{t^2-|x|^2})$, and so does $G^+_{m^2}f(p)$ for $f$ concentrated
+near a point (on paper). Bessel functions are not formalized.
+\end{remark}
+\end{extra}
+\endgroup

@@ -1,0 +1,280 @@
+\clearpage
+\begingroup
+\section{Simplicity and primitivity of the Weyl algebra}\label{sec:simple}
+
+\noindent\motiv{\revf{Axiom~2 of~\cite{dimock} asks for a faithful irreducible representation of
+the algebra of the net. In a simple C*-algebra the kernel of a representation on a nonzero
+Hilbert space is a proper two-sided ideal, hence zero, so primitivity reduces to simplicity and
+the existence of one irreducible representation. For nondegenerate $\sigma$ the CCR algebra is
+simple: averaging a finite combination of Weyl operators over conjugations by Weyl operators
+removes, in the limit, every term except the coefficient of $1$, which the vector state reads off
+(Proposition~\ref{prop:approx}).}}
+
+\medskip
+\noindent\motiv{\revf{Throughout this chapter, $V$ is a real vector space, $\sigma$ an alternating
+bilinear form on $V$, and $(A,W)$ a Weyl system over $(V,\sigma)$
+(Definition~\ref{def:weyl-system}). In Section~\ref{ssec:simple-ccr}, $A=\CCR(V,\sigma)$ with its
+Weyl operators (Proposition~\ref{prop:ccr-system}) and $\tau$ is its vector state
+(Definition~\ref{def:vector-state}); Section~\ref{ssec:primitive} concerns an arbitrary
+C*-algebra $A$.}}
+
+\begin{definition}[Nondegenerate form; simple algebra]\label{def:nondegenerate}
+$\sigma$ is \emph{nondegenerate} if $\sigma(u,w)=0$ for all $w\in V$ implies $u=0$.
+\revf{A \emph{two-sided ideal} of a C*-algebra $A$ is a linear subspace $I$ with $ab,ba\in I$ for
+all $a\in A$ and $b\in I$; it is not assumed closed. $A$ is \emph{simple} if $A\neq0$ and its only
+two-sided ideals are $0$ and $A$.}
+\end{definition}
+\noindent\motiv{\revf{Nondegeneracy enters only through Lemma~\ref{lem:generic}.}}
+
+\subsection{Averages over conjugations}
+
+\begin{lemma}[Conjugation]\label{lem:conj}
+\revk{In a Weyl system $(A,W)$ over $(V,\sigma)$,} $W(u)W(v)W(u)^*=e^{-\ii\sigma(u,v)}\,W(v)$ for all $u,v\in V$.
+\end{lemma}
+\begin{proof}
+By Lemma~\ref{lem:weyl-system}, $W(u)W(v)=e^{-\ii\sigma(u,v)}W(v)W(u)$, and $W(u)W(u)^*=1$.
+\end{proof}
+
+\begin{definition}[Average]\label{def:average}
+For $u\in V$ and $n\geq1$, the \emph{average} $\mathsf M^u_n:A\to A$ is
+\[
+\mathsf M^u_n(a)=\frac1n\sum_{j=0}^{n-1}W(ju)\,a\,W(ju)^*,
+\]
+\revg{and for $v\in V$ the mean phase is
+$\mu_n(u,v)=\frac1n\sum_{j=0}^{n-1}e^{-\ii j\sigma(u,v)}$.}
+\end{definition}
+\noindent\motiv{\revf{Since $\sigma(u,u)=0$, the Weyl relation gives $W(u)W(ju)=W((j+1)u)$, so
+$W(ju)=W(u)^j$ and $\mathsf M^u_n(a)$ is the mean of $a$ over the first $n$ powers of conjugation
+by $W(u)$. For $a=W(v)$ each conjugation multiplies by the phase of Lemma~\ref{lem:conj}, and
+the average multiplies by the mean} \revg{$\mu_n(u,v)$} \revf{of these phases.}
+\artefact{\revf{In Lean the average is defined for $n=0$ as well, as $0$.}}}
+
+\begin{lemma}[Properties of the average]\label{lem:average}
+Let \revk{$(A,W)$ be a Weyl system over $(V,\sigma)$,} $u\in V$\revk{,} $n\geq1$\revk{, and $\mathsf M^u_n$
+the average of Definition~\ref{def:average}}.
+\begin{enumerate}[label=(\alph*),leftmargin=2.5em]
+\item $\mathsf M^u_n$ is linear, $\mathsf M^u_n(1)=1$, and $\|\mathsf M^u_n(a)\|\leq\|a\|$.
+\item If $I$ is a two-sided ideal of $A$ and $a\in I$, then $\mathsf M^u_n(a)\in I$.
+\item $\mathsf M^u_n(W(v))=\mu_n(u,v)\,W(v)$ for every $v\in V$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}[leftmargin=2.5em]
+\item[(a)] Each term $W(ju)aW(ju)^*$ is linear in $a$, equals $1$ for $a=1$, and has norm $\|a\|$,
+since multiplication by a unitary preserves the norm in a C*-algebra\revf{; the triangle
+inequality bounds the mean of $n$ such terms by $\|a\|$}.
+\item[(b)] Each term is a product with $a$ in the middle, and $I$ is closed under sums and
+multiplication by scalars.
+\item[(c)] By Lemma~\ref{lem:conj} with $ju$ in place of $u$, the $j$-th term is
+$e^{-\ii j\sigma(u,v)}W(v)$.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}[Averaged phases]\label{lem:phases}
+\revk{For an alternating form $\sigma$ on $V$ and $u,v\in V$ with} $\sigma(u,v)\notin2\pi\Z$, \revk{the
+mean phase $\mu_n(u,v)$ of Definition~\ref{def:average} satisfies}
+$|\mu_n(u,v)|\leq\dfrac{2}{n\,|1-e^{-\ii\sigma(u,v)}|}$, so $\mu_n(u,v)\to0$ as $n\to\infty$.
+\end{lemma}
+\begin{proof}
+The sum is geometric with ratio $e^{-\ii\sigma(u,v)}$, which differs from $1$ exactly when
+$\sigma(u,v)\notin2\pi\Z$. So $n\mu_n(u,v)=(1-e^{-\ii n\sigma(u,v)})/(1-e^{-\ii\sigma(u,v)})$,
+and the numerator has modulus at most $2$.
+\end{proof}
+
+\noindent\motiv{\revf{To make $\mu_n(u,v_l)\to0$ for several $v_l$ at once, one $u$ must avoid
+$\sigma(u,v_l)\in2\pi\Z$ for all of them.}}
+
+\begin{lemma}[\revf{Avoiding $2\pi\Z$}]\label{lem:generic}
+Let $\sigma$ be \revk{a} nondegenerate \revk{alternating form on a real vector space $V$} and $v_1,\dots,v_N\in V$ nonzero. There is $u\in V$ with
+$\sigma(u,v_l)\notin2\pi\Z$ for every $l$.
+\end{lemma}
+\begin{proof}
+\revf{For each $l$ nondegeneracy gives $w$ with $\sigma(v_l,w)\neq0$; put $w_l=w$, so that
+$\sigma(w_l,v_l)=-\sigma(v_l,w)\neq0$. For real $\lambda$ let
+$u(\lambda)=\lambda w_1+\lambda^2w_2+\dots+\lambda^Nw_N$. Then $\sigma(u(\lambda),v_l)$ is a
+polynomial in $\lambda$ whose coefficient of $\lambda^l$ is $\sigma(w_l,v_l)\neq0$, so the product
+over $l$ of these polynomials is nonzero, and some $\lambda_0$ gives $u_0=u(\lambda_0)$ with
+$\sigma(u_0,v_l)\neq0$ for all $l$. For $0<\lambda<2\pi/\max_l|\sigma(u_0,v_l)|$ each
+$\lambda\sigma(u_0,v_l)$ lies in $(-2\pi,2\pi)$ and is nonzero, so $u=\lambda u_0$ works.}
+\end{proof}
+\noindent\motiv{\artefact{\revf{The Lean proof takes $u_0$ off a finite union of proper subspaces
+and avoids a countable set of $\lambda$.}}}
+
+\noindent\motiv{\revf{\revm{Proposition~\ref{prop:approx}} uses two properties of the vector state only: it is
+bounded by the norm, and $\tau(W(v))=[v=0]$ (Proposition~\ref{prop:vector-state}). It is stated
+for a functional $\tau_A$ on any Weyl system with these two properties; $\tau$ is the case
+$A=\CCR(V,\sigma)$.}}
+
+\begin{proposition}[Approximation]\label{prop:approx}
+Let \revk{$(A,W)$ be a Weyl system over $(V,\sigma)$ with} $\sigma$ nondegenerate\revk{,} and $\tau_A:A\to\C$ a linear functional with
+$|\tau_A(a)|\leq\|a\|$ and $\tau_A(W(v))=[v=0]$ for all $v$. For every $a\in A$ and
+$\nu>0$ there are $u\in V$ and $n\geq1$ with $\|\mathsf M^u_n(a)-\tau_A(a)1\|<\nu$.
+\end{proposition}
+\begin{proof}
+The linear span of the Weyl elements contains $1=W(0)$ and is closed under products and
+adjoints, by the Weyl relation and $W(u)^*=W(-u)$; so it is $\alg\{W(u):u\in V\}$, which is
+dense in $A$ by Definition~\ref{def:weyl-system}. Choose $b$ in the span with $\|a-b\|<\nu/3$,
+and write $b=\hat b(0)\,1+\sum_{l=1}^N\hat b(v_l)W(v_l)$ with distinct nonzero $v_l$ and complex
+coefficients $\hat b(\cdot)$; then $\tau_A(b)=\hat b(0)$\revf{, and the coefficients are unique,
+since $\tau_A(W(v)^*b)=\hat b(v)$}. Choose $u$ for $v_1,\dots,v_N$ by Lemma~\ref{lem:generic}. By
+Lemma~\ref{lem:average}(a),(c),
+\[
+\mathsf M^u_n(b)-\tau_A(b)1=\sum_{l=1}^N\hat b(v_l)\,\mu_n(u,v_l)\,W(v_l),
+\]
+whose norm is \revf{at most $\sum_l|\hat b(v_l)|\,|\mu_n(u,v_l)|$, since $\|W(v_l)\|=1$, and so}
+less than $\nu/3$ for large $n$ by Lemma~\ref{lem:phases}. Then
+\[
+\|\mathsf M^u_n(a)-\tau_A(a)1\|\leq\|\mathsf M^u_n(a-b)\|+\|\mathsf M^u_n(b)-\tau_A(b)1\|
++|\tau_A(b-a)|\,\|1\|<\nu,
+\]
+by Lemma~\ref{lem:average}(a), the bound on $\tau_A$, and $\|1\|\leq1$.
+\end{proof}
+\noindent\motiv{\revf{The vector $u$ depends on $a$ and $\nu$ through the approximant $b$: the
+proposition says that $\tau_A(a)1$ lies in the norm closure of the set of averages
+$\{\mathsf M^u_n(a):u\in V,\,n\geq1\}$, each a convex combination of unitary conjugates of
+$a$.}}
+
+\subsection{Simplicity of the CCR algebra}\label{ssec:simple-ccr}
+
+\begin{lemma}[Faithfulness]\label{lem:faithful}
+If $a\in\CCR(V,\sigma)$ and $a\delta_0=0$, then $a=0$. Hence $\tau(a^*a)=\|a\delta_0\|^2>0$ for
+every nonzero $a\in\CCR(V,\sigma)$, and $\CCR(V,\sigma)\neq0$.
+\end{lemma}
+\begin{proof}
+The argument of Remark~\ref{rem:separating}: $a\delta_{-w}=aR(w)\delta_0=R(w)a\delta_0=0$ for
+every $w$ by Proposition~\ref{prop:right-weyl}, and a bounded operator vanishing on the
+orthonormal basis is zero. The second claim is Proposition~\ref{prop:vector-state}, and
+$1\delta_0\neq0$.
+\end{proof}
+
+\begin{theorem}[Simplicity]\label{thm:simple}
+If $\sigma$ is nondegenerate, $\CCR(V,\sigma)$ is simple \revf{(Definition~\ref{def:nondegenerate});
+the ideals are not assumed closed}.
+\end{theorem}
+\begin{proof}
+\revg{$\CCR(V,\sigma)\neq0$ by Lemma~\ref{lem:faithful}.} Let $I\neq0$ be a two-sided ideal and $a\in I$ nonzero. Then $a^*a\in I$ and
+$\tau(a^*a)>0$ by Lemma~\ref{lem:faithful}. Proposition~\ref{prop:approx} with $\tau_A=\tau$
+gives $u,n$ with $\|\mathsf M^u_n(a^*a)-\tau(a^*a)1\|<\tau(a^*a)$, so the element
+$\tau(a^*a)^{-1}\mathsf M^u_n(a^*a)$ of $I$ (Lemma~\ref{lem:average}(b)) lies within distance $1$
+of $1$. It is invertible by the Neumann series\revf{, which converges since $\CCR(V,\sigma)$ is
+norm-closed in $B(\ell^2(V))$}, so $I$ contains $1$ and equals $\CCR(V,\sigma)$.
+\end{proof}
+\noindent\motiv{\revf{Simplicity of the Weyl algebra of a nondegenerate form is
+classical~\cite{manuceau,slawny}\cite[Thm.~5.2.8]{bratteli-robinson}.}}
+
+\begin{remark}[Degenerate forms]\label{rem:degenerate}
+\revf{For degenerate $\sigma$ the theorem fails. If $\sigma(u_0,\cdot)=0$ with $u_0\neq0$, then
+$W(u_0)$ commutes with every $W(v)$ and $W(v)^*=W(-v)$ (Lemma~\ref{lem:weyl-system}), hence is
+central (Lemma~\ref{lem:commute}), and $W(u_0)-1$ generates the two-sided ideal
+$(W(u_0)-1)\CCR(V,\sigma)$. It is nonzero, since $(W(u_0)-1)\delta_0=\delta_{-u_0}-\delta_0$.
+$W(u_0)$ acts as the translation $\psi\mapsto\psi(\cdot+u_0)$, and the unit vectors
+$\psi_N=N^{-1/2}\sum_{j<N}\delta_{ju_0}$, whose points $ju_0$ are distinct, satisfy
+$(W(u_0)-1)\psi_N=N^{-1/2}(\delta_{-u_0}-\delta_{(N-1)u_0})$, of norm $(2/N)^{1/2}$. If the ideal
+contained $1$, then $(W(u_0)-1)b=1$ for some $b$, and by centrality
+$1=\|b(W(u_0)-1)\psi_N\|\leq\|b\|\,(2/N)^{1/2}$ for all
+$N$, which is impossible; so the ideal is proper.}
+\end{remark}
+
+\begin{remark}[The vector state is not regular]\label{rem:not-regular}
+\revf{A state $\omega$ is \emph{regular} if $\lambda\mapsto\omega(W(\lambda u))$ is continuous for
+every $u$; a Fock vacuum is regular. $\tau(W(\lambda u))=[\lambda u=0]$ is discontinuous at
+$\lambda=0$ for $u\neq0$, so $\tau$ is not regular, and on $\ell^2(V)$ no field operator
+$\phi(u)$ exists (Example~\ref{ex:one-dof}). The proof of Theorem~\ref{thm:simple} uses $\tau$ only
+as a faithful functional that reads off the coefficient of $1$. Simplicity is a property of the
+C*-algebra; through the isomorphism of Remark~\ref{rem:fock}, which rests on the uniqueness
+theorem cited in Remark~\ref{rem:weyl-covariance}, it holds for the C*-algebra generated by the
+Weyl operators of a Fock representation.}
+\end{remark}
+
+\subsection{Primitivity}\label{ssec:primitive}
+
+\begin{proposition}[Representations of a simple algebra]\label{prop:simple-rep}
+Let $A$ be a simple C*-algebra and $\pi:A\to B(H)$ a $*$-homomorphism, with $H$ a nonzero Hilbert
+space. Then $\pi$ is injective.
+\end{proposition}
+\begin{proof}
+$\ker\pi$ is a two-sided ideal, and $1\notin\ker\pi$ since $\pi(1)=1\neq0$. So $\ker\pi=0$.
+\end{proof}
+
+\begin{definition}[Irreducible-representation hypothesis]\label{def:has-irrep}
+A C*-algebra $A$ \emph{has an irreducible representation} if there is an irreducible
+representation of $A$ (Definition~\ref{def:axioms}) on a nonzero Hilbert space, with the
+convention on Hilbert spaces stated after Definition~\ref{def:axioms}.
+\end{definition}
+
+\begin{theorem}[Primitivity]\label{thm:primitive}
+A simple C*-algebra that has an irreducible representation is primitive. In particular, if
+$\sigma$ is nondegenerate and $\CCR(V,\sigma)$ has an irreducible representation, then
+$\CCR(V,\sigma)$ is primitive.
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:simple-rep} the irreducible representation is injective. The second
+statement follows with Theorem~\ref{thm:simple}.
+\end{proof}
+
+\begin{remark}[Existence of irreducible representations]\label{rem:irrep}
+\revf{Every nonzero C*-algebra has an irreducible representation: its states form a nonempty
+weak*-compact convex set, which has extreme points, the pure states, by the Krein--Milman
+theorem, and the GNS representation of a pure state is irreducible
+\cite[\S2.3, Thm.~2.3.19]{bratteli-robinson-1}. For $V\neq0$ the representation
+on $\ell^2(V)$ is reducible (Remark~\ref{rem:separating}). For nondegenerate $\sigma$ and a
+complex structure on $V$ compatible with $\sigma$, a Fock representation combined with the
+isomorphism of Remark~\ref{rem:fock} is an explicit one.\extraonly{ On the lattice such a structure exists on
+the Cauchy data of Chapter~\ref{sec:latticenet}: $\mathcal J(d_0,d_1)=(-d_1,d_0)$ satisfies
+$\mathcal J^2=-1$, $\sigma_S(\mathcal Jd,\mathcal Jd')=\sigma_S(d,d')$ and $\sigma_S(d,\mathcal Jd)=\sum_x(d_0(x)^2+d_1(x)^2)>0$ for $d\neq0$,
+and the Cauchy map transports it to $V$.}} \extraonly{\revg{$\mathcal J$ does not commute with the change of
+slice $F$, so its Fock state is not invariant under time translation; it serves only to exhibit
+an irreducible representation.}} \artefact{\revf{The hypothesis of
+Theorem~\ref{thm:primitive} is kept because the existence theorem is not formalized in
+LinearAQFT.}}
+\end{remark}
+
+\subsection{\revm{The axioms for the CCR net}}
+
+\begin{theorem}[\revf{Axioms 1--4 for the CCR net}]\label{thm:dimock}
+Let $(\cD,V,\sigma,[\cdot])$ be phase-space data (Definition~\ref{def:phase-space}) with
+nondegenerate $\sigma$, and suppose $\CCR(V,\sigma)$ has an irreducible representation. Then the
+CCR net (Definition~\ref{def:ccr-net}) is generating, causal and has the time-slice property,
+and its algebra $\CCR(V,\sigma)$ is primitive.
+\end{theorem}
+\begin{proof}
+Theorem~\ref{thm:weyl-net} for the Weyl system of Proposition~\ref{prop:ccr-system}, and
+Theorem~\ref{thm:primitive}.
+\end{proof}
+
+\begin{remark}[Theorem~4 of~\cite{dimock}]\label{rem:dimock-thm4}
+\revf{Theorem~4 of~\cite{dimock} asserts the axioms for the free scalar field on a globally
+hyperbolic spacetime~\cite[pp.~225--226]{dimock}. With Theorem~\ref{thm:ccr-cov} for
+Axiom~5, Theorem~\ref{thm:dimock} is its counterpart in these notes, with \revm{five} differences:}
+\begin{itemize}[leftmargin=2em]
+\item \revf{the spacetime and its propagators enter through phase-space data}\revh{, derived from Green
+data in Chapter~\ref{sec:green};}\revk{ continuum Green data are formalized for the massless field
+on $3+1$ Minkowski space with inertial slabs as cutoffs (Chapter~\ref{sec:minkowski})} \revlt{and for
+the Klein--Gordon field there with any real $m^2$ (Chapter~\ref{sec:mass})}\revk{, and not for
+the general Klein--Gordon field of Remark~\ref{rem:green-continuum};}
+\item \revf{covariance is indexed by isomorphisms of phase-space data (Theorem~\ref{thm:ccr-cov});}
+\item \revf{the existence of an irreducible representation is a hypothesis}\revg{; it holds for every
+nonzero C*-algebra by the theorem cited in Remark~\ref{rem:irrep}, and is kept because that
+theorem is not formalized}\revf{\revm{;}}
+\item \revm{the time-slice property is proved for the dependence of the causal index; the form
+of~\cite{dimock} follows on paper \revo{for the Green data of Remark~\ref{rem:green-continuum} (Remark~\ref{rem:green-dep-spacetime}), and for the Minkowski instances of Chapters~\ref{sec:minkowski} and~\ref{sec:mass} directly from the inertial slabs when the Cauchy surface is flat, and otherwise through all Cauchy temporal functions as cutoffs, which are not formalized (Remark~\ref{rem:mink-slabs})};}
+\item \revm{covariance is required only for maps preserving the time orientation
+(Remark~\ref{rem:time-orientation}).}
+\end{itemize}
+\revm{For a concrete spacetime the counterpart is Theorem~\ref{thm:kg-field}: the Klein--Gordon field
+on $3+1$ Minkowski space, with Axioms 1, 3 and 5, Axiom~4 over the derived causal index, and
+Axiom~2 given an irreducible representation.}
+\end{remark}
+
+\begin{extra}
+\begin{corollary}[The lattice]\label{cor:lattice-dimock}
+For every $m^2\in\R$, the CCR algebra of the lattice field is simple\revf{, and the CCR net of the
+lattice field is generating, causal, has the time-slice property, and is covariant under the
+translations of $\Z^2$. If the algebra has an irreducible representation, it is primitive.}
+\end{corollary}
+\begin{proof}
+The lattice form is nondegenerate (Proposition~\ref{prop:lattice-nondeg}). Apply
+Theorem~\ref{thm:simple}, Theorem~\ref{thm:dimock} and Theorem~\ref{thm:lattice-net}.
+\end{proof}
+\end{extra}
+\endgroup

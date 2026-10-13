@@ -1,0 +1,23 @@
+# Dimock slice: the abstract theorem (Axioms 1-5 for any phase-space data).
+# Checked by tools/slice_closure.py; exported by tools/export_slice.py.
+name = "dimock-abstract"
+facade = "slices/Dimock/Abstract.lean"
+source = "J. Dimock, Algebras of local observables on a manifold, Commun. Math. Phys. 77 (1980) 219-228"
+differences = "Lecture notes, Remark rem:dimock-thm4 (docs/lecture-notes/simple.tex)"
+targets = [
+  "BosonicLean.isPrimitive_of_isSimpleRing",
+  "BosonicLean.Weyl.CCR.isPrimitive",
+  "LinearAQFT.Symplectic.ccrNet_axioms_primitive",
+  "LinearAQFT.Symplectic.ccrNet_isCovariancePair",
+  "LinearAQFT.Symplectic.ccrAlpha_refl",
+  "LinearAQFT.Symplectic.ccrAlpha_trans",
+]
+notes_labels = ["thm:dimock", "thm:primitive", "thm:ccr-cov"]
+allowed_modules = [
+  "LinearAQFT.Causal.Basic",
+  "LinearAQFT.Net.Basic",
+  "LinearAQFT.Net.Generated",
+  "LinearAQFT.Symplectic.PhaseSpace",
+  "LinearAQFT.Symplectic.Net",
+  "LinearAQFT.Symplectic.Axioms",
+]

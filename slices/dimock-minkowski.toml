@@ -1,0 +1,37 @@
+# Dimock slice: Green data, and the free massless field on 3+1 Minkowski space.
+name = "dimock-minkowski"
+facade = "slices/Dimock/Minkowski.lean"
+source = "J. Dimock, Algebras of local observables on a manifold, Commun. Math. Phys. 77 (1980) 219-228"
+differences = "Lecture notes, Remark rem:dimock-thm4 (docs/lecture-notes/simple.tex) and Remark 8.13 (inertial slabs)"
+targets = [
+  "LinearAQFT.Green.GreenData.ccrNet_axioms_primitive",
+  "LinearAQFT.Minkowski.ccrNet_axioms_primitive",
+  "LinearAQFT.Minkowski.isCovariantUnder_poincare",
+]
+notes_labels = ["thm:green-axioms", "thm:mink-green", "thm:mink-covariance"]
+allowed_modules = [
+  "LinearAQFT.Causal.Basic",
+  "LinearAQFT.Net.Basic",
+  "LinearAQFT.Net.Generated",
+  "LinearAQFT.Symplectic.PhaseSpace",
+  "LinearAQFT.Symplectic.Net",
+  "LinearAQFT.Symplectic.Axioms",
+  "LinearAQFT.Green.Basic",
+  "LinearAQFT.Green.PhaseSpace",
+  "LinearAQFT.Green.Symmetry",
+  "LinearAQFT.Analysis.LineDeriv",
+  "LinearAQFT.Analysis.Calculus",
+  "LinearAQFT.Analysis.Average",
+  "LinearAQFT.Minkowski.Basic",
+  "LinearAQFT.Minkowski.Causal",
+  "LinearAQFT.Minkowski.Wave",
+  "LinearAQFT.Minkowski.Kirchhoff",
+  "LinearAQFT.Minkowski.Rotation",
+  "LinearAQFT.Minkowski.Radial",
+  "LinearAQFT.Minkowski.Core",
+  "LinearAQFT.Minkowski.Cutoff",
+  "LinearAQFT.Minkowski.Lorentz",
+  "LinearAQFT.Minkowski.GreenOps",
+  "LinearAQFT.Minkowski.GreenData",
+  "LinearAQFT.Minkowski.Poincare",
+]

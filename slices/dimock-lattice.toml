@@ -1,0 +1,29 @@
+# Dimock slice: the unconditional lattice instance on Z^2.
+name = "dimock-lattice"
+facade = "slices/Dimock/Lattice.lean"
+source = "J. Dimock, Algebras of local observables on a manifold, Commun. Math. Phys. 77 (1980) 219-228"
+differences = "Lecture notes, Remark rem:dimock-thm4 (docs/lecture-notes/simple.tex)"
+targets = [
+  "LinearAQFT.Lattice.ccr_isSimpleRing",
+  "LinearAQFT.Lattice.ccrNet_axioms_primitive",
+]
+notes_labels = ["cor:lattice-dimock"]
+allowed_modules = [
+  "LinearAQFT.Causal.Basic",
+  "LinearAQFT.Net.Basic",
+  "LinearAQFT.Net.Generated",
+  "LinearAQFT.Symplectic.PhaseSpace",
+  "LinearAQFT.Symplectic.Net",
+  "LinearAQFT.Symplectic.Axioms",
+  "LinearAQFT.Green.Basic",
+  "LinearAQFT.Green.PhaseSpace",
+  "LinearAQFT.Lattice.Causal",
+  "LinearAQFT.Lattice.Kernel",
+  "LinearAQFT.Lattice.Propagator",
+  "LinearAQFT.Lattice.TimeSlice",
+  "LinearAQFT.Lattice.Linear",
+  "LinearAQFT.Lattice.GreenData",
+  "LinearAQFT.Lattice.PhaseSpace",
+  "LinearAQFT.Lattice.Net",
+  "LinearAQFT.Lattice.Axioms",
+]
