@@ -518,4 +518,4 @@ These statements show that the hypotheses of the theorems above can be met and t
 
 ---
 
-SHA-256 of `verify/Challenge.lean` (LF line endings): `a0f6e5043aa5beef82db4df564b695d7a04234464007411c60f26b2cc52e0da8`
+SHA-256 of `verify/Challenge.lean` (LF line endings): `a05c9fcf9a2f5978c4052e473764d319afd27b6ee052a6dceb560cf4b4982acb`

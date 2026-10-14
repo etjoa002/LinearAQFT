@@ -5,6 +5,29 @@ Authors: LinearAQFT contributors
 -/
 import LinearAQFT
 
+/-!
+# The core statements of LinearAQFT
+
+This file states, without proofs, the main theorems of LinearAQFT on the algebraic quantum field
+theory of linear fields and the axioms of J. Dimock (Commun. Math. Phys. 77 (1980) 219–228):
+causal indices and nets of local algebras; the CCR algebra; phase-space data and the CCR net;
+Green data; the lattice field on $\mathbb Z^2$, with its causal index, the discrete Klein–Gordon
+equation, its Green operators and the commutator function, the time slice, the lattice
+phase-space data, the lattice CCR net, the Cauchy-data net and the lattice as Green data;
+3+1 Minkowski space, its test functions and the wave operator, the Kirchhoff operators, the free
+massless field as Green data and Poincaré covariance; the Klein–Gordon field and Huygens'
+principle. A final section gives examples. The statements use definitions of LinearAQFT and of
+the libraries it builds on (LocalAlgebrasLean, BosonicLean); each is fixed in Mathlib's terms by
+an entry of this file.
+
+Every statement here is closed by `sorry`. The file `Solution.lean` in this folder repeats each
+statement with the identical text and proves it. The tool `lake comparator`, configured by
+`comparator.json` in this folder, checks that each theorem named there has exactly the same
+statement in both files and that its proof in `Solution.lean` uses no axioms other than
+`propext`, `Classical.choice` and `Quot.sound`. The script `check_same_statements.py` checks the
+same correspondence on the text of the two files.
+-/
+
 open LinearAQFT BosonicLean.Weyl
 
 namespace Sealed

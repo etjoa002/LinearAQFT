@@ -38,7 +38,7 @@ in `CONVENTIONS.md`.
 
 The 64 theorems of the core are 28 main results, 31 statements that describe the library's
 definitions in Mathlib's terms (some with facts such as formal self-adjointness, nondegeneracy
-or the convergence of a series), and five examples (a nonzero value of the symplectic form on
+or the convergence of a series), and 5 examples (a nonzero value of the symplectic form on
 the lattice, a pair of
 regions in which one depends on the other without being contained in it, a field of nonzero
 mass violating Huygens' principle, and others) in which the hypotheses hold and the objects are
@@ -101,8 +101,8 @@ from averaging conjugations by Weyl operators, which converge to `τ(a)·1`.
 
 [`docs/lecture-notes/LinearAQFT.pdf`](docs/lecture-notes/LinearAQFT.pdf) is a self-contained
 account of what the library proves, with full proofs and the lattice as the running example, in
-the chapters listed in the table above. A tag beside a theorem links to the Lean declaration
-that proves it; `python docs/lecture-notes/check_consistency.py` checks that correspondence
+the chapters listed in the table above. A tag beside a theorem links to the Lean declarations
+that prove it; `python docs/lecture-notes/check_consistency.py` checks that correspondence
 against the sources.
 [`docs/lecture-notes/LinearAQFT-Dimock.pdf`](docs/lecture-notes/LinearAQFT-Dimock.pdf), from the
 same sources, contains only what the verification of the axioms of Dimock (1980) for the free
@@ -118,8 +118,9 @@ otherwise: `lattice_check.py` and `lattice_net_check.py` the lattice propagators
 commutator function and the Cauchy-data net, `weyl_check.py` and `simplicity_check.py` the Weyl
 operators and the averaging argument, `green_data_check.py` the Green data of the lattice,
 `kirchhoff_check.py` the Kirchhoff operators and `klein_gordon_check.py` the Klein–Gordon series
-and Huygens' principle. Each runs as `python checks/<name>.py` (Python 3 with NumPy; SymPy and
-SciPy for two of them) and prints PASS or FAIL for every check; all take seconds except
+and Huygens' principle. Each runs as `python -X utf8 checks/<name>.py` (Python 3 with NumPy;
+SymPy and SciPy for two of them; `checks/requirements.txt`) and prints PASS or FAIL for every
+check; all take seconds except
 `kirchhoff_check.py`, which takes a few minutes. The example of the notes marked "script ✓" is
 verified by `lattice_net_check.py`.
 
