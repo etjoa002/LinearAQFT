@@ -5,9 +5,9 @@
 
 \noindent\motiv{Chapter~\ref{sec:green} reduces the axioms and covariance to Green data. This
 chapter constructs Green data for the massless wave operator $P=\partial_t^2-\nabla^2$ on $3+1$
-Minkowski space, the operator $P=-\square+m^2$ of Remark~\ref{rem:dictionary} with $m=0$. The
-retarded and advanced Green operators are given by the \revm{retarded potential and its advanced
-counterpart}, and the cutoffs are slabs
+Minkowski space, the operator $P=-\square+m^2$ of Remark~\ref{rem:dictionary} with $m=0$. We
+take the retarded and advanced Green operators to be the \revm{retarded potential and its advanced
+counterpart}, and the cutoffs to be slabs
 between parallel spacelike hyperplanes.}
 
 \medskip\noindent\motiv{For the free massless field the hypothesis of the introduction, the existence of Green
@@ -16,9 +16,6 @@ time-slice property for these slabs, which \revk{implies the time-slice axiom in
 of~\cite{dimock} (Example~\ref{ex:gh-index})} for flat Cauchy surfaces
 (Remark~\ref{rem:mink-slabs}\revk{, on paper}). Its algebra is primitive, given an irreducible representation, and
 it is covariant under the orthochronous Poincar\'e group.}
-
-\medskip\noindent\motiv{Remark~\ref{rem:green-continuum} sketches the general case with all Cauchy temporal functions
-as cutoffs; that larger family is not formalized. \revm{Chapter~\ref{sec:mass} adds the term $m^2$, for every real $m^2$.}}
 
 \subsection{Minkowski space and the wave operator}
 
@@ -44,8 +41,6 @@ two things would change, as the double cone $D=\{|t|+|\vec x|<1\}$ shows. A test
 exactly on $D\cap\{t>0\}$ would give a Weyl element outside the usual algebra of that region. And
 $D$ would no longer depend on a thin layer $D\cap\{|t|<\ell\}$ around its base, since one test
 function could fill all of $D$.
-
-\revm{\artefact{The formalization uses the closed support.}}
 \end{remark}
 
 \begin{proposition}[The Minkowski data]\label{prop:mink-basic}
@@ -111,7 +106,7 @@ every direction $v$; hence $PG^\pm f=G^\pm Pf$;
 substitution $y\mapsto-y$ gives the formula.
 \item[(b)] $\mu^\pm$ are finite on bounded sets, since $\int_{|y|<r}dy/(4\pi|y|)=r^2/2$. So $G^\pm f$ is
 the convolution of the smooth, compactly supported $f$ with a locally finite measure, which is
-smooth. The derivative is taken under the integral, dominated by a constant on a compact set.
+smooth. We take the derivative under the integral, dominated by a constant on a compact set.
 \item[(c)] If $(G^+f)(t,x)\neq0$, the integrand of (a) is not identically zero, so
 $(t-|y|,x-y)\in\supp f$ for some $y$, a point below $(t,x)$ on its light cone. So
 $\{G^+f\neq0\}\subseteq J^+(\supp f)$, which is closed by Lemma~\ref{lem:mink-compact}(b); likewise
@@ -136,7 +131,7 @@ $P=\partial_t^2-\nabla^2$},
 \begin{proof}
 \emph{Spherical means.} Let $(\mathsf Af)(s,y)$ be the mean of $f(s,\cdot)$ over the sphere of
 radius $|y|$ about $0$. The weight $1/|y|$ and Lebesgue measure are rotation invariant, so the left
-side does not change when $Pf$ is replaced by $\mathsf APf$; and $\mathsf APf=P\mathsf Af$, because
+side does not change when we replace $Pf$ by $\mathsf APf$; and $\mathsf APf=P\mathsf Af$, because
 rotations commute with $\nabla^2$. Put $\bar f(s,\rho)=(\mathsf Af)(s,\rho e_1)$ for $\rho\in\R$, with
 $e_1$ a unit vector of $\R^3$. It is smooth and compactly supported on $\R^2$, $(\mathsf
 Af)(s,y)=\bar f(s,|y|)$, and $\bar f(0,0)=f(0)$.
@@ -157,13 +152,6 @@ $\rho=0$. The integral is $\bar f(0,0)=f(0)$.
 The theorem says that $\delta(t-|y|)/(4\pi|y|)$ is a fundamental solution of $P$. The proof is the
 classical method of spherical means~\cite[\S2.4.1]{evans}, which reduces the wave equation in $3+1$
 dimensions to the one-dimensional wave equation for $\rho\bar f$.
-
-\artefact{The formalization writes the spherical mean as an average over the group $O(3)$ of
-orthogonal operators on $\R^3$ with its Haar probability measure, $(\mathsf
-Af)(s,y)=\int_{O(3)}f(s,Q^{-1}y)\,dQ$. Mathlib has Haar measure on compact groups; for its measure on
-spheres it lacks the rotation invariance, and it lacks the divergence theorem on balls\revm{, on which
-the textbook proof rests}.} $O(3)$ acts transitively on each sphere: if
-$|y|=|y'|$ and $y\neq y'$, the reflection \revk{$1-2zz^\top/|z|^2$ with $z=y'-y$} maps $y'$ to $y$.
 \end{remark}
 
 \begin{corollary}[The Green identities]\label{cor:mink-green}
@@ -183,7 +171,7 @@ $PG^\pm f=G^\pm Pf$ by Proposition~\ref{prop:kirchhoff}(b).
 \noindent\motiv{\emph{What the cutoffs do.} The observable $W([f])$ depends on the test function
 $f$ only through the solution $Ef$ it generates, since $[f]$ is the class of $f$ modulo $\ker E$. The
 time-slice axiom asks that every such observable already belong to the algebra of a thin slab of
-time $S$. To show this, one moves the smearing of $f$ into $S$ without changing $Ef$.}
+time $S$. To show this, we move the smearing of $f$ into $S$ without changing $Ef$.}
 
 \medskip\noindent\motiv{Take $\chi$ equal to $0$ before $S$ and to $1$ after it, and replace $f$ by
 $f'=-P(\chi Ef)$. Since $PEf=0$, the function $P(\chi Ef)$ can be nonzero only where $\chi$ changes,
@@ -192,8 +180,8 @@ condition (c1). And $f-f'=P\bigl((1-\chi)G^+f+\chi G^-f\bigr)$ is $P$ of a test 
 annihilates, so $Ef'=Ef$: this is condition (c2). Physically, $f'$ is $f$ transported along the
 equation of motion into the slab.}
 
-\medskip\noindent\motiv{The slab must be allowed to be thin and to sit anywhere, and the family of slabs must be
-carried to itself by the symmetries. Here the slabs are the time intervals $t_1\le\tau\le t_2$ of all
+\medskip\noindent\motiv{We must allow the slab to be thin and to sit anywhere, and the symmetries must
+carry the family of slabs to itself. Here the slabs are the time intervals $t_1\le\tau\le t_2$ of all
 inertial observers.}
 
 \begin{definition}[Inertial slabs]\label{def:mink-cutoff}
@@ -308,8 +296,8 @@ Proposition~\ref{prop:green-phase} gives phase-space data over it, and the time-
 Theorem~\ref{thm:weyl-net} gives the inclusion. It is not a consequence of
 Theorem~\ref{thm:mink-green}.}
 \end{itemize}
-Cutoffs from curved Cauchy temporal functions \revm{are not treated in these notes}. The family of inertial slabs is
-carried to itself by Poincar\'e maps (Proposition~\ref{prop:mink-symmetry}), which covariance needs.
+\revm{These notes do not treat} cutoffs from curved Cauchy temporal functions. Poincar\'e maps carry the family of inertial slabs
+to itself (Proposition~\ref{prop:mink-symmetry}), which covariance needs.
 \revk{Neither bullet is formalized.}
 \end{remark}
 
@@ -355,7 +343,7 @@ orthochronous Lorentz maps, and $\mathcal P^\uparrow$ is a group.
 \begin{proof}
 \begin{enumerate}[leftmargin=2.5em]
 \item[(a)] $\eta$ is nondegenerate, so $\Lambda u=0$ implies $u=0$; $\Lambda^{-1}$ and composites
-preserve $\eta$. Orthochrony of $\Lambda^{-1}$ and of composites is shown in (b) and (c).
+preserve $\eta$. Items (b) and (c) show orthochrony of $\Lambda^{-1}$ and of composites.
 \item[(b)] Let $n'=\Lambda^{-1}e_0$. Then $\eta(n',n')=\eta(e_0,e_0)=-1$ and
 $n'^0=-\eta(\Lambda^{-1}e_0,e_0)=-\eta(e_0,\Lambda e_0)=(\Lambda e_0)^0>0$, so $n'$ is future unit and
 $\Lambda^{-1}$ is orthochronous. For $v$ future causal,
@@ -413,10 +401,9 @@ $\alpha_{\gamma\gamma'}=\alpha_\gamma\alpha_{\gamma'}$.
 isometries that preserve the time orientation. This is covariance in the sense of
 Definition~\ref{def:covariance} under that group, Axiom~5 of~\cite{dimock} for this spacetime\revo{, restricted to the isometries that preserve the time orientation (Remark~\ref{rem:time-orientation})}.}
 
-\medskip\noindent\motiv{Two other maps are left out. Time reversal exchanges $G^+$ and $G^-$, so it is not a symmetry
-of Green data in the sense of Definition~\ref{def:green-symmetry}. Dilations $p\mapsto\lambda p$, $\lambda>0$, also preserve the order and the slabs, and, with
+\medskip\noindent\motiv{Dilations $p\mapsto\lambda p$, $\lambda>0$, also preserve the order and the slabs, and, with
 $f\mapsto\lambda^{-3}f(\cdot/\lambda)$ on test functions, the form $\sigma$. Definition~\ref{def:green-symmetry}
-does not express rescalings, and they are not used.}
+does not express rescalings, and we do not use them.}
 \subsection{Green operators of a local operator}\label{sec:kg-greenops}
 
 \noindent\motiv{The proofs of \revm{this chapter} on cutoffs, uniqueness and covariance use
@@ -428,10 +415,7 @@ supported in the causal future and past; and, for covariance, the operator is Po
 (Theorem~\ref{thm:kg-greenops}), so that for the Klein--Gordon operator only the Green operators
 remain to be constructed. In this section $P$ is any such operator and $G^\pm$ are its Green
 operators\revm{; in Chapter~\ref{sec:mass}}, from Definition~\ref{def:kg-supported} on, $P$ is the wave operator and $G^\pm$ are the
-extended Green operators of Definition~\ref{def:kg-supported}. \artefact{In the formalization the results of
-\revm{this chapter} on cutoffs, uniqueness and covariance are derived as the instance of
-Theorem~\ref{thm:kg-greenops} in Proposition~\ref{prop:kg-wave}, with their statements
-unchanged.}}
+extended Green operators of Definition~\ref{def:kg-supported}.}
 
 \begin{definition}[Local operators and their Green operators]\label{def:kg-greenops}
 Let $M$, $\le$, $\cD$, $\cF$, $\iota$, $\supp$ and the pairing be as in Definition~\ref{def:mink}. A

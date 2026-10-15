@@ -46,8 +46,7 @@ $\mu_n(u,v)=\frac1n\sum_{j=0}^{n-1}e^{-\ii j\sigma(u,v)}$.}
 \noindent\motiv{\revf{Since $\sigma(u,u)=0$, the Weyl relation gives $W(u)W(ju)=W((j+1)u)$, so
 $W(ju)=W(u)^j$ and $\mathsf M^u_n(a)$ is the mean of $a$ over the first $n$ powers of conjugation
 by $W(u)$. For $a=W(v)$ each conjugation multiplies by the phase of Lemma~\ref{lem:conj}, and
-the average multiplies by the mean} \revg{$\mu_n(u,v)$} \revf{of these phases.}
-\artefact{\revf{In Lean the average is defined for $n=0$ as well, as $0$.}}}
+the average multiplies by the mean} \revg{$\mu_n(u,v)$} \revf{of these phases.}}
 
 \begin{lemma}[Properties of the average]\label{lem:average}
 Let \revk{$(A,W)$ be a Weyl system over $(V,\sigma)$,} $u\in V$\revk{,} $n\geq1$\revk{, and $\mathsf M^u_n$
@@ -97,11 +96,9 @@ over $l$ of these polynomials is nonzero, and some $\lambda_0$ gives $u_0=u(\lam
 $\sigma(u_0,v_l)\neq0$ for all $l$. For $0<\lambda<2\pi/\max_l|\sigma(u_0,v_l)|$ each
 $\lambda\sigma(u_0,v_l)$ lies in $(-2\pi,2\pi)$ and is nonzero, so $u=\lambda u_0$ works.}
 \end{proof}
-\noindent\motiv{\artefact{\revf{The Lean proof takes $u_0$ off a finite union of proper subspaces
-and avoids a countable set of $\lambda$.}}}
 
 \noindent\motiv{\revf{\revm{Proposition~\ref{prop:approx}} uses two properties of the vector state only: it is
-bounded by the norm, and $\tau(W(v))=[v=0]$ (Proposition~\ref{prop:vector-state}). It is stated
+bounded by the norm, and $\tau(W(v))=[v=0]$ (Proposition~\ref{prop:vector-state}). We state it
 for a functional $\tau_A$ on any Weyl system with these two properties; $\tau$ is the case
 $A=\CCR(V,\sigma)$.}}
 
@@ -129,10 +126,6 @@ less than $\nu/3$ for large $n$ by Lemma~\ref{lem:phases}. Then
 \]
 by Lemma~\ref{lem:average}(a), the bound on $\tau_A$, and $\|1\|\leq1$.
 \end{proof}
-\noindent\motiv{\revf{The vector $u$ depends on $a$ and $\nu$ through the approximant $b$: the
-proposition says that $\tau_A(a)1$ lies in the norm closure of the set of averages
-$\{\mathsf M^u_n(a):u\in V,\,n\geq1\}$, each a convex combination of unitary conjugates of
-$a$.}}
 
 \subsection{Simplicity of the CCR algebra}\label{ssec:simple-ccr}
 
@@ -224,9 +217,7 @@ the Cauchy data of Chapter~\ref{sec:latticenet}: $\mathcal J(d_0,d_1)=(-d_1,d_0)
 $\mathcal J^2=-1$, $\sigma_S(\mathcal Jd,\mathcal Jd')=\sigma_S(d,d')$ and $\sigma_S(d,\mathcal Jd)=\sum_x(d_0(x)^2+d_1(x)^2)>0$ for $d\neq0$,
 and the Cauchy map transports it to $V$.}} \extraonly{\revg{$\mathcal J$ does not commute with the change of
 slice $F$, so its Fock state is not invariant under time translation; it serves only to exhibit
-an irreducible representation.}} \artefact{\revf{The hypothesis of
-Theorem~\ref{thm:primitive} is kept because the existence theorem is not formalized in
-LinearAQFT.}}
+an irreducible representation.}}
 \end{remark}
 
 \subsection{\revm{The axioms for the CCR net}}

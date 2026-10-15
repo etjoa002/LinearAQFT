@@ -45,14 +45,14 @@ For every $m^2\in\R$ the operator $P_{m^2}$ of Definition~\ref{def:kg} satisfies
 \end{lemma}
 \begin{proof}
 Each property holds for $P$ (Proposition~\ref{prop:kg-wave}) and for multiplication by the constant
-$m^2$, and is preserved by sums.
+$m^2$, and sums preserve it.
 \end{proof}
 
 \subsection{The Green operators beyond test functions}\label{sec:kg-extend}
 
 \noindent\motiv{By Theorem~\ref{thm:kg-greenops}, the axioms, uniqueness and covariance for the field
-with $P_{m^2}$ follow once Green operators for $P_{m^2}$ exist; they are the series of
-Definition~\ref{def:kg-series}, built on the extension of $G^\pm$ in Proposition~\ref{prop:kg-ext}.
+with $P_{m^2}$ follow once Green operators for $P_{m^2}$ exist; we build them as the series of
+Definition~\ref{def:kg-series}, using the extension of $G^\pm$ in Proposition~\ref{prop:kg-ext}.
 The value $G^+h(p)$ samples $h$ only on the causal past of $p$. Cutting $h$ off far from that past
 turns it into a test function without changing $G^+h$ near $p$, so the results of
 Chapter~\ref{sec:minkowski} for test functions carry over.}
@@ -103,7 +103,7 @@ neighbourhood of every point of $J^-(\{p\})$.
 \item[(a)] The set is closed (Lemma~\ref{lem:mink-compact}(b)). It lies in
 $J^+(K)\cap\{q^0\le t_2\}$, with $t_2$ \revm{an upper bound of the times in} $K'$, which is compact by
 Lemma~\ref{lem:mink-compact}(b) for the future unit vector $e_0$.
-\item[(b)] A smooth bump function equal to $1$ on the closed $1$-neighbourhood of $A$ and supported in
+\item[(b)] Take a smooth bump function equal to $1$ on the closed $1$-neighbourhood of $A$ and supported in
 its $2$-neighbourhood, which is compact.
 \item[(c)] Let $q\le p$. If $q\in\supp h$, then $q\in A$ and $\psi=1$ near $q$. Otherwise $h=0$ near
 $q$, and so is $\psi h$.
@@ -396,10 +396,7 @@ Then Theorem~\ref{thm:kg-greenops}; generation, causality and time slice hold wi
 as after Theorem~\ref{thm:green-axioms}.
 \end{proof}
 \noindent\motiv{The cutoffs, and with them the derived causal index, do not depend on $m^2$. So
-Remark~\ref{rem:mink-slabs} applies unchanged: the time-slice property implies the time-slice axiom
-in the form of Example~\ref{ex:gh-index} for flat Cauchy surfaces, on paper; for a curved Cauchy
-surface the implication can fail, and the axiom then rests on all Cauchy temporal functions as
-cutoffs (Remark~\ref{rem:green-dep-spacetime}), which are not formalized.}
+Remark~\ref{rem:mink-slabs} applies unchanged.}
 
 \begin{corollary}[The massless field is the case $m^2=0$]\label{cor:kg-zero}
 The series of Definition~\ref{def:kg-series} satisfy $G^\pm_0f=G^\pm f$ for every $f:M\to\R$, and the

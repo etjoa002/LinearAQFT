@@ -9,6 +9,7 @@
 \usetikzlibrary{positioning,arrows.meta}
 \usepackage{enumitem}
 \usepackage{booktabs,longtable,array}
+\usepackage{multicol}
 % Motivating paragraphs; set \motiv to \textcolor{Blue}{#1} to highlight them while vetting.
 \newcommand{\motiv}[1]{#1}
 % Editions. LinearAQFT.tex typesets the full notes; LinearAQFT-Dimock.tex defines
@@ -83,6 +84,11 @@
 % wording, revised after merging the closing pass); set to {#1} once accepted.
 \newcommand{\revn}[1]{#1}  % accepted by the user, 30 Sep 2026
 \newcommand{\revo}[1]{#1}  % notes pass of 1 Oct 2026; accepted by the user, 1 Oct 2026
+% Lecture-form pass of 15 Oct 2026 (front matter, index of terms, moved remarks): blue while the
+% user vets them; set to {#1} once accepted.
+\newcommand{\revs}[1]{#1}  % lecture-form passes of 15 Oct 2026; accepted by the user, 15 Oct 2026 ("I approve the blue passages")
+% An entry of the index of terms (terms.tex): the term, then where it is defined.
+\newcommand{\AQFTterm}[2]{\par\noindent\hangindent=1em\revs{#1\nobreak\hfill\nobreak #2}\par}
 \title{Algebraic quantum field theory of linear fields\dimockonly{\\[4pt]\large The axioms of Dimock for the free scalar field}}
 \author{}
 \date{}
@@ -94,7 +100,7 @@
 \maketitle
 \vspace{-2em}
 \noindent\motiv{In algebraic quantum field theory~\cite{haagkastler} the observables measurable in a region $O$
-of spacetime form a C*-algebra $\cA(O)$. \revc{The observables are taken bounded, such as the exponentials
+of spacetime form a C*-algebra $\cA(O)$. \revc{We take the observables bounded, such as the exponentials
 $e^{\ii\phi(f)}$ of smeared fields rather than the unbounded fields $\phi(f)$, which avoids
 questions of domains; closing in norm makes each $\cA(O)$ a C*-algebra\revd{, which for the free
 field is determined by the canonical commutation relations up to isomorphism, independently of the
@@ -109,7 +115,7 @@ hyperbolic spacetime. \revm{These notes give a formalized version of that verifi
 \motiv{\revm{The analysis the verification rests on is the existence of retarded and advanced Green
 operators for the Klein--Gordon operator, a theorem of hyperbolic partial differential
 equations~\cite{bgp}. Here it enters as a hypothesis, the Green data of Chapter~\ref{sec:green},
-modelled on the Green-hyperbolic operators of~\cite{baer-green}. The hypothesis is proved \extraonly{on a
+modelled on the Green-hyperbolic operators of~\cite{baer-green}. We prove the hypothesis \extraonly{on a
 lattice spacetime, the running example (Chapters~\ref{sec:lattice} and~\ref{sec:latticenet}), }for
 the free massless field on $3+1$ Minkowski space (Chapter~\ref{sec:minkowski}), and for the
 Klein--Gordon field there with any real $m^2$, negative values included (Chapter~\ref{sec:mass}).}}
@@ -118,49 +124,16 @@ Klein--Gordon field there with any real $m^2$, negative values included (Chapter
 \medskip
 
 \section*{About these notes}
-\noindent\motiv{\revm{These notes are the mathematical account of the Lean library LinearAQFT and the
-blueprint from which it was built. The library depends on Mathlib, on LocalAlgebrasLean, which
-holds regions with their orthogonality and nets of local algebras, and on BosonicLean, which holds
-the CCR algebra, Weyl systems, their relabelling and pullback, the simplicity theorem, irreducible
-representations and primitivity; the
-declaration index at the end names the declarations of LinearAQFT and BosonicLean.}}
-
-\medskip
-\noindent\motiv{\revm{\textbf{Terminology.} Standard terms keep their usual meaning: net of local
-algebras; Weyl operator; Weyl system (here required to generate its algebra); CCR algebra; vector
-state; retarded and advanced Green operators; \extraonly{commutator function; }causal propagator; Cauchy
-surface; globally hyperbolic; Cauchy temporal function; Green-hyperbolic
-operator~\cite{baer-green}; the retarded potential; spherical means; orthochronous Lorentz and
-Poincar\'e maps; the Klein--Gordon operator; local operators; the tachyonic case\extraonly{; chronological
-order; Huygens' principle}. The axioms are those of~\cite[p.~220]{dimock}: Axioms~1--3 (isotony
-with generation, primitivity, causality) are essentially the Haag--Kastler
-axioms~\cite{haagkastler}, Axiom~4 (time slice) goes back to Haag and
-Schroer~\cite{haag-schroer}, and Axiom~5 is covariance. Results of~\cite{dimock} are
-cited by their numbers there, for example Axiom~4 or Theorem~4 of~\cite{dimock}.}}
-
-\medskip
-\noindent\motiv{\revm{The \emph{time-slice property} is condition (N3) of
-Definition~\ref{def:axioms} for the causal index at hand; the \emph{time-slice axiom} is Axiom~4
-of~\cite{dimock}, (N3) for the dependence of Example~\ref{ex:gh-index}. For Green data the first is
-proved (\revo{Proposition~\ref{prop:green-phase} and Theorem~\ref{thm:weyl-net}}). \revo{On paper it implies the second for the Green data of Remark~\ref{rem:green-continuum}, whose cutoffs are given by all Cauchy temporal functions (Remark~\ref{rem:green-dep-spacetime}), and for the instances of Chapters~\ref{sec:minkowski} and~\ref{sec:mass}, whose cutoffs are inertial slabs, when the Cauchy surface is flat. For a curved Cauchy surface that implication can fail, and the axiom then rests on all Cauchy temporal functions as cutoffs, which are not formalized (Remark~\ref{rem:mink-slabs}).}}}
-
-\medskip
-\noindent\motiv{\revm{\textbf{Coined terms.} These terms are coined for these notes and defined where
-they first appear: causal index (Definition~\ref{def:causal-index}); covariance pair
-(Definition~\ref{def:covariance}); family of generators and generated net
-(Definition~\ref{def:generated}); relabelling unitary (Definition~\ref{def:relabel}); right Weyl
-operator (Definition~\ref{def:right-weyl}); phase-space data (Definition~\ref{def:phase-space}); the
-net of a Weyl system (Definition~\ref{def:weyl-net}); the CCR net (Definition~\ref{def:ccr-net});
-\extraonly{the pullback of a Weyl system (Definition~\ref{def:pullback}); the Cauchy map
-(Definition~\ref{def:cauchy-map}); the Cauchy-data net (Definition~\ref{def:cauchy-net}); }the
-average $\mathsf M^u_n$ (Definition~\ref{def:average}); Green data with their Green identities
-$PG^\pm f=f$, $G^\pm P_\cD f=f$ (not Green's identities of vector calculus), cutoffs and slabs
-(Definition~\ref{def:green-data}); the derived causal index (Definition~\ref{def:green-index}); the
-derived phase-space data (Definition~\ref{def:green-phase}); a symmetry of Green data
-(Definition~\ref{def:green-symmetry}); the future and past cone measures
-(Definition~\ref{def:kirchhoff}); future unit vectors and inertial slabs
-(Definition~\ref{def:mink-cutoff}); the extended Green operators and functions supported in the
-future or past of a compact set (Definition~\ref{def:kg-supported}).}}
+\noindent\motiv{\revs{These notes are the mathematical account of the Lean library LinearAQFT and the
+blueprint from which it was built. The library depends on Mathlib and on two sibling libraries:
+LocalAlgebrasLean for regions and nets of local algebras, and BosonicLean for the CCR algebra, Weyl
+systems, simplicity and primitivity. We assume the elementary theory of C*-algebras and of their
+representations on Hilbert spaces; Chapters~\ref{sec:minkowski} and~\ref{sec:mass} also use
+calculus and Lebesgue integration on $\R^4$, and some examples and remarks use the language of
+Lorentzian geometry (Cauchy surfaces, global hyperbolicity). After the notation, a reading guide
+relates the objects of~\cite{dimock} to ours, and the roadmap shows which chapters use which and
+states the main results; an index of terms precedes the references,
+and the declaration index at the end names the declarations of LinearAQFT and BosonicLean.}}
 
 \medskip
 \noindent\motiv{\textbf{Reading conventions.} C*-algebras are unital and complex; a
@@ -168,18 +141,18 @@ $*$-homomorphism is unital. For a subset $s$ of a C*-algebra $A$, $\alg(s)$ is t
 $*$-subalgebra of $A$ containing $s$, and $\calg(s)$ is its norm closure, the C*-subalgebra
 generated by $s$. Subalgebras and $*$-subalgebras contain the unit. Two elements commute when $ab=ba$. Inner
 products are linear in the second argument. \revg{$\pi$ and $e$ also keep their numerical
-meaning.} $[x=y]$ is $1$ if $x=y$ and $0$ otherwise.}
+meaning.} $[x=y]$ is $1$ if $x=y$ and $0$ otherwise. \revs{We cite results of~\cite{dimock} by their
+numbers there, as in Axiom~4 or Theorem~4 of~\cite{dimock}.}}
 
 \medskip
-\noindent\motiv{A statement marked
-\revtag{\AQFTLeanTag{}} has a checked proof in LinearAQFT\revm{ or in its dependency BosonicLean}
-whose correspondence with the statement here has been independently reviewed; the declaration index at the end names the
-checked declarations. Every Example carries exactly one status: \AQFTLeanTag{} as above,
-\AQFTScriptTag{} when a check script verifies it exhaustively, or \AQFTPaperTag{} when it is
-checked on paper only. Definitions, Remarks and paragraphs of motivation carry no marks\revm{; they are
-checked on paper, and ``on paper'' in them marks a claim that goes beyond the marked statements they
-cite}. A sentence tagged \AQFTArtefactTag{} records a choice made for the formalization that
-a proof on paper would not need.}
+\noindent\motiv{\revs{A statement marked \revtag{\AQFTLeanTag{}} has a checked proof in LinearAQFT or
+in BosonicLean whose correspondence with the statement here has been independently reviewed, and
+the declaration index names its declarations; every example carries exactly one of the marks
+\AQFTLeanTag{}, \AQFTScriptTag{} (verified exhaustively by a check script) and \AQFTPaperTag{}
+(checked on paper only). Definitions, remarks and motivating paragraphs carry no marks and are
+checked on paper, where ``on paper'' flags a claim that goes beyond the marked statements they
+cite, and a sentence tagged \AQFTArtefactTag{} records a choice made for the formalization that a
+proof on paper would not need.}}
 
 \section*{Notation}
 \noindent \revm{Each row lists symbols and their meanings, with the chapter where each meaning is
@@ -189,6 +162,60 @@ defined in parentheses; a second meaning of a symbol is used only in the place i
 \begin{longtable}{@{}l>{\raggedright\arraybackslash}p{0.66\textwidth}@{}}
 \input{\notationfile}
 \end{longtable}}
+
+\section*{Reading guide}\addcontentsline{toc}{section}{Reading guide}
+\noindent\revs{A reader who knows~\cite{dimock} meets the same five axioms
+(Table~\ref{tab:dimock}), stated for other objects. The table pairs each object of~\cite{dimock}
+with its counterpart here and says where the two are connected; Remark~\ref{rem:dimock-thm4} lists
+how the conclusions differ.}
+{\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.31\textwidth}@{}}
+\toprule
+\revs{in~\cite{dimock}} & \revs{in these notes} & \revs{connection} \\
+\midrule
+\endhead
+\revs{a globally hyperbolic spacetime and its regions} &
+\revs{a causal index: regions with inclusion, orthogonality and dependence
+(Definition~\ref{def:causal-index})} &
+\revs{Example~\ref{ex:gh-index}} \\\addlinespace[3pt]
+\revs{$O$ causally dependent on $O'$: every endless causal curve through $O$ meets a Cauchy surface
+in $O'$} &
+\revs{dependence derived from the cutoffs of Green data, one slab for each test function
+(Definition~\ref{def:green-index})} &
+\revs{the first implies the second, on paper, with all Cauchy temporal functions as cutoffs
+(Remark~\ref{rem:green-dep-spacetime}); with inertial slabs only for flat Cauchy surfaces
+(Remark~\ref{rem:mink-slabs})} \\\addlinespace[3pt]
+\revs{the global algebra, the closure of the union of the local algebras} &
+\revs{a net in a given C*-algebra $A$ with the generation axiom (N1)} &
+\revs{Remark~\ref{rem:global-algebra}} \\\addlinespace[3pt]
+\revs{the operators $E^\pm$, with $E^+f$ supported in the causal future of
+$\supp f$~\cite[p.~222]{dimock}} &
+\revs{retarded and advanced Green operators $G^\pm$ with cutoffs, assumed as Green data
+(Definition~\ref{def:green-data})} &
+\revs{proved on $3+1$ Minkowski space for every real $m^2$ (Theorems~\ref{thm:mink-green}
+and~\ref{thm:kg-field}), sketched in general (Remark~\ref{rem:green-continuum})} \\\addlinespace[3pt]
+\revs{$E^+-E^-$} &
+\revs{$E=G^--G^+=-(E^+-E^-)$, $\sigma([f],[g])=\langle f,Eg\rangle$} &
+\revs{Remark~\ref{rem:sign-table}} \\\addlinespace[3pt]
+\revs{$e^{\ii\phi(f)}$, represented by the Weyl operator of the Cauchy data of $Ef$ on a Cauchy
+surface~\cite[\S2]{dimock}} &
+\revs{the Weyl operator $W([f])$ of the class of $f$ modulo $\ker E$, with no Cauchy surface
+(Definitions~\ref{def:weyl-net} and~\ref{def:green-phase})} &
+\revs{the two nets agree on the lattice\extraonly{ (Theorem~\ref{thm:cauchy-net})}\dimockonly{
+(full notes)}; the continuum is not treated} \\\addlinespace[3pt]
+\revs{a representation of the Weyl relations; the net does not depend on the choice
+(Theorem~3 of~\cite{dimock}, by~\cite{slawny})} &
+\revs{any Weyl system (Definition~\ref{def:weyl-system}); concretely $\CCR(V,\sigma)$ on
+$\ell^2(V)$ (Definition~\ref{def:ccr})} &
+\revs{the theorem of~\cite{slawny} is cited, not proved (Remark~\ref{rem:weyl-covariance},
+Corollary~\ref{cor:weyl-iso})} \\\addlinespace[3pt]
+\revs{covariance as an assignment $\kappa\mapsto\alpha_\kappa$ on isometries (Axiom~5)} &
+\revs{covariance pairs indexed by isomorphisms of phase-space data (Theorem~\ref{thm:ccr-cov}), for
+maps that preserve the time orientation} &
+\revs{Remarks~\ref{rem:axiom5} and~\ref{rem:time-orientation}; Theorem~\ref{thm:mink-covariance}} \\
+\bottomrule
+\end{longtable}}
+\addtocounter{table}{-1}% the guide's table is not numbered
 \input{roadmap}
 \input{nets}
 \input{weyl}
@@ -199,6 +226,7 @@ defined in parentheses; a second meaning of a symbol is used only in the place i
 \input{green}
 \input{minkowski}
 \input{mass}
+\input{terms}
 \input{references}
 \ifdimockedition\input{lean-index-dimock}\else\input{lean-index}\fi
 \end{document}

@@ -27,7 +27,7 @@ space it generates, such that:
 \end{definition}
 \noindent\motiv{\vet{``Phase-space data'' is a term of these notes; the object of the
 literature is a symplectic space of solutions together with the test functions localized in each
-region~\cite{bgp}. The map $f\mapsto[f]$ is only required to be surjective, so $V$ may be a
+region~\cite{bgp}. We require $f\mapsto[f]$ only to be surjective, so $V$ may be a
 quotient of $\cD$ or a space of solutions, and $\sigma$ may be degenerate: nothing in this
 \revh{chapter} uses more, and \revf{Chapter~\ref{sec:simple} adds nondegeneracy
 (Definition~\ref{def:nondegenerate}) as a hypothesis}.} \revc{For the free field,
@@ -104,8 +104,8 @@ $\sigma''(L_2L_1u,L_2L_1v)=\sigma'(L_1u,L_1v)=\sigma(u,v)$.
 
 \subsection{The net of a Weyl system}
 
-\noindent\vet{From here on, phase-space data $(\cD,V,\sigma,[\cdot])$ on a causal index are fixed;
-primed data $(\cD',V',\sigma',[\cdot]')$ are a second such choice\revc{, possibly on another
+\noindent\vet{From here on we fix phase-space data $(\cD,V,\sigma,[\cdot])$ on a causal index;
+primed data $(\cD',V',\sigma',[\cdot]')$ denote a second such choice\revc{, possibly on another
 causal index}.}
 
 \begin{definition}[The net of a Weyl system]\label{def:weyl-net}
@@ -120,8 +120,8 @@ For \revk{phase-space data $(\cD,V,\sigma,[\cdot])$ on a causal index and} every
 over $(V,\sigma)$\revk{,} the net $\cA_W$ is generating, causal and has the time-slice property.
 \end{theorem}
 \begin{proof}
-The three properties follow from Proposition~\ref{prop:generated} once the generators are
-checked. Generation: $\bigcup_OG(O)=W(V)$, since every $u\in V$ is some $[f]$ and every $f$ lies
+The three properties follow from Proposition~\ref{prop:generated} once we check the
+generators. Generation: $\bigcup_OG(O)=W(V)$, since every $u\in V$ is some $[f]$ and every $f$ lies
 in some $\cD(O)$; and $W(V)$ generates $A$. Causality: for $O_1\perp O_2$, $f\in\cD(O_1)$,
 $g\in\cD(O_2)$, (P1) gives $\sigma([f],[g])=0$, so $W[f]$ and $W[g]$ commute by
 Lemma~\ref{lem:weyl-system}; the adjoint $W[g]^*=W[-g]$ is again a generator of $O_2$, so the
@@ -167,7 +167,7 @@ Theorem~\ref{thm:weyl-cov} with the identity isomorphism.
 \noindent\motiv{\vet{For nondegenerate $\sigma$ and nonzero algebras such an $\alpha$ always
 exists, by the uniqueness theorem for the CCR algebra~\cite{slawny} (see also~\cite{manuceau}); the paper
 \cite[p.~225]{dimock} uses it, by citation, for the independence of the net from the
-representation in its Theorem~3. These notes do not prove it, and it is not formalized here; the
+representation in its Theorem~3. These notes do not prove it and do not formalize it here; the
 corollary carries $\alpha$ as a hypothesis.}}
 
 \begin{definition}[The CCR net]\label{def:ccr-net}
@@ -191,8 +191,8 @@ $L_2L_1$ (Lemma~\ref{lem:phase-iso}). Theorem~\ref{thm:weyl-cov} gives the covar
 \noindent\motiv{\vet{This is Axiom~5 of~\cite[p.~220]{dimock} for the CCR net: an assignment
 $\theta\mapsto\alpha_\theta$ with $\alpha_{\mathrm{id}}=\mathrm{id}$ and
 $\alpha_{\theta_2\theta_1}=\alpha_{\theta_2}\alpha_{\theta_1}$, each $(\kappa,\alpha_\theta)$ a
-covariance pair (Remark~\ref{rem:axiom5}), indexed by the isomorphisms of phase-space data. \revc{An assignment indexed by the isometries
-themselves, as in~\cite{dimock}, is obtained by taking for each isometry the triple of the
+covariance pair (Remark~\ref{rem:axiom5}), indexed by the isomorphisms of phase-space data. \revc{We obtain an assignment indexed by the isometries
+themselves, as in~\cite{dimock}, by taking for each isometry the triple of the
 induced map of regions, the pushforward of test functions and the induced map on $V$; pushforwards
 compose, and $L$ is determined by $\kappa_*$ because $[\cdot]$ is surjective, so this choice
 respects composition.}}}
