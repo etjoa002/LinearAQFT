@@ -85,3 +85,4 @@ for m in re.finditer(r'\\begin\{example\}[^\n]*\\label\{([^}]*)\}', tex):
         problems.append(f'{m.group(1)} (example) has no status')
 print('claims', len(corr['claims']), 'marked labels', len(labels))
 print('\n'.join(problems) if problems else 'consistent')
+raise SystemExit(1 if problems else 0)  # the release gate (F3) reads the exit status
