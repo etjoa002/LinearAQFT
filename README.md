@@ -204,6 +204,11 @@ remove the hypothesis of primitivity; the uniqueness of the CCR algebra up to is
 representation; the time slice for curved Cauchy surfaces in Minkowski space; Green operators
 on globally hyperbolic spacetimes.
 
+## Acknowledgement
+
+E.T. acknowledges support from the Alexander von Humboldt Foundation through the Humboldt Research
+Fellowship. This work has been supported by Klaus Tschira Foundation.
+
 ## Citation and licence
 
 Erickson Tjoa, *LinearAQFT: algebraic quantum field theory of linear fields in Lean*, 2026,
