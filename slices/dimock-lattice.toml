@@ -1,4 +1,4 @@
-# Dimock slice: the unconditional lattice instance on Z^2.
+# Dimock slice: the lattice instance on Z^2, given an irreducible representation of the CCR algebra.
 name = "dimock-lattice"
 facade = "slices/Dimock/Lattice.lean"
 source = "J. Dimock, Algebras of local observables on a manifold, Commun. Math. Phys. 77 (1980) 219-228"

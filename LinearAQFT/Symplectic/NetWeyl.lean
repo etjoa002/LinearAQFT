@@ -31,7 +31,7 @@ variable {R : Type*} [Preorder R] {C : CausalIndex R}
 variable {D V : Type*} [AddCommGroup D] [Module ℝ D] [AddCommGroup V] [Module ℝ V]
 
 /-- The Weyl operators `W(cls f)` of the test functions localized in `O`. -/
-def weylSet (Φ : PhaseSpace C D V) (O : R) : Set (CCR Φ.sigma) :=
+noncomputable def weylSet (Φ : PhaseSpace C D V) (O : R) : Set (CCR Φ.sigma) :=
   (fun f => wCCR Φ.sigma (Φ.cls f)) '' (Φ.loc O : Set D)
 
 theorem mem_weylSet {Φ : PhaseSpace C D V} {O : R} {a : CCR Φ.sigma} :

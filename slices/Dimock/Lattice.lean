@@ -3,8 +3,8 @@ import LinearAQFT.Lattice.Axioms
 /-!
 # Dimock slice: the lattice instance
 
-Facade for the slice `slices/dimock-lattice.toml`: the unconditional lattice instance on `ℤ²`,
-restated from the statement probe of milestone D1 (Corollary 18). It adds no declarations.
+Facade for the slice `slices/dimock-lattice.toml`: the lattice instance on `ℤ²`, given an
+irreducible representation of the CCR algebra, restated from the statement probe of milestone D1 (Corollary 18). It adds no declarations.
 -/
 
 open LinearAQFT LinearAQFT.Net LinearAQFT.Symplectic

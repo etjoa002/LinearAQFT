@@ -13,17 +13,17 @@ maxSynthPendingDepth = 3
 [[require]]
 name = "LocalAlgebrasLean"
 git = "https://github.com/etjoa002/LocalAlgebrasLean"
-rev = "060af367814fd7fb05da03322e24890868e26178"
+rev = "0d2e3282ff0d9a438f3d7d744ad04495f9dc0b8b"
 
 [[require]]
 name = "BosonicLean"
 git = "https://github.com/etjoa002/BosonicLean"
-rev = "e2c2da8f31d4d85555c12cb1ef91957380e005b9"
+rev = "fa21a51cf5dc66d1385979a9411e7ebdcb9be242"
 
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.35.0-rc3"
+rev = "v4.36.0-rc1"
 
 [[lean_lib]]
 name = "LinearAQFT"

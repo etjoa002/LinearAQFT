@@ -8,7 +8,7 @@ library as it grows past it.
 | Slice | Theorems (library form of the axioms of Dimock (1980)) | LinearAQFT modules | Declarations used / unused in those modules |
 |---|---|---|---|
 | `dimock-abstract` | Axioms 1–4 for any phase-space data with nondegenerate σ (primitivity given an irreducible representation); Axiom 5 for the CCR net | 6 | 367 / 82 |
-| `dimock-lattice` | the unconditional instance on ℤ² with translation covariance | 17 | 714 / 147 |
+| `dimock-lattice` | the lattice instance on ℤ², given an irreducible representation of the CCR algebra, with translation covariance | 17 | 714 / 147 |
 | `dimock-minkowski` | Axioms 1–4 for any Green data; the free massless field on 3+1 Minkowski space with Poincaré covariance | 24 (no lattice module) | 1008 / 148 |
 
 The declaration counts include the declarations each slice uses from LocalAlgebrasLean (4
